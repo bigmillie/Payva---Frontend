@@ -37,6 +37,9 @@ export const metadata: Metadata = {
     "Payva Payment",
   ],
 
+  applicationName: "Payva Payment",
+  referrer: "origin-when-cross-origin",
+
   authors: [{ name: "Payva Payment" }],
   creator: "Payva Payment",
   publisher: "Payva Payment",
