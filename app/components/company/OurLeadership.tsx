@@ -18,22 +18,22 @@ const OurLeadership = () => {
         <div className="flex items-center gap-6 md:flex-row">
           <div className="">
             <Image
-              src="/assets/about/ceo.png"
+              src="/assets/about/ceo1.jpeg"
               alt="Leader 1"
               width={400}
               height={200}
-              className=""
+              className="w-80 h-80 rounded-xl object-cover"
             />
             <h3 className="text-xl font-bold mt-2">Victor Ejome</h3>
             <p className="text-gray-600">CEO/Founder</p>
           </div>
           <div className="">
             <Image
-              src="/assets/about/ceo.png"
+              src="/assets/about/ceo2.jpeg"
               alt="Leader 1"
               width={400}
               height={200}
-              className=""
+              className="w-80 h-80 rounded-xl object-cover"
             />
             <h3 className="text-xl font-bold mt-2">Great Ejome</h3>
             <p className="text-gray-600">COO/Co-founder</p>
