@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import Logo from "./Logo";
 import Link from "next/link";
 import Button from "./Button";
-import { Menu, X } from "lucide-react";
+import { X } from "lucide-react";
 import { useCurrency } from "@/context/CurrencyContext";
 import Image from "next/image";
 

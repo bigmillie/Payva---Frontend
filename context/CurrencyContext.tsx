@@ -10,7 +10,6 @@ export interface Currency {
 }
 
 const currencies: Currency[] = [
-  { code: "CAD", name: "Canadian Dollar", flag: "🇨🇦", symbol: "$" },
   { code: "NGN", name: "Nigerian Naira", flag: "🇳🇬", symbol: "₦" },
   { code: "USD", name: "US Dollar", flag: "🇺🇸", symbol: "$" },
   { code: "EUR", name: "Euro", flag: "🇪🇺", symbol: "€" },

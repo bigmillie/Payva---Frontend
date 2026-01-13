@@ -17,8 +17,8 @@ interface ExchangeRates {
 const CurrencyConverter: React.FC = () => {
   const [sendAmount, setSendAmount] = useState<string>("0.00");
   const [receiveAmount, setReceiveAmount] = useState<string>("0.00");
-  const [sendCurrency, setSendCurrency] = useState<string>("CAD");
-  const [receiveCurrency, setReceiveCurrency] = useState<string>("NGN");
+  const [sendCurrency, setSendCurrency] = useState<string>("NGN");
+  const [receiveCurrency, setReceiveCurrency] = useState<string>("GBP");
   const [exchangeRates, setExchangeRates] = useState<ExchangeRates>({});
   const [loading, setLoading] = useState<boolean>(true);
   const [showSendDropdown, setShowSendDropdown] = useState<boolean>(false);
@@ -27,14 +27,10 @@ const CurrencyConverter: React.FC = () => {
   const [rotationCount, setRotationCount] = useState<number>(0);
 
   const currencies: Currency[] = [
-    { code: "CAD", name: "Canadian Dollar", flag: "🇨🇦", symbol: "$" },
     { code: "NGN", name: "Nigerian Naira", flag: "🇳🇬", symbol: "₦" },
     { code: "USD", name: "US Dollar", flag: "🇺🇸", symbol: "$" },
     { code: "EUR", name: "Euro", flag: "🇪🇺", symbol: "€" },
     { code: "GBP", name: "British Pound", flag: "🇬🇧", symbol: "£" },
-    { code: "JPY", name: "Japanese Yen", flag: "🇯🇵", symbol: "¥" },
-    { code: "AUD", name: "Australian Dollar", flag: "🇦🇺", symbol: "$" },
-    { code: "CHF", name: "Swiss Franc", flag: "🇨🇭", symbol: "Fr" },
   ];
 
   // Fetch exchange rates
@@ -104,17 +100,23 @@ const CurrencyConverter: React.FC = () => {
 
         <div className="flex items-center justify-between">
           {/* Currency Selector */}
+          {/* Currency Selector */}
           <div className="relative">
             <button
-              onClick={() => setShowSendDropdown(!showSendDropdown)}
+              onClick={() => {
+                setShowSendDropdown((prev) => !prev);
+                setShowReceiveDropdown(false); // close other dropdown
+              }}
               className="flex items-center gap-2 bg-white px-4 py-3 rounded-xl shadow-sm hover:shadow-md transition-shadow"
             >
               <div className="w-6 h-6 rounded-full overflow-hidden flex items-center justify-center">
                 <span className="text-5xl">{sendInfo.flag}</span>
               </div>
+
               <span className="font-semibold text-[#4D4D4D] text-[15.32px]">
                 {sendCurrency}
               </span>
+
               <svg
                 className="w-4 h-4 text-gray-500"
                 fill="none"
@@ -129,6 +131,33 @@ const CurrencyConverter: React.FC = () => {
                 />
               </svg>
             </button>
+
+            {/* SEND DROPDOWN */}
+            {showSendDropdown && (
+              <div className="absolute top-full mt-2 bg-white rounded-xl shadow-xl border border-gray-200 z-20 w-64 max-h-64 overflow-y-auto">
+                {currencies.map((currency) => (
+                  <button
+                    key={currency.code}
+                    onClick={() => {
+                      setSendCurrency(currency.code);
+                      setShowSendDropdown(false);
+                    }}
+                    className="w-full flex items-center gap-3 px-4 py-3 hover:bg-gray-50 transition-colors"
+                  >
+                    <span className="text-2xl">{currency.flag}</span>
+
+                    <div className="text-left">
+                      <div className="font-semibold text-gray-700">
+                        {currency.code}
+                      </div>
+                      <div className="text-xs text-gray-500">
+                        {currency.name}
+                      </div>
+                    </div>
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
 
           {/* Amount Input WITH currency symbol */}

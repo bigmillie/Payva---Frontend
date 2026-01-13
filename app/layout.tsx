@@ -19,8 +19,8 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://payvapayment.com"),
 
   title: {
-    default: "Payva — Seamless Global Money Transfers",
-    template: "%s | Payva",
+    default: "Payva Payment — Seamless Global Money Transfers",
+    template: "%s | Payva Payment",
   },
 
   description:
@@ -34,12 +34,12 @@ export const metadata: Metadata = {
     "business money transfer",
     "fintech platform",
     "international remittance",
-    "Payva",
+    "Payva Payment",
   ],
 
-  authors: [{ name: "Payva" }],
-  creator: "Payva",
-  publisher: "Payva",
+  authors: [{ name: "Payva Payment" }],
+  creator: "Payva Payment",
+  publisher: "Payva Payment",
 
   robots: {
     index: true,
@@ -74,7 +74,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://payvapayment.com",
     siteName: "Payva",
-    title: "Payva — Seamless Global Money Transfers",
+    title: "Payva Payment — Seamless Global Money Transfers",
     description:
       "The most convenient money transfer platform to help you manage global payments faster, smarter, and more efficiently.",
     images: [
@@ -92,11 +92,11 @@ export const metadata: Metadata = {
   -------------------------------- */
   twitter: {
     card: "summary_large_image",
-    title: "Payva — Seamless Global Money Transfers",
+    title: "Payva Payment — Seamless Global Money Transfers",
     description:
       "Send, receive, and manage global payments effortlessly with Payva — built for individuals and businesses.",
     images: ["/seo-banner.webp"],
-    creator: "@payva", // optional
+    creator: "@payvapayment", // optional
   },
 };
 
