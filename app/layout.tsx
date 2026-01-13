@@ -79,9 +79,9 @@ export const metadata: Metadata = {
       "The most convenient money transfer platform to help you manage global payments faster, smarter, and more efficiently.",
     images: [
       {
-        url: "/seo-banner.webp",
-        width: 1200,
-        height: 630,
+        url: "/apple-touch-icon.png",
+        width: 180,
+        height: 180,
         alt: "Payva — Seamless Global Money Transfers",
       },
     ],
@@ -95,7 +95,7 @@ export const metadata: Metadata = {
     title: "Payva Payment — Seamless Global Money Transfers",
     description:
       "Send, receive, and manage global payments effortlessly with Payva — built for individuals and businesses.",
-    images: ["/seo-banner.webp"],
+    images: ["/apple-touch-icon.png"],
     creator: "@payvapayment", // optional
   },
 };
