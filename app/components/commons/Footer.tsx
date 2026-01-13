@@ -25,6 +25,7 @@ const Footer = () => {
           px-4 md:px-32
           py-14 md:py-20
           w-full
+          font-famil
         "
       >
         {/* Logo */}
