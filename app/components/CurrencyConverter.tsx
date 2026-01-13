@@ -141,7 +141,7 @@ const CurrencyConverter: React.FC = () => {
               type="text"
               value={sendAmount}
               onChange={(e) => handleSendAmountChange(e.target.value)}
-              className="text-[25.53px] leading-[35.74px] font-semibold text-[#4D4D4D] text-right bg-transparent outline-none w-48"
+              className="-ml-16 text-[25.53px] leading-[35.74px] font-semibold text-[#4D4D4D] text-right bg-transparent outline-none w-48"
               placeholder="0.00"
             />
           </div>

@@ -73,13 +73,13 @@ const HomeHero = () => {
             <div className="lg:text-start mx-0 lg:ml-8">
               <FlipCountdown launchDate="2026-03-30T00:00:00" />
             </div>
-            <div className="flex flex-row items-stretch bg-white p-0.5 rounded-lg mt-5 gap-2 w-full">
+            <div className="flex items-stretch bg-white p-0.5 rounded-lg mt-5 gap-2 w-full overflow-hidden">
               <input
                 type="email"
                 placeholder="Enter your email address"
-                className="flex-1 px-4 py-3 outline-none placeholder:text-slate-400 text-[#006D68] rounded-md"
+                className="min-w-0 flex-1 px-4 py-3 outline-none placeholder:text-slate-400 text-[#006D68]"
               />
-              <Button className="text-sm shrink-0 px-5 py-3 w-fit">
+              <Button className="text-sm px-4 py-3 whitespace-nowrap">
                 Submit Email
               </Button>
             </div>
