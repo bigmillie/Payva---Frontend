@@ -1,0 +1,15 @@
+export const homePage = "/";
+export const featurePage = "/features";
+export const aboutPage = "/about";
+export const howItWorksPage = "/contact";
+export const faqPage = "/faq";
+export const contactPage = "/contact";
+export const apiPage = "/thoughts";
+export const helpCenterPage = "/thoughts";
+export const privacyPolyPage = "/privacy";
+export const termOfUsePage = "/terms";
+export const kycRoute = "/kyc";
+export const suggestFeaturesPage = "/thoughts";
+export const instagramLink = "https://instagram.com";
+export const twitterLink = "https://x.com";
+export const linkendInLink = "https://linkedin.com";

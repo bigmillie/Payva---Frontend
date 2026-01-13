@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+}
+
+@theme inline {
+  --font-famil: var(--font-familjen-grotesk);
+}
+
+body {
+  font-family: var(--font-famil), Arial, Helvetica, sans-serif;
+}
+
+/* globals.css */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
