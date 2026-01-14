@@ -1,12 +1,15 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { CircleMinus, CirclePlus } from "lucide-react";
+import ReactMarkdown from "react-markdown";
+import { usePathname } from "next/navigation";
 
 interface PolicySection {
   title: string;
   content: string;
+  slug: string;
 }
 
 export default function PrivacyAccordionMain({
@@ -14,47 +17,47 @@ export default function PrivacyAccordionMain({
 }: {
   sections: PolicySection[];
 }) {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const pathname = usePathname();
+  const hash = typeof window !== "undefined" ? window.location.hash : "";
+
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
+
+  // Deep-link support
+  useEffect(() => {
+    if (!hash) return;
+
+    const index = sections.findIndex((section) => `#${section.slug}` === hash);
+
+    if (index !== -1) {
+      setOpenIndex(index);
+      document
+        .getElementById(sections[index].slug)
+        ?.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [hash, sections]);
 
   return (
-    <motion.div
-      className="space-y-4 w-full text-lg"
-      initial="hidden"
-      animate="visible"
-      variants={{
-        visible: {
-          transition: { staggerChildren: 0.08 },
-        },
-      }}
-    >
+    <motion.div className="space-y-4 w-full">
       {sections.map((section, index) => {
         const isOpen = openIndex === index;
 
         return (
-          <motion.div
-            key={index}
-            variants={{
-              hidden: { opacity: 0, y: 10 },
-              visible: { opacity: 1, y: 0 },
-            }}
-            transition={{ duration: 0.25 }}
-            className={`${
+          <div
+            key={section.slug}
+            id={section.slug}
+            className={`rounded-3xl overflow-hidden ${
               isOpen ? "bg-[#F4FFFE]" : "bg-[#FCFCFC]"
-            } rounded-3xl overflow-hidden w-full`}
+            }`}
           >
             <button
               onClick={() => setOpenIndex(isOpen ? null : index)}
-              className="w-full flex gap-5 items-center p-8 text-left"
+              className="w-full flex items-center gap-5 p-8 text-left"
             >
-              <motion.span
-                className="text-teal-600 shrink-0"
-                animate={{ rotate: isOpen ? 180 : 0 }}
-                transition={{ duration: 0.2 }}
-              >
+              <span className="text-teal-600">
                 {isOpen ? <CircleMinus /> : <CirclePlus />}
-              </motion.span>
+              </span>
 
-              <span className="font-medium text-2xl leading-6 text-[#2A2A2A]">
+              <span className="text-lg font-medium text-[#2A2A2A]">
                 {section.title}
               </span>
             </button>
@@ -65,14 +68,19 @@ export default function PrivacyAccordionMain({
                   initial={{ height: 0, opacity: 0 }}
                   animate={{ height: "auto", opacity: 1 }}
                   exit={{ height: 0, opacity: 0 }}
-                  transition={{ duration: 0.25, ease: "easeOut" }}
-                  className="px-8 pb-6 text-gray-600 text-base leading-relaxed"
+                  transition={{ duration: 0.25 }}
+                  className="
+                    px-8 pb-6
+                    text-gray-600
+                    prose prose-sm md:prose-base
+                    max-w-none
+                  "
                 >
-                  {section.content}
+                  <ReactMarkdown>{section.content}</ReactMarkdown>
                 </motion.div>
               )}
             </AnimatePresence>
-          </motion.div>
+          </div>
         );
       })}
     </motion.div>

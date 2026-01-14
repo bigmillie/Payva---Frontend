@@ -143,13 +143,24 @@ export const payvaPrivacyPolicy = [
     sections: [
       {
         title: "Overview",
-        content:
-          "Payva Payment Limited (“Payva,” “we,” “us,” “our”) is committed to protecting your privacy and safeguarding your Personal Information. This Privacy Policy explains how we collect, use, and share personal information when you use our services, including our mobile application and website.",
+        slug: "overview",
+        content: `
+Payva Payment Limited (**“Payva,” “we,” “us,” “our”**) is committed to protecting your privacy and safeguarding your **Personal Information**.
+
+This Privacy Policy explains how we collect, use, store, and disclose personal information when you use our:
+- Mobile application
+- Website
+- Financial and payment services
+        `,
       },
       {
         title: "Consent",
-        content:
-          "By using Payva’s services, you consent to the practices described in this Privacy Policy. If you do not agree, you should discontinue use of the services.",
+        slug: "consent",
+        content: `
+By using Payva’s services, you **consent** to the practices described in this Privacy Policy.
+
+If you do **not** agree with this policy, you should discontinue use of our services.
+        `,
       },
     ],
   },
@@ -160,13 +171,24 @@ export const payvaPrivacyPolicy = [
     sections: [
       {
         title: "Who This Policy Applies To",
-        content:
-          "This Privacy Policy applies to Payva customers in Canada, the UK, and Nigeria; visitors to our website or app; senders and recipients of remittances; and individuals whose personal information is processed by Payva.",
+        slug: "applicability",
+        content: `
+This Privacy Policy applies to:
+
+- Payva customers in **Canada, the United Kingdom, and Nigeria**
+- Visitors to our website or mobile application
+- Senders and recipients of remittances
+- Individuals whose personal data is processed by Payva
+        `,
       },
       {
         title: "Exclusions",
-        content:
-          "This policy does not apply to third-party websites or platforms not controlled by Payva.",
+        slug: "exclusions",
+        content: `
+This policy **does not apply** to third-party websites, services, or platforms not controlled by Payva.
+
+We encourage you to review the privacy policies of any third-party services you use.
+        `,
       },
     ],
   },
@@ -177,40 +199,47 @@ export const payvaPrivacyPolicy = [
     sections: [
       {
         title: "Information You Provide Directly",
-        content:
-          "This includes your full legal name, date of birth, email address, phone number, residential address, employment details, identification documents, biometric verification data, bank or payment information, and customer support communications.",
+        slug: "direct-information",
+        content: `
+We may collect the following information when you register or use our services:
+
+- Full legal name
+- Date of birth
+- Email address and phone number
+- Residential address
+- Employment information
+- Identification documents (KYC)
+- Biometric verification data
+- Bank or payment details
+- Customer support communications
+        `,
       },
       {
         title: "Information Collected Automatically",
-        content:
-          "We collect device identifiers, IP address, browser and operating system details, usage logs, geo-location data where permitted, cookies, and tracking technologies.",
+        slug: "automatic-collection",
+        content: `
+When you use our services, we may automatically collect:
+
+- Device identifiers
+- IP address
+- Browser and operating system details
+- Usage logs and timestamps
+- Geo-location data (where permitted)
+- Cookies and similar tracking technologies
+        `,
       },
       {
         title: "Information from Third Parties",
-        content:
-          "We may collect information from identity verification vendors, AML/KYC providers, banks, payment partners, fraud detection agencies, and regulatory bodies.",
-      },
-    ],
-  },
+        slug: "third-parties",
+        content: `
+We may receive information from:
 
-  {
-    category: "Legal Basis for Processing",
-    key: "legal-basis",
-    sections: [
-      {
-        title: "Canada (PIPEDA)",
-        content:
-          "We process personal information based on meaningful consent, reasonable service-related purposes, and compliance with financial and regulatory obligations.",
-      },
-      {
-        title: "United Kingdom (UK GDPR)",
-        content:
-          "Legal bases include consent, performance of a contract, legal obligations, legitimate interests, and public interest in fraud prevention.",
-      },
-      {
-        title: "Nigeria (NDPA)",
-        content:
-          "Processing is based on consent, contractual necessity, legal compliance, legitimate interest, and vital interest.",
+- Identity verification providers
+- AML / KYC vendors
+- Banks and payment partners
+- Fraud detection agencies
+- Regulatory or government authorities
+        `,
       },
     ],
   },
@@ -221,78 +250,43 @@ export const payvaPrivacyPolicy = [
     sections: [
       {
         title: "Service Delivery",
-        content:
-          "We use personal information to create and manage accounts, verify identity, process remittances, prevent fraud, provide customer support, and improve our services.",
+        slug: "service-delivery",
+        content: `
+We use personal information to:
+
+- Create and manage user accounts
+- Verify identity
+- Process remittances
+- Prevent fraud and unauthorized activity
+- Provide customer support
+- Improve and optimize our services
+        `,
       },
       {
         title: "Legal Compliance",
-        content:
-          "This includes compliance with AML/CFT regulations, sanctions screening, financial reporting, and cooperation with regulatory authorities.",
+        slug: "legal-compliance",
+        content: `
+We process data to comply with:
+
+- AML / CFT regulations
+- Sanctions screening
+- Financial reporting requirements
+- Regulatory and law-enforcement requests
+        `,
       },
       {
         title: "Communications and Marketing",
-        content:
-          "We send transaction notifications, security alerts, service updates, and marketing communications where consent has been given. You may withdraw marketing consent at any time.",
-      },
-    ],
-  },
+        slug: "communications",
+        content: `
+We may send:
 
-  {
-    category: "Sharing and Disclosure",
-    key: "sharing",
-    sections: [
-      {
-        title: "When We Share Information",
-        content:
-          "We may share personal information when required by law, with your consent, or to comply with regulatory and legal obligations.",
-      },
-      {
-        title: "Service Providers",
-        content:
-          "We share information with cloud hosting providers, payment processors, banking partners, AML/KYC vendors, fraud monitoring platforms, and technical support providers.",
-      },
-      {
-        title: "No Sale of Data",
-        content: "Payva never sells personal information.",
-      },
-    ],
-  },
+- Transaction notifications
+- Security alerts
+- Service updates
+- Marketing communications (**only where consent is provided**)
 
-  {
-    category: "Data Transfers",
-    key: "data-transfer",
-    sections: [
-      {
-        title: "International Transfers",
-        content:
-          "Personal information may be transferred between Canada, the UK, Nigeria, the United States, EU/EEA countries, and other jurisdictions where partners operate.",
-      },
-      {
-        title: "Safeguards",
-        content:
-          "We apply appropriate safeguards to ensure data transfers comply with applicable laws.",
-      },
-    ],
-  },
-
-  {
-    category: "Your Rights",
-    key: "user-rights",
-    sections: [
-      {
-        title: "Canada",
-        content:
-          "You may request access, corrections, withdraw consent, challenge compliance, and file complaints with the OPC.",
-      },
-      {
-        title: "United Kingdom",
-        content:
-          "You may request access, correction, erasure, restriction, portability, objection, withdrawal of consent, and human review of automated decisions.",
-      },
-      {
-        title: "Nigeria",
-        content:
-          "You may request access, rectification, deletion, data portability, restriction, objection, and lodge complaints with the NDPC.",
+You may withdraw marketing consent at any time.
+        `,
       },
     ],
   },
@@ -303,13 +297,30 @@ export const payvaPrivacyPolicy = [
     sections: [
       {
         title: "Retention",
-        content:
-          "We retain personal information only as long as necessary for service delivery, legal compliance, and AML/CFT requirements, typically between 5–7 years.",
+        slug: "retention",
+        content: `
+We retain personal information **only as long as necessary** for:
+
+- Service delivery
+- Legal and regulatory compliance
+- AML / CFT obligations
+
+Typical retention periods range from **5–7 years**.
+        `,
       },
       {
         title: "Security Measures",
-        content:
-          "Payva uses encryption, secure data centers, access controls, multi-factor authentication, continuous monitoring, and regular security audits.",
+        slug: "security-measures",
+        content: `
+Payva implements industry-standard security controls, including:
+
+- Data encryption
+- Secure data centers
+- Role-based access controls
+- Multi-factor authentication
+- Continuous monitoring
+- Regular security audits
+        `,
       },
     ],
   },
@@ -320,13 +331,19 @@ export const payvaPrivacyPolicy = [
     sections: [
       {
         title: "Contact Information",
-        content:
-          "For questions, access requests, or concerns about this Privacy Policy, you may contact Payva via the email provided in our official communications.",
+        slug: "contact-information",
+        content: `
+If you have questions, concerns, or data access requests, please contact Payva using the email provided in our official communications.
+        `,
       },
       {
         title: "Policy Updates",
-        content:
-          "Payva may update this Privacy Policy periodically. Continued use of the services constitutes acceptance of the updated policy.",
+        slug: "policy-updates",
+        content: `
+We may update this Privacy Policy from time to time.
+
+Continued use of our services after updates constitutes acceptance of the revised policy.
+        `,
       },
     ],
   },
