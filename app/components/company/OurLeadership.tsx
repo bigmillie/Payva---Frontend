@@ -45,7 +45,7 @@ const OurLeadership = () => {
                 className="w-80 h-80 rounded-xl object-cover"
               />
               <h3 className="text-xl font-bold mt-2">Great Ejome</h3>
-              <p className="text-gray-600">COO/Co-founder</p>
+              <p className="text-gray-600">CTO/Co-founder</p>
             </div>
           </div>
         </div>

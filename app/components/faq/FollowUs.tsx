@@ -29,7 +29,7 @@ const FollowUs = () => {
           </Link>
 
           <Link
-            href="https://www.twitter.com/payvaapp"
+            href="https://www.twitter.com/payvapayment"
             target="_blank"
             className="text-white"
           >
@@ -42,7 +42,7 @@ const FollowUs = () => {
           </Link>
 
           <Link
-            href="https://www.instagram.com/payvaapp"
+            href="https://www.instagram.com/payvapayment"
             target="_blank"
             className="text-white"
           >
