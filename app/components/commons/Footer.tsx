@@ -122,13 +122,19 @@ const Footer = () => {
           className="
             flex flex-col-reverse md:flex-row
             items-center
-            justify-center
+            justify-between
             gap-6
             w-full
           "
         >
           <p className="text-white text-sm text-center md:text-left">
             &copy; 2026 — Copyright.
+          </p>
+
+          <p className="text-white text-sm text-center md:text-left max-w-xl">
+            Payva Payment Limited is registered and regulated by the Financial
+            Transactions and Reports Analysis Centre of Canada (FINTRAC) as a
+            Money Service Business (C100000757)
           </p>
         </div>
       </div>
