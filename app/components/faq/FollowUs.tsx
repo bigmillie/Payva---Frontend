@@ -16,7 +16,7 @@ const FollowUs = () => {
 
         <div className="flex items-center gap-4 mt-2">
           <Link
-            href="https://www.facebook.com/payvaapp"
+            href="https://www.facebook.com/Payvaofficial"
             target="_blank"
             className="text-white"
           >
@@ -55,7 +55,7 @@ const FollowUs = () => {
           </Link>
 
           <Link
-            href="https://www.linkedin.com/company/payvaapp"
+            href="https://www.linkedin.com/company/payvapayment"
             target="_blank"
             className="text-white"
           >
