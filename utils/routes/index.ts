@@ -12,5 +12,6 @@ export const suggestFeaturesPage = "/thoughts";
 export const instagramLink = "https://instagram.com";
 export const twitterLink = "https://x.com";
 export const linkendInLink = "https://linkedin.com";
+export const facebookLink = "https://www.facebook.com/Payvaofficial?ref=1";
 export const addressLink = "https://maps.app.goo.gl/9vSza4jcYcu6HmX8A";
 export const telePhoneLink = "tel:+18254885474";

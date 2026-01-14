@@ -16,7 +16,7 @@ const FollowUs = () => {
 
         <div className="flex items-center gap-4 mt-2">
           <Link
-            href="https://www.facebook.com/Payvaofficial"
+            href="https://www.facebook.com/Payvaofficial?ref=1"
             target="_blank"
             className="text-white"
           >
@@ -28,7 +28,7 @@ const FollowUs = () => {
             />
           </Link>
 
-          <Link
+          {/* <Link
             href="https://www.twitter.com/payvapayment"
             target="_blank"
             className="text-white"
@@ -48,6 +48,19 @@ const FollowUs = () => {
           >
             <Image
               src="/assets/about/instagram.svg"
+              alt="Instagram"
+              width={28}
+              height={28}
+            />
+          </Link> */}
+
+          <Link
+            href="https://www.tiktok.com/@payvaofficial?is_from_webapp=1&sender_device=pc"
+            target="_blank"
+            className="text-white"
+          >
+            <Image
+              src="/assets/tiktok.svg"
               alt="Instagram"
               width={28}
               height={28}
