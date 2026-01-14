@@ -51,8 +51,8 @@ const FeatureHero = () => {
             speed and ease.
           </p>
 
-          <div className="flex flex-col items-center text-center lg:items-start lg:text-start max-w-md w-full mt-4 mx-auto lg:mx-0">
-            <span className="text-[#C5D4E0] text-sm md:text-base lg:text-start block pb-4">
+          <div className="max-w-md w-full mx-auto md:mx-0">
+            <span className="text-[#C5D4E0] text-sm md:text-base block pb-4">
               Be the first to know when the Payva app is live.
             </span>
 
@@ -60,11 +60,30 @@ const FeatureHero = () => {
               <FlipCountdown launchDate="2026-03-30T00:00:00" />
             </div>
 
-            <div className="flex items-stretch mx-4 md:mx-0 bg-white p-0.5 rounded-lg w-full mt-5 gap-2">
+            <div
+              className="
+                flex
+                items-center
+                mx-4 md:mx-0
+                bg-white
+                p-0.5
+                rounded-lg
+                mt-5
+                gap-2
+              "
+            >
               <input
                 type="email"
                 placeholder="Enter your email address"
-                className="flex-1 px-4 py-3 outline-none placeholder:text-slate-400 text-[#006D68] rounded-md"
+                className="
+                  flex-1
+                  px-4
+                  py-3
+                  outline-none
+                  placeholder:text-slate-400
+                  text-[#006D68]
+                  rounded-md
+                "
               />
               <Button className="text-sm shrink-0 px-5">Submit</Button>
             </div>

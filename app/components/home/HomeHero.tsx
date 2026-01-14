@@ -65,24 +65,41 @@ const HomeHero = () => {
             speed and ease.
           </p>
 
-          {/* CTA Group */}
-          <div className="flex flex-col items-center text-center lg:items-start max-w-md w-full mt-4 md:mx-0">
+          <div className="max-w-md w-full mx-auto md:mx-0">
             <span className="text-[#C5D4E0] text-sm md:text-base block pb-4">
               Be the first to know when the Payva app is live.
             </span>
-            <div className="lg:text-start mx-0 lg:ml-8">
+
+            <div className="mx-0 lg:ml-8 lg:text-start">
               <FlipCountdown launchDate="2026-03-30T00:00:00" />
             </div>
-            <div className="flex items-stretch bg-white p-0.5 rounded-lg mt-5 gap-2 w-full overflow-hidden">
+
+            <div
+              className="
+                flex
+                items-center
+                mx-4 md:mx-0
+                bg-white
+                p-0.5
+                rounded-lg
+                mt-5
+                gap-2
+              "
+            >
               <input
                 type="email"
-                id="waitlist"
                 placeholder="Enter your email address"
-                className="min-w-0 flex-1 px-4 py-3 outline-none placeholder:text-slate-400 text-[#006D68]"
+                className="
+                  flex-1
+                  px-4
+                  py-3
+                  outline-none
+                  placeholder:text-slate-400
+                  text-[#006D68]
+                  rounded-md
+                "
               />
-              <Button className="text-sm px-4 py-3 whitespace-nowrap">
-                Submit
-              </Button>
+              <Button className="text-sm shrink-0 px-5">Submit</Button>
             </div>
           </div>
         </div>
