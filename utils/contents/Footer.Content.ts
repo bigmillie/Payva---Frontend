@@ -66,10 +66,6 @@ export const quickLinks: IQuickLink[] = [
         title: "Privacy policy",
         route: privacyPolyPage,
       },
-      {
-        title: "KYC policy",
-        route: kycRoute,
-      },
     ],
   },
   // {
