@@ -1,6 +1,30 @@
+"use client";
+
+import { useState } from "react";
 import Button from "./Button";
 
 const ReadyToExperience = () => {
+  const [email, setEmail] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = async () => {
+    if (!email) return;
+
+    setIsSubmitting(true);
+    setSubmitted(false);
+
+    // ⏳ Simulate API request
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+
+    setIsSubmitting(false);
+    setSubmitted(true);
+    setEmail("");
+
+    // Optional: hide success message after a while
+    setTimeout(() => setSubmitted(false), 4000);
+  };
+
   return (
     <section
       id="waitlist"
@@ -55,7 +79,8 @@ const ReadyToExperience = () => {
         >
           <input
             type="email"
-            id="waitlist"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             placeholder="Enter your email address"
             className="
               flex-1
@@ -68,7 +93,13 @@ const ReadyToExperience = () => {
             "
           />
 
-          <Button className="text-sm md:px-5 py-3 w-auto">Submit Email</Button>
+          <Button
+            className="text-sm md:px-5 py-3 w-auto"
+            onClick={handleSubmit}
+            disabled={isSubmitting}
+          >
+            {isSubmitting ? "Submitting..." : "Submit Email"}
+          </Button>
         </div>
       </div>
     </section>

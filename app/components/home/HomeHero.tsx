@@ -1,9 +1,33 @@
+"use client";
+
+import { useState } from "react";
 import CurrencyConverter from "../CurrencyConverter";
 import Image from "next/image";
 import FlipCountdown from "../Countdown";
 import Button from "../commons/Button";
 
 const HomeHero = () => {
+  const [email, setEmail] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = async () => {
+    if (!email) return;
+
+    setIsSubmitting(true);
+    setSubmitted(false);
+
+    // ⏳ Simulate API request
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+
+    setIsSubmitting(false);
+    setSubmitted(true);
+    setEmail("");
+
+    // Optional: hide success message after a while
+    setTimeout(() => setSubmitted(false), 4000);
+  };
+
   return (
     <section
       className="
@@ -71,7 +95,7 @@ const HomeHero = () => {
             </span>
 
             <div className="mx-0 lg:ml-8 lg:text-start">
-              <FlipCountdown launchDate="2026-03-30T00:00:00" />
+              <FlipCountdown launchDate="2026-02-14T00:00:00" />
             </div>
 
             <div
@@ -88,6 +112,9 @@ const HomeHero = () => {
             >
               <input
                 type="email"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter your email address"
                 className="
                   flex-1
@@ -99,7 +126,14 @@ const HomeHero = () => {
                   rounded-md
                 "
               />
-              <Button className="text-sm shrink-0 px-5">Submit</Button>
+
+              <Button
+                className="text-sm shrink-0 px-5"
+                onClick={handleSubmit}
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? "Submitting..." : "Submit"}
+              </Button>
             </div>
           </div>
         </div>
