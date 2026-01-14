@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { CircleMinus, CirclePlus } from "lucide-react";
 import ReactMarkdown from "react-markdown";
@@ -12,7 +12,7 @@ interface PolicySection {
   content: string;
 }
 
-export default function PrivacyAccordionMain({
+export default function TermsAccordionMain({
   sections,
 }: {
   sections: PolicySection[];
