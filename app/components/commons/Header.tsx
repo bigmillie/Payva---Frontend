@@ -117,7 +117,7 @@ const Header = () => {
             </div>
           </div>
           <div className="hidden md:inline-block">
-            <Button className="text-sm lg:text-base" href="/about">
+            <Button className="text-sm lg:text-base" href="#waitlist">
               Join the waitlist
             </Button>
           </div>
@@ -178,7 +178,7 @@ const Header = () => {
           </ul>
 
           <Button
-            href="/about"
+            href="#waitlist"
             onClick={() => setOpen(false)}
             className="w-full justify-center"
           >

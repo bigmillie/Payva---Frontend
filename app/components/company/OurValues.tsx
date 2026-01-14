@@ -44,7 +44,9 @@ const OurValues = () => {
             What keeps us going every day, and how we&apos;re different.
           </h1>
 
-          <Button className="text-sm px-5 mt-2">Join the waitlist</Button>
+          <Button href="#waitlist" className="text-sm px-5 mt-2">
+            Join the waitlist
+          </Button>
         </div>
 
         {/* Values List */}

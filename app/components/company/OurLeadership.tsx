@@ -13,9 +13,11 @@ const OurLeadership = () => {
           <h1 className="text-[#2A2A2A] font-famil text-3xl md:text-5xl font-bold leading-tight">
             Meet Some of Our Team Members
           </h1>
-          <Button className="text-sm shrink-0 px-5">Submit Email</Button>
+          <Button href="#waitlist" className="text-sm shrink-0 px-5">
+            Submit Email
+          </Button>
         </div>
-        <div className="flex items-center gap-6 md:flex-row">
+        <div className="flex flex-col items-center gap-6 md:flex-row">
           <div className="">
             <Image
               src="/assets/about/ceo1.jpeg"

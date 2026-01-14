@@ -3,9 +3,9 @@ import Link from "next/link";
 
 const FollowUs = () => {
   return (
-    <section className="bg-[linear-gradient(116.28deg,#006D68_0%,#09253F_131.82%)] mx-4 md:mx-12 rounded-3xl md:rounded-4xl mb-12">
+    <section className="bg-[linear-gradient(116.28deg,#006D68_0%,#09253F_131.82%)] mx-4 md:mx-12 rounded-2xl md:rounded-4xl mb-12">
       <div className="flex font-famil flex-col gap-4 items-center justify-center py-12 md:py-18 px-6 md:px-0 max-w-5xl mx-auto">
-        <h1 className="text-3xl md:text-5xl text-white text-center leading-tight tracking-[-2%] font-bold">
+        <h1 className="text-2xl md:text-5xl text-white text-center leading-tight tracking-[-2%] font-bold">
           Follow Us on Our Social Media Channels
         </h1>
 

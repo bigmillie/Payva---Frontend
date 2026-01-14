@@ -43,7 +43,7 @@ const CompanyHero = () => {
           relative
           z-10
           px-6 lg:px-10
-          pt-32 md:pt-48
+          pt-38 md:pt-48
           flex
           items-center
           text-center
@@ -86,6 +86,7 @@ const CompanyHero = () => {
               md:leading-8
               text-white
               max-w-2xl
+              px-4
             "
           >
             Get answers to frequently asked questions or reach out to
@@ -99,7 +100,7 @@ const CompanyHero = () => {
               Be the first to know when the Payva app is live.
             </span>
 
-            <div className="mx-0 ml-8 lg:ml-8 lg:text-start">
+            <div className="mx-0 lg:ml-8 lg:text-start">
               <FlipCountdown launchDate="2026-03-30T00:00:00" />
             </div>
 
@@ -113,7 +114,7 @@ const CompanyHero = () => {
                 rounded-lg
                 mt-5
                 gap-2
-                w-full
+      
               "
             >
               <input
@@ -129,7 +130,7 @@ const CompanyHero = () => {
                   rounded-md
                 "
               />
-              <Button className="text-sm shrink-0 px-5">Submit Email</Button>
+              <Button className="text-sm shrink-0 px-5">Submit</Button>
             </div>
           </div>
         </div>

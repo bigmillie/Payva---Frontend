@@ -1,12 +1,12 @@
-import React from "react";
 import Button from "./Button";
 
 const ReadyToExperience = () => {
   return (
     <section
+      id="waitlist"
       className="
         bg-[linear-gradient(116.28deg,#006D68_0%,#09253F_131.82%)]
-        mx-4 md:mx-12
+        mx-2 md:mx-12
         rounded-2xl md:rounded-4xl
         mb-12
       "
@@ -18,7 +18,7 @@ const ReadyToExperience = () => {
           items-center
           justify-center
           py-14 md:py-18
-          px-6
+          px-4
           max-w-4xl
           mx-auto
         "
@@ -55,6 +55,7 @@ const ReadyToExperience = () => {
         >
           <input
             type="email"
+            id="waitlist"
             placeholder="Enter your email address"
             className="
               flex-1
@@ -67,7 +68,7 @@ const ReadyToExperience = () => {
             "
           />
 
-          <Button className="text-sm px-5 py-3 w-auto">Submit Email</Button>
+          <Button className="text-sm md:px-5 py-3 w-auto">Submit Email</Button>
         </div>
       </div>
     </section>

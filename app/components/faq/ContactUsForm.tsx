@@ -1,9 +1,9 @@
 const ContactUsForm = () => {
   return (
     <section className="bg-[#EBF2F6] mx-4 md:mx-12 rounded-3xl md:rounded-4xl mb-12">
-      <div className="p-6 md:p-12 flex flex-col md:flex-row items-start gap-10 md:gap-18">
+      <div className="md:p-12 flex flex-col md:flex-row items-start gap-10 md:gap-18">
         {/* Section Heading */}
-        <div className="flex flex-col gap-4 max-w-full md:max-w-md">
+        <div className="p-6 pb-2 md:p-0 flex flex-col gap-4 max-w-full md:max-w-md">
           <h1 className="text-[#01070D] font-famil text-3xl md:text-4xl font-bold leading-tight">
             Can&apos;t Find an Answer? Reach out to us.
           </h1>
@@ -15,7 +15,7 @@ const ContactUsForm = () => {
 
         {/* Contact Form */}
         <div className="w-full max-w-full md:max-w-2xl">
-          <form className="bg-[#C5D4E0] p-6 md:p-8 rounded-2xl md:rounded-3xl font-famil">
+          <form className="bg-[#C5D4E0] p-5 md:p-8 rounded-2xl md:rounded-3xl font-famil">
             {/* Name */}
             <div className="mb-4">
               <label className="block text-gray-700 font-semibold mb-2">

@@ -66,7 +66,7 @@ const FeatureHero = () => {
                 placeholder="Enter your email address"
                 className="flex-1 px-4 py-3 outline-none placeholder:text-slate-400 text-[#006D68] rounded-md"
               />
-              <Button className="text-sm shrink-0 px-5">Submit Email</Button>
+              <Button className="text-sm shrink-0 px-5">Submit</Button>
             </div>
           </div>
         </div>

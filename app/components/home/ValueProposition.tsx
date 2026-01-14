@@ -31,7 +31,7 @@ const ValueProposition = () => {
               loved ones shouldn&apos;t cost extra. What you send is exactly
               what they get.
             </p>
-            <Button href="/about" className="w-fit md:w-auto">
+            <Button href="#waitlist2" className="w-fit md:w-auto">
               Join the waitlist
             </Button>
           </div>
@@ -68,7 +68,7 @@ const ValueProposition = () => {
                 loved ones don&apos;t have to wait hours or days before
                 receiving your transfers.
               </p>
-              <Button href="/about" className="w-fit md:w-auto">
+              <Button href="#waitlist2" className="w-fit md:w-auto">
                 Join the waitlist
               </Button>
             </div>
@@ -96,7 +96,7 @@ const ValueProposition = () => {
               Get more out of every transfer. Our rates are fair, competitive
               with no hidden markups.
             </p>
-            <Button href="/about" className="w-fit md:w-auto">
+            <Button href="#waitlist2" className="w-fit md:w-auto">
               Join the waitlist
             </Button>
           </div>
@@ -120,7 +120,7 @@ const ValueProposition = () => {
             className="hidden lg:block w-full md:w-[40%] h-72 md:h-auto object-cover rounded-3xl md:rounded-4xl"
           />
 
-          <div className="w-full h-115 bg-[#ECFDF5] rounded-3xl md:rounded-4xl md:h-147 overflow-hidden relative">
+          <div className="w-full h-145 bg-[#ECFDF5] rounded-3xl md:rounded-4xl md:h-147 overflow-hidden relative">
             <div className="flex flex-col gap-6 p-8 pt-12 md:p-16 max-w-xl">
               <span className="uppercase text-[#09253F] font-medium text-sm tracking-wide">
                 Multi-Currency Wallet
@@ -133,7 +133,7 @@ const ValueProposition = () => {
                 organised and easy to manage wherever you are. We make
                 cross-border living easier than ever.
               </p>
-              <Button href="/about" className="w-fit md:w-auto">
+              <Button href="#waitlist" className="w-fit md:w-auto">
                 Join the waitlist
               </Button>
             </div>

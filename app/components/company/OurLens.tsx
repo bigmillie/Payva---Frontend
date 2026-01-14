@@ -5,7 +5,7 @@ import Image from "next/image";
 const OurLens = () => {
   return (
     <section className="bg-[#FFFFFF]">
-      <div className="px-6 md:px-12 pt-24 pb-32 flex items-start flex-col max-w-7xl mx-auto">
+      <div className="px-4 md:px-12 pt-24 pb-32 flex items-start flex-col max-w-7xl mx-auto">
         <HeadingTag>Our Lens</HeadingTag>
         <div className="mt-6 flex flex-col md:flex-row gap-6 justify-between">
           <Image

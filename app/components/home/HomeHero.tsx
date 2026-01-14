@@ -76,11 +76,12 @@ const HomeHero = () => {
             <div className="flex items-stretch bg-white p-0.5 rounded-lg mt-5 gap-2 w-full overflow-hidden">
               <input
                 type="email"
+                id="waitlist"
                 placeholder="Enter your email address"
                 className="min-w-0 flex-1 px-4 py-3 outline-none placeholder:text-slate-400 text-[#006D68]"
               />
               <Button className="text-sm px-4 py-3 whitespace-nowrap">
-                Submit Email
+                Submit
               </Button>
             </div>
           </div>

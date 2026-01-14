@@ -122,7 +122,7 @@ const CompanyHero = () => {
                   rounded-md
                 "
               />
-              <Button className="text-sm shrink-0 px-5">Submit Email</Button>
+              <Button className="text-sm shrink-0 px-5">Submit</Button>
             </div>
           </div>
         </div>

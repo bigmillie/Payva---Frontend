@@ -6,7 +6,7 @@ import Button from "../commons/Button";
 const AboutUs = () => {
   return (
     <section className="bg-[#FFFFFF]">
-      <div className="px-6 md:px-12 pt-24 pb-32 flex items-start flex-col max-w-7xl mx-auto">
+      <div className="px-4 md:px-12 pt-24 pb-32 flex items-start flex-col max-w-7xl mx-auto">
         <HeadingTag>About Us</HeadingTag>
         <div className="mt-6 flex flex-col md:flex-row gap-6 items-center justify-between">
           <Image
@@ -17,7 +17,7 @@ const AboutUs = () => {
             className="h-full w-full md:w-1/2 flex-1 object-contain rounded-xl"
           />
           <div className="flex font-famil flex-col justify-between gap-6">
-            <div className="p-4">
+            <div className="md:p-4">
               <h2 className="text-3xl text-[#2A2A2A] font-bold mb-4">
                 About Payva
               </h2>
@@ -27,14 +27,14 @@ const AboutUs = () => {
                 across the UK, Canada, and Nigeria with confidence—easier, more
                 affordable, and with no worrying about delays or unclear rates.
               </p>
-              <Button className="text-sm shrink-0 px-5">
+              <Button href="#waitlist" className="text-sm shrink-0 px-5">
                 Join the waitlist
               </Button>
             </div>
           </div>
         </div>
-        <div className="bg-[#004F4C] p-12 font-famil rounded-xl flex-1 mt-20">
-          <h2 className="text-3xl text-[#ffffff] font-bold mb-4">
+        <div className="bg-[#004F4C] p-6 md:p-12 font-famil rounded-xl flex-1 mt-20">
+          <h2 className="text-2xl md:text-3xl text-[#ffffff] font-bold mb-4">
             When sending money home stopped feeling safe, Payva was born
           </h2>
           <div className="space-y-6">
