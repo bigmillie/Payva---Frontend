@@ -1,10 +1,12 @@
 import {
   aboutPage,
+  addressLink,
   contactPage,
   faqPage,
   featurePage,
   kycRoute,
   privacyPolyPage,
+  telePhoneLink,
   termOfUsePage,
 } from "../routes";
 import { IQuickLink } from "../types";
@@ -70,4 +72,17 @@ export const quickLinks: IQuickLink[] = [
       },
     ],
   },
+  // {
+  //   title: "Company",
+  //   links: [
+  //     {
+  //       title: "Address",
+  //       route: addressLink,
+  //     },
+  //     {
+  //       title: "Telephone",
+  //       route: telePhoneLink,
+  //     },
+  //   ],
+  // },
 ];

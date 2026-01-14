@@ -29,7 +29,7 @@ const CurrencyConverter: React.FC = () => {
   const currencies: Currency[] = [
     { code: "NGN", name: "Nigerian Naira", flag: "🇳🇬", symbol: "₦" },
     { code: "USD", name: "US Dollar", flag: "🇺🇸", symbol: "$" },
-    { code: "EUR", name: "Euro", flag: "🇪🇺", symbol: "€" },
+    { code: "CAD", name: "Canadian Dollar", flag: "🇨🇦", symbol: "$" },
     { code: "GBP", name: "British Pound", flag: "🇬🇧", symbol: "£" },
   ];
 

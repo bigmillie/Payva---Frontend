@@ -17,7 +17,7 @@ export default function FAQMainTab() {
           {/* Tabs */}
           <div
             className="
-              w-full max-w-full
+              w-full max-w-md md:w-1/4
               flex flex-row md:flex-col
               gap-3
               overflow-x-auto md:overflow-visible
@@ -53,7 +53,7 @@ export default function FAQMainTab() {
           <AnimatePresence mode="wait">
             {activeCategory && (
               <motion.div
-                className="w-full pt-8 md:pt-0"
+                className="w-full pt-8 md:pt-6"
                 key={activeCategory.key}
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}

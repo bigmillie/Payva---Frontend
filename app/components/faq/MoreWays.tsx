@@ -54,10 +54,10 @@ const MoreWays = () => {
               <p className="text-[#4D4D4D] text-base">
                 Message us directly on WhatsApp for quick and fast answers:{" "}
                 <Link
-                  href="https://wa.me/+23490666777890"
+                  href="https://wa.me/+18254885474"
                   className="text-[#006D68] font-bold"
                 >
-                  +234 906-667-77890
+                  +1-825-488-5474
                 </Link>
               </p>
             </div>

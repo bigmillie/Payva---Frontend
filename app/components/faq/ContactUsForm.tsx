@@ -1,4 +1,27 @@
+"use client";
+
+import { useState } from "react";
+
 const ContactUsForm = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    setIsSubmitting(true);
+    setSubmitted(false);
+
+    // ⏳ Simulate API request
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+
+    setIsSubmitting(false);
+    setSubmitted(true);
+
+    // Optional: reset form
+    (e.target as HTMLFormElement).reset();
+  };
+
   return (
     <section className="bg-[#EBF2F6] mx-4 md:mx-12 rounded-3xl md:rounded-4xl mb-12">
       <div className="md:p-12 flex flex-col md:flex-row items-start gap-10 md:gap-18">
@@ -15,13 +38,17 @@ const ContactUsForm = () => {
 
         {/* Contact Form */}
         <div className="w-full max-w-full md:max-w-2xl">
-          <form className="bg-[#C5D4E0] p-5 md:p-8 rounded-2xl md:rounded-3xl font-famil">
+          <form
+            onSubmit={handleSubmit}
+            className="bg-[#C5D4E0] p-5 md:p-8 rounded-2xl md:rounded-3xl font-famil"
+          >
             {/* Name */}
             <div className="mb-4">
               <label className="block text-gray-700 font-semibold mb-2">
                 Name
               </label>
               <input
+                required
                 type="text"
                 className="w-full px-4 md:px-5 py-3 bg-[#EBF2F6] rounded-lg focus:outline-none focus:ring-1 focus:ring-[#006D68]"
                 placeholder="Your Name"
@@ -34,6 +61,7 @@ const ContactUsForm = () => {
                 Email
               </label>
               <input
+                required
                 type="email"
                 className="w-full px-4 md:px-5 py-3 bg-[#EBF2F6] rounded-lg focus:outline-none focus:ring-1 focus:ring-[#006D68]"
                 placeholder="Enter your email address"
@@ -58,6 +86,7 @@ const ContactUsForm = () => {
                 Question Category
               </label>
               <select
+                required
                 className="w-full px-4 md:px-5 py-3 bg-[#EBF2F6] rounded-lg focus:outline-none focus:ring-1 focus:ring-[#006D68]"
                 defaultValue=""
               >
@@ -77,6 +106,7 @@ const ContactUsForm = () => {
                 Title
               </label>
               <input
+                required
                 type="text"
                 className="w-full px-4 md:px-5 py-3 bg-[#EBF2F6] rounded-lg focus:outline-none focus:ring-1 focus:ring-[#006D68]"
                 placeholder="Enter your question title"
@@ -89,18 +119,32 @@ const ContactUsForm = () => {
                 Message
               </label>
               <textarea
+                required
                 rows={4}
                 className="w-full px-4 md:px-5 py-3 bg-[#EBF2F6] rounded-lg focus:outline-none focus:ring-1 focus:ring-[#006D68]"
                 placeholder="Please be as detailed as possible so we can help you"
               />
             </div>
 
+            {/* Success Message */}
+            {submitted && (
+              <p className="mb-4 text-sm text-[#006D68] font-semibold">
+                Your message has been sent successfully. We&apos;ll get back to
+                you shortly.
+              </p>
+            )}
+
             {/* Button */}
             <button
               type="submit"
-              className="w-full md:w-auto bg-[#006D68] text-white px-8 py-3 rounded-lg hover:bg-[#005853] transition-colors"
+              disabled={isSubmitting}
+              className={`w-full md:w-auto px-8 py-3 rounded-lg transition-colors ${
+                isSubmitting
+                  ? "bg-[#006D68]/60 cursor-not-allowed"
+                  : "bg-[#006D68] hover:bg-[#005853]"
+              } text-white`}
             >
-              Submit
+              {isSubmitting ? "Submitting..." : "Submit"}
             </button>
           </form>
         </div>
