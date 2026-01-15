@@ -98,7 +98,7 @@ const ReadyToExperience = () => {
             onClick={handleSubmit}
             disabled={isSubmitting}
           >
-            {isSubmitting ? "Submitting..." : "Submit Email"}
+            {isSubmitting ? "Submitting..." : "Submit"}
           </Button>
         </div>
       </div>
