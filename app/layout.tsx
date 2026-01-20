@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Familjen_Grotesk } from "next/font/google";
 import { CurrencyProvider } from "@/context/CurrencyContext";
 import "./globals.css";
+import { Toaster } from "sonner";
 
 /* -------------------------------
    Fonts
@@ -115,6 +116,7 @@ export default function RootLayout({
     <html lang="en" className={familjenGrotesk.variable}>
       <body className="antialiased">
         <CurrencyProvider>{children}</CurrencyProvider>
+        <Toaster position="top-center" richColors />
       </body>
     </html>
   );

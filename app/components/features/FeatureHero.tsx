@@ -3,27 +3,36 @@ import Image from "next/image";
 import FlipCountdown from "../Countdown";
 import Button from "../commons/Button";
 import { useState } from "react";
+import { toast } from "sonner";
 
 const FeatureHero = () => {
   const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = async () => {
     if (!email) return;
 
     setIsSubmitting(true);
-    setSubmitted(false);
 
-    // ⏳ Simulate API request
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+    try {
+      const res = await fetch("/api/waitlist", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }), // name is optional
+      });
 
-    setIsSubmitting(false);
-    setSubmitted(true);
-    setEmail("");
+      const data = await res.json();
 
-    // Optional: hide success message after a while
-    setTimeout(() => setSubmitted(false), 4000);
+      if (!res.ok) throw new Error(data.error || "Failed to join waitlist");
+
+      toast.success("You’re on the waitlist!"); // ✅ Sonner toast
+      setEmail("");
+    } catch (err) {
+      console.error(err);
+      toast.error("Something went wrong. Please try again."); // ✅ Error toast
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (

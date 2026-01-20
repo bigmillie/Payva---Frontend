@@ -11,24 +11,39 @@ interface WaitlistPopupProps {
 
 const WaitlistPopup = ({ open, onClose }: WaitlistPopupProps) => {
   const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
   if (!open) return null;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!email) return;
+    if (!name || !email) return;
 
     setIsSubmitting(true);
 
-    // 🔹 Simulate API request
-    setTimeout(() => {
-      setIsSubmitting(false);
+    try {
+      const res = await fetch("/api/waitlist", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) throw new Error(data.error || "Failed to save waitlist");
+
       setIsSuccess(true);
       setEmail("");
-    }, 1800);
+      setName("");
+    } catch (err) {
+      console.error(err);
+      alert("Something went wrong. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleClose = () => {
@@ -75,6 +90,15 @@ const WaitlistPopup = ({ open, onClose }: WaitlistPopupProps) => {
                 onSubmit={handleSubmit}
                 className="flex flex-col gap-3 mt-2"
               >
+                <input
+                  type="text"
+                  required
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  placeholder="First name"
+                  disabled={isSubmitting}
+                  className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none focus:border-[#006D68] disabled:bg-gray-100"
+                />
                 <input
                   type="email"
                   required
