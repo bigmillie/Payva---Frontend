@@ -22,8 +22,8 @@ export async function sendWelcomeEmail({ to, firstName }: EmailOptions) {
   // HTML content based on your template
   const html = `
     <div style="font-family: sans-serif; line-height: 1.5; color: #1F2937; padding: 20px;">
-      <img src="https://www.payvapayment.com/logo.svg" alt="Payva Logo" style="width: 120px; padding-bottom: 30px;"/>
-      <img src="https://www.payvapayment.com/waitlist-welcome-illustration.svg" alt="Welcome Illustration" style="width: 100%; max-width: 400px; padding-bottom: 30px;"/>
+      <img src="https://www.payvapayment.com/logo.png" alt="Payva Logo" style="width: 120px; padding-bottom: 30px;"/>
+      <img src="https://www.payvapayment.com/waitlist-welcome-illustration.png" alt="Welcome Illustration" style="width: 100%; max-width: 400px; padding-bottom: 30px;"/>
       <h2 style="color: #006D68;">${greeting}</h2>
       <p>We're so glad you're here.</p>
       <p>
