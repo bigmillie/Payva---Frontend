@@ -34,7 +34,7 @@ export async function saveWaitlistToSheet(waitlistData: WaitlistData) {
       },
     });
 
-    console.log(`Order ${waitlistData.name} saved to sheet successfully`);
+    // console.log(`${waitlistData.name} saved to sheet successfully`);
     return { success: true };
   } catch (error) {
     console.error("Error saving order to sheet:", error);

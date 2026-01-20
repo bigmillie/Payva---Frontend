@@ -1,4 +1,5 @@
 import { saveWaitlistToSheet } from "@/utils/saveWaitlist";
+import { sendWelcomeEmail } from "@/utils/sendEmail";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
@@ -10,6 +11,9 @@ export async function POST(req: NextRequest) {
     }
 
     await saveWaitlistToSheet({ name, email });
+
+    // Send welcome email
+    await sendWelcomeEmail({ to: email, firstName: name });
 
     return NextResponse.json({ success: true });
   } catch (error) {
