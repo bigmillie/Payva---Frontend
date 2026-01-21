@@ -22,9 +22,9 @@ export async function sendWelcomeEmail({ to, firstName }: EmailOptions) {
   // HTML content based on your template
   const html = `
     <div style="font-family: sans-serif; line-height: 1.5; color: #1F2937; padding: 20px; max-width: 600px; margin: auto;">
-      <img src="https://res.cloudinary.com/kodenigga/image/upload/v1768988493/icons-for%20email-templates/avblwtab8ml7hjba6kgb.png" alt="Payva Logo" style="width: 120px; padding-bottom: 30px;"/>
+      <img src="https://res.cloudinary.com/kodenigga/image/upload/v1768988493/icons-for%20email-templates/avblwtab8ml7hjba6kgb.png" alt="Payva Logo" style="width: 100px; padding-bottom: 30px;"/>
       <br />
-      <img src="https://res.cloudinary.com/kodenigga/image/upload/v1768987991/icons-for%20email-templates/x0hxi3fz2ogje51xpwyn.png" alt="Welcome Illustration" style="width: 100%; max-width: 400px; padding-bottom: 30px;"/>
+      <img src="https://res.cloudinary.com/kodenigga/image/upload/v1768987991/icons-for%20email-templates/x0hxi3fz2ogje51xpwyn.png" alt="Welcome Illustration" style="width: 100%; padding-bottom: 30px;"/>
       <h2 style="color: #006D68;">${greeting}</h2>
       <p>We're so glad you're here.</p>
       <p>
