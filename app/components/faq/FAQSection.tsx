@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import FAQAccordion from "./FAQAccordion";
-import HeadingTag from "../commons/HeadingTag";
+// import HeadingTag from "../commons/HeadingTag";
 import { FAQCategory } from "@/utils/types";
 import Link from "next/link";
 
