@@ -1,5 +1,5 @@
 "use client";
-import { Percent, Repeat } from "lucide-react";
+import { HelpCircle, Percent, Repeat } from "lucide-react";
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
@@ -15,7 +15,7 @@ interface ExchangeRates {
 }
 
 const CurrencyConverter: React.FC = () => {
-  const [sendAmount, setSendAmount] = useState<string>("0.00");
+  const [sendAmount, setSendAmount] = useState<string>("1000.00");
   const [receiveAmount, setReceiveAmount] = useState<string>("0.00");
   const [sendCurrency, setSendCurrency] = useState<string>("NGN");
   const [receiveCurrency, setReceiveCurrency] = useState<string>("GBP");
@@ -25,6 +25,7 @@ const CurrencyConverter: React.FC = () => {
   const [showReceiveDropdown, setShowReceiveDropdown] =
     useState<boolean>(false);
   const [rotationCount, setRotationCount] = useState<number>(0);
+  const [showTooltip, setShowTooltip] = useState<boolean>(false);
 
   const currencies: Currency[] = [
     { code: "NGN", name: "Nigerian Naira", flag: "🇳🇬", symbol: "₦" },
@@ -40,7 +41,7 @@ const CurrencyConverter: React.FC = () => {
         setLoading(true);
         // Using exchangerate-api.com (free tier)
         const response = await fetch(
-          `https://api.exchangerate-api.com/v4/latest/${sendCurrency}`
+          `https://api.exchangerate-api.com/v4/latest/${sendCurrency}`,
         );
         const data = await response.json();
         setExchangeRates(data.rates);
@@ -99,7 +100,6 @@ const CurrencyConverter: React.FC = () => {
         </h3>
 
         <div className="flex items-center justify-between">
-          {/* Currency Selector */}
           {/* Currency Selector */}
           <div className="relative">
             <button
@@ -162,10 +162,6 @@ const CurrencyConverter: React.FC = () => {
 
           {/* Amount Input WITH currency symbol */}
           <div className="flex items-center">
-            {/* <span className="text-[25.53px] font-semibold text-[#4D4D4D] -mr-20">
-              {sendInfo.symbol}
-            </span> */}
-
             <input
               type="text"
               value={sendAmount}
@@ -201,7 +197,10 @@ const CurrencyConverter: React.FC = () => {
           {/* Currency Selector */}
           <div className="relative">
             <button
-              onClick={() => setShowReceiveDropdown(!showReceiveDropdown)}
+              onClick={() => {
+                setShowReceiveDropdown(!showReceiveDropdown);
+                setShowSendDropdown(false); // close other dropdown
+              }}
               className="flex items-center gap-2 bg-white px-4 py-3 rounded-xl shadow-sm hover:shadow-md transition-shadow"
             >
               <div className="w-6 h-6 rounded-full overflow-hidden flex items-center justify-center bg-none">
@@ -254,7 +253,13 @@ const CurrencyConverter: React.FC = () => {
 
           {/* Amount Display */}
           <div className="text-[25.53px] leading-[35.74px] font-semibold text-[#4D4D4D]">
-            {receiveInfo.symbol} {receiveAmount}
+            {loading ? (
+              <span className="text-gray-400">Calculating...</span>
+            ) : (
+              <>
+                {receiveInfo.symbol} {receiveAmount}
+              </>
+            )}
           </div>
         </div>
       </div>
@@ -272,16 +277,40 @@ const CurrencyConverter: React.FC = () => {
             Exchange rate:
           </span>{" "}
           <span className="font-semibold text-[15.32px] leading-[20.42px] tracking-normal">
-            1 {sendCurrency} = {currentRate.toFixed(2)} {receiveCurrency}
+            {loading ? (
+              <span className="text-gray-400">Loading...</span>
+            ) : (
+              <>
+                1 {sendCurrency} = {currentRate.toFixed(4)} {receiveCurrency}
+              </>
+            )}
           </span>
         </span>
-      </div>
 
-      {/* {loading && (
-        <div className="text-center text-gray-500 mt-4">
-          Loading exchange rates...
+        {/* Tooltip */}
+        <div
+          className="relative"
+          onMouseEnter={() => setShowTooltip(true)}
+          onMouseLeave={() => setShowTooltip(false)}
+        >
+          <div className="bg-gray-100 p-1.5 rounded-full cursor-help">
+            <HelpCircle className="w-4 h-4 text-gray-600" />
+          </div>
+
+          {/* Tooltip Content */}
+          {showTooltip && (
+            <div className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 w-max z-50 animate-in fade-in duration-200">
+              <div className="bg-gray-800 text-white text-xs px-3 py-2 rounded-lg shadow-lg">
+                Rate changes after every 30 seconds
+                {/* Arrow */}
+                <div className="absolute left-1/2 -translate-x-1/2 top-full">
+                  <div className="border-4 border-transparent border-t-gray-800"></div>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
-      )} */}
+      </div>
     </div>
   );
 };

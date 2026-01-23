@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import HeadingTag from "../commons/HeadingTag";
+// import HeadingTag from "../commons/HeadingTag";
 import Image from "next/image";
 import Button from "../commons/Button";
 import WaitlistPopup from "../commons/WaitlistPopup";
@@ -30,7 +30,7 @@ const OurLeadership = () => {
             variants={fadeInUp}
             className="flex flex-col items-start gap-4 max-w-md"
           >
-            <HeadingTag>Our Leadership</HeadingTag>
+            {/* <HeadingTag>Our Leadership</HeadingTag> */}
 
             <h1 className="text-[#2A2A2A] font-famil text-3xl md:text-5xl font-bold leading-tight">
               Meet Some of Our Team Members

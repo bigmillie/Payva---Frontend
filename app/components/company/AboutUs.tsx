@@ -1,20 +1,19 @@
 "use client";
 
-import { useState } from "react";
-import HeadingTag from "../commons/HeadingTag";
+// import { useState } from "react";
+// import HeadingTag from "../commons/HeadingTag";
 import Image from "next/image";
-import Button from "../commons/Button";
-import WaitlistPopup from "../commons/WaitlistPopup";
+// import Button from "../commons/Button";
+// import WaitlistPopup from "../commons/WaitlistPopup";
 import { motion } from "framer-motion";
 import {
   containerVariants,
   itemVariants,
-  fadeInLeft,
   fadeInRight,
 } from "@/utils/lib/variants";
 
 const AboutUs = () => {
-  const [showWaitlist, setShowWaitlist] = useState(false);
+  // const [showWaitlist, setShowWaitlist] = useState(false);
 
   return (
     <>
@@ -27,9 +26,9 @@ const AboutUs = () => {
           variants={containerVariants}
         >
           {/* Heading */}
-          <motion.div variants={itemVariants}>
+          {/* <motion.div variants={itemVariants}>
             <HeadingTag>About Us</HeadingTag>
-          </motion.div>
+          </motion.div> */}
 
           {/* Intro Row */}
           <motion.div
@@ -59,12 +58,12 @@ const AboutUs = () => {
                 affordable, and with no worrying about delays or unclear rates.
               </p>
 
-              <Button
+              {/* <Button
                 onClick={() => setShowWaitlist(true)}
                 className="text-sm shrink-0 px-5 w-fit"
               >
                 Join the waitlist
-              </Button>
+              </Button> */}
             </motion.div>
           </motion.div>
 
@@ -121,10 +120,10 @@ const AboutUs = () => {
         </motion.div>
       </section>
 
-      <WaitlistPopup
+      {/* <WaitlistPopup
         open={showWaitlist}
         onClose={() => setShowWaitlist(false)}
-      />
+      /> */}
     </>
   );
 };

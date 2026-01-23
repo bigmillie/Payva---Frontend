@@ -56,7 +56,7 @@ const Header = () => {
           backdrop-blur-md
           md:h-20
           transition-all duration-300 ease-in-out
-          ${isScrolled ? "mx-0 rounded-none border-0 bg-[linear-gradient(116.28deg,#006D68_0%,#09253F_131.82%)]" : "mx-6 lg:mx-10 rounded-4xl shadow-[10.78px_10.78px_9.7px_1.8px_rgba(0,0,0,0.16)]"}
+          ${isScrolled ? "mx-0 rounded-none border-0 bg-[linear-gradient(116.28deg,#006D68_0%,#09253F_131.82%)]" : "mx-6 lg:mx-10 rounded-[36px] shadow-[10.78px_10.78px_9.7px_1.8px_rgba(0,0,0,0.16)]"}
         `}
         >
           {/* Logo */}

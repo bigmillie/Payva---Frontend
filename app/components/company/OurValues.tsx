@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import Button from "../commons/Button";
-import HeadingTag from "../commons/HeadingTag";
+// import HeadingTag from "../commons/HeadingTag";
 import WaitlistPopup from "../commons/WaitlistPopup";
 import { containerVariants, itemVariants } from "@/utils/lib/variants";
 
@@ -34,17 +34,17 @@ const OurValues = () => {
           variants={containerVariants}
         >
           {/* Left column */}
-          <motion.div
+          <div
             className="
               flex flex-col
               items-center md:items-start
               text-center md:text-left
               gap-4
-              max-w-md
+              max-w-xl
+              w-xl
             "
-            variants={itemVariants}
           >
-            <HeadingTag>Our Values</HeadingTag>
+            {/* <HeadingTag>Our Values</HeadingTag> */}
 
             <h1
               className="
@@ -55,18 +55,16 @@ const OurValues = () => {
                 leading-tight
               "
             >
-              What keeps us going every day, and how we&apos;re different.
+              Our Core Values
             </h1>
 
-            <motion.div variants={itemVariants}>
-              <Button
-                onClick={() => setShowWaitlist(true)}
-                className="text-sm px-5 mt-2"
-              >
-                Join the waitlist
-              </Button>
-            </motion.div>
-          </motion.div>
+            <Button
+              onClick={() => setShowWaitlist(true)}
+              className="text-sm px-5 mt-2"
+            >
+              Join the waitlist
+            </Button>
+          </div>
 
           {/* Values Grid */}
           <motion.div

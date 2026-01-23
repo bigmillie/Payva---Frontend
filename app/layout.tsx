@@ -67,7 +67,7 @@ export const metadata: Metadata = {
   icons: {
     icon: "/favicon.ico", // browser tab
     shortcut: "/favicon.ico", // legacy
-    apple: "/seo-banner.png", // iOS home screen
+    apple: "/seo-banner.jpeg", // iOS home screen
   },
 
   /* -------------------------------

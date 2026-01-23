@@ -1,6 +1,6 @@
 "use client";
 
-import HeadingTag from "../commons/HeadingTag";
+// import HeadingTag from "../commons/HeadingTag";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import {
@@ -21,9 +21,9 @@ const OurLens = () => {
         variants={containerVariants}
       >
         {/* Heading */}
-        <motion.div variants={itemVariants}>
+        {/* <motion.div variants={itemVariants}>
           <HeadingTag>Our Lens</HeadingTag>
-        </motion.div>
+        </motion.div> */}
 
         <motion.div
           className="mt-6 flex flex-col md:flex-row gap-6 justify-between"

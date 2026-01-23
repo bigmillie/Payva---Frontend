@@ -86,9 +86,9 @@ const HomeHero = () => {
                 max-w-full md:max-w-2xl
               "
             >
-              From sending and receiving to paying bills and handling tuition,
-              Payva brings your essentials together so you can move money with
-              speed and ease.
+              Make fast cross-border payments with ease. Send and receive funds,
+              pay bills in Nigeria and tuition fees in the UK or Canada—all on
+              the go with the Payva app.
             </motion.p>
 
             <motion.div
