@@ -1,85 +1,475 @@
-export const ourHomeFAQs = [
+import { FAQCategory, FAQCategoryMain } from "../types";
+
+export const ourHomeFAQs: FAQCategory[] = [
   {
-    category: "General Questions",
     key: "general",
     faqs: [
       {
-        question: "How does Payva work?",
-        answer:
-          "Payva allows you to send, receive, and manage money across multiple currencies seamlessly. You can create an account, fund your wallet, and make transfers locally or internationally in minutes.",
+        question: "What is Payva?",
+        answer: {
+          type: "text",
+          content:
+            "Payva is a licensed Canadian Money Services Business (MSB) that makes international payments simple, fast, and affordable. We support payments with secure wallets, instant payouts, transparent exchange rates, and zero transfer fees—across Canada, Nigeria, and the United Kingdom (coming soon).",
+        },
       },
       {
-        question: "What currencies and countries does Payva support?",
-        answer:
-          "Payva supports NGN, USD, GBP, and CAD, with coverage across Nigeria, the United States, the United Kingdom, and Canada. More countries and currencies are being added.",
+        question: "Is my information secure?",
+        answer: {
+          type: "text",
+          content:
+            "Yes. Payva uses bank-grade encryption, secure data storage, fraud monitoring, and Persona-powered identity verification to keep your data safe.",
+        },
       },
       {
-        question: "Does Payva charge extra fees during transfer?",
-        answer:
-          "Payva maintains transparent pricing. Any applicable fees are shown upfront before you complete a transaction, with no hidden charges.",
+        question: "How fast are transfers?",
+        answer: {
+          type: "text",
+          content: "All transfers on Payva are instant.",
+        },
       },
       {
-        question: "Is my money truly safe with Payva?",
-        answer:
-          "Yes. Payva uses bank-grade security, encryption, and regulatory compliance measures to ensure your funds and personal data are protected.",
+        question: "How does Payva set exchange rates?",
+        answer: {
+          type: "text",
+          content:
+            "Payva uses live market exchange rates, updated in real time.",
+        },
+      },
+      {
+        question: "Which countries does Payva support?",
+        answer: {
+          type: "list",
+          content: [
+            "Canada 🇨🇦",
+            "Nigeria 🇳🇬",
+            "United Kingdom 🇬🇧 (coming soon)",
+          ],
+        },
+      },
+    ],
+  },
+];
+
+export const ourFeaturesFAQs: FAQCategory[] = [
+  {
+    key: "features",
+    faqs: [
+      {
+        question: "How do I track my transfer?",
+        answer: {
+          type: "list",
+          content: [
+            "Pending – We’re confirming payment",
+            "Processing – Transfer is being sent to the receiving bank",
+            "Completed – Recipient has received the funds",
+            "Failed – Transfer did not go through (you’ll receive instructions to resolve it)",
+          ],
+        },
+      },
+      {
+        question: "Funding your Wallets",
+        answer: {
+          type: "nested",
+          content: [
+            {
+              title: "How do I fund my CAD wallet?",
+              items: [
+                "Send an Interac e-Transfer via Auto-Deposit from your Canadian bank",
+                "Funds appear instantly once received",
+                "Note: Third-party deposits are not allowed; deposits must come from your own account",
+              ],
+            },
+            {
+              title: "How do I fund my NGN wallet?",
+              items: [
+                "Send a bank transfer to your unique NGN Payva account (powered by Paga)",
+              ],
+            },
+          ],
+        },
+      },
+      {
+        question: "Does Payva charge fees?",
+        answer: {
+          type: "text",
+          content:
+            "No. Payva charges zero transfer fees across all supported corridors.",
+        },
+      },
+      {
+        question: "How do I create an account?",
+        answer: {
+          type: "list",
+          content: [
+            "Download the Payva app on iOS or Android",
+            "Register with your phone number, email, and personal details",
+            "Complete KYC verification",
+            "Start sending and receiving money",
+          ],
+        },
+      },
+      {
+        question: "Can I cancel a transfer?",
+        answer: {
+          type: "text",
+          content:
+            "You can only cancel a transfer before it is processed or delivered. A cancellation fee will apply.",
+        },
+      },
+    ],
+  },
+];
+
+export const ourCompanyFAQs: FAQCategory[] = [
+  {
+    key: "company",
+    faqs: [
+      {
+        question: "Is Payva licensed?",
+        answer: {
+          type: "text",
+          content:
+            "Yes. Payva Payment Limited is registered with FINTRAC as a Money Services Business (MSB). MSB Registration Number: C100000757.",
+        },
+      },
+      {
+        question: "What services does Payva offer?",
+        answer: {
+          type: "list",
+          content: [
+            "International money transfers (CAD / NGN / GBP – coming soon)",
+            "Wallet funding",
+            "Nigerian bill payments (Airtime, Data, Electricity, Cable TV)",
+            "Real-time currency exchange",
+            "Coming soon: Tuition payments for verified Canadian institutions",
+          ],
+        },
+      },
+      {
+        question: "Why verify my account?",
+        answer: {
+          type: "text",
+          content:
+            "Verification ensures your safety, protects you from fraud, and ensures compliance with regulatory requirements.",
+        },
+      },
+      {
+        question: "How do I contact Payva Support?",
+        answer: {
+          type: "text",
+          content:
+            "Contact us at support@payvapayment.com or @PayvaPayment on all social media platforms. We are available 7 days a week.",
+        },
+      },
+    ],
+  },
+];
+
+export const ourMainFAQs: FAQCategoryMain[] = [
+  {
+    key: "about-payva",
+    category: "About Payva",
+    faqs: [
+      {
+        category: "About Payva",
+        question: "What is Payva?",
+        answer: {
+          type: "text",
+          content:
+            "Payva is a licensed Canadian Money Services Business (MSB) that makes international payments simple, fast, and affordable. We offer secure wallets, instant payouts, transparent exchange rates, and zero transfer fees across Canada, Nigeria, and the UK (coming soon).",
+        },
+      },
+      {
+        category: "About Payva",
+        question: "Is Payva licensed?",
+        answer: {
+          type: "text",
+          content:
+            "Yes. Payva Payment Limited is registered with FINTRAC as a Money Services Business (MSB). Registration Number: C100000757.",
+        },
+      },
+      {
+        category: "About Payva",
+        question: "What services does Payva offer?",
+        answer: {
+          type: "list",
+          content: [
+            "International money transfers (CAD ↔ NGN, GBP ↔ NGN coming soon)",
+            "Wallet funding",
+            "Nigerian bill payments (Airtime, Data, Electricity, Cable TV)",
+            "Real-time currency exchange",
+            "Tuition payments for verified Canadian institutions (coming soon)",
+          ],
+        },
+      },
+      {
+        category: "About Payva",
+        question: "Who can use Payva?",
+        answer: {
+          type: "text",
+          content:
+            "Anyone aged 18 and above with a valid ID and a bank account in Canada or Nigeria can use Payva.",
+        },
       },
     ],
   },
 
   {
-    category: "NGN Questions",
-    key: "ngn",
+    key: "supported-countries",
+    category: "Supported Countries & Currencies",
     faqs: [
       {
+        category: "Supported Countries & Currencies",
+        question: "Which countries does Payva support?",
+        answer: {
+          type: "list",
+          content: ["Canada", "Nigeria", "United Kingdom (coming soon)"],
+        },
+      },
+      {
+        category: "Supported Countries & Currencies",
+        question: "Which currencies does Payva support?",
+        answer: {
+          type: "list",
+          content: ["CAD", "NGN", "GBP (coming soon)"],
+        },
+      },
+    ],
+  },
+
+  {
+    key: "getting-started",
+    category: "Getting Started",
+    faqs: [
+      {
+        category: "Getting Started",
+        question: "How do I create an account?",
+        answer: {
+          type: "list",
+          content: [
+            "Download the Payva app on iOS or Android",
+            "Register with your phone number, email, and personal details",
+            "Complete KYC verification",
+            "Start sending and receiving money",
+          ],
+        },
+      },
+      {
+        category: "Getting Started",
+        question: "Why do I need to verify my account?",
+        answer: {
+          type: "text",
+          content:
+            "Verification ensures your safety, protects against fraud, and allows Payva to comply with regulatory requirements.",
+        },
+      },
+      {
+        category: "Getting Started",
+        question: "What documents are required for verification?",
+        answer: {
+          type: "list",
+          content: [
+            "Passport",
+            "Driver’s licence",
+            "National ID card",
+            "Residence permit",
+            "Proof of address (may be required depending on region)",
+          ],
+        },
+      },
+      {
+        category: "Getting Started",
+        question: "Is a liveness test required?",
+        answer: {
+          type: "text",
+          content:
+            "Yes. Payva uses Persona biometric verification to confirm you are the rightful owner of your documents.",
+        },
+      },
+      {
+        category: "Getting Started",
+        question: "How long does verification take?",
+        answer: {
+          type: "text",
+          content:
+            "Verification is instant for most users. Some cases may require manual review to maintain security standards.",
+        },
+      },
+      {
+        category: "Getting Started",
+        question: "What happens if my verification fails?",
+        answer: {
+          type: "text",
+          content:
+            "We’ll explain why verification failed and provide instructions to help you resubmit your documents.",
+        },
+      },
+      {
+        category: "Getting Started",
+        question: "Can I update my verified information?",
+        answer: {
+          type: "text",
+          content:
+            "Yes. Certain details like email address or ID documents can be updated after a compliance review.",
+        },
+      },
+    ],
+  },
+
+  {
+    key: "funding-wallets",
+    category: "Funding Your Wallets",
+    faqs: [
+      {
+        category: "Funding Your Wallets",
+        question: "How do I fund my CAD wallet?",
+        answer: {
+          type: "list",
+          content: [
+            "Send an Interac e-Transfer via Auto-Deposit from your Canadian bank",
+            "Funds appear instantly once received",
+            "Third-party deposits are not allowed",
+          ],
+        },
+      },
+      {
+        category: "Funding Your Wallets",
         question: "How do I fund my NGN wallet?",
-        answer:
-          "You can fund your NGN wallet via bank transfer or supported local payment methods directly from your Payva dashboard.",
+        answer: {
+          type: "text",
+          content:
+            "Send a bank transfer to your unique NGN Payva account powered by Paga.",
+        },
       },
       {
-        question: "How long do NGN transfers take?",
-        answer:
-          "Most NGN transfers are processed instantly or within a few minutes, depending on the receiving bank.",
-      },
-    ],
-  },
-
-  {
-    category: "CAD Questions",
-    key: "cad",
-    faqs: [
-      {
-        question: "Can I receive CAD from abroad?",
-        answer:
-          "Yes. Payva allows you to receive CAD payments from supported countries directly into your wallet.",
+        category: "Funding Your Wallets",
+        question: "How do I fund my GBP wallet?",
+        answer: {
+          type: "list",
+          content: [
+            "Each user receives a personal IBAN",
+            "Send GBP via bank transfer directly to this IBAN",
+          ],
+        },
       },
     ],
   },
 
   {
-    category: "GBP Questions",
-    key: "gbp",
+    key: "sending-money",
+    category: "Sending Money & Transfers",
     faqs: [
       {
-        question: "Do I get a UK account number?",
-        answer:
-          "Yes. Payva provides you with UK banking details to receive GBP payments easily.",
+        category: "Sending Money & Transfers",
+        question: "Which transfer routes does Payva support?",
+        answer: {
+          type: "text",
+          content:
+            "Payva supports CAD ↔ NGN transfers. GBP ↔ NGN transfers are coming soon.",
+        },
+      },
+      {
+        category: "Sending Money & Transfers",
+        question: "How fast are transfers?",
+        answer: {
+          type: "text",
+          content: "All transfers on Payva are instant.",
+        },
+      },
+      {
+        category: "Sending Money & Transfers",
+        question: "Can I cancel a transfer?",
+        answer: {
+          type: "text",
+          content:
+            "You can cancel a transfer before it is processed or delivered. A cancellation fee may apply.",
+        },
+      },
+      {
+        category: "Sending Money & Transfers",
+        question: "What information is required to add a recipient?",
+        answer: {
+          type: "text",
+          content:
+            "You’ll need the recipient’s full name, bank name, account number, and country-specific banking details.",
+        },
       },
     ],
   },
 
   {
-    category: "Security Questions",
-    key: "security",
+    key: "fees-limits",
+    category: "Fees & Limits",
     faqs: [
       {
-        question: "How does Payva protect my account?",
-        answer:
-          "Payva uses two-factor authentication, encrypted sessions, and continuous monitoring to protect your account.",
+        category: "Fees & Limits",
+        question: "Does Payva charge fees?",
+        answer: {
+          type: "text",
+          content:
+            "No. Payva charges zero fees across all supported corridors.",
+        },
       },
       {
-        question: "What should I do if I suspect fraud?",
-        answer:
-          "Immediately contact Payva support and secure your account by changing your password.",
+        category: "Fees & Limits",
+        question: "What are the transfer limits?",
+        answer: {
+          type: "nested",
+          content: [
+            {
+              title: "CAD Limits",
+              items: [
+                "Per transaction: $5,000",
+                "Daily: $10,000",
+                "Weekly: $30,000",
+                "Monthly: $60,000",
+              ],
+            },
+            {
+              title: "NGN Limits",
+              items: [
+                "Per transaction: ₦5,000,000",
+                "Daily: ₦10,000,000",
+                "Weekly: ₦30,000,000",
+                "Monthly: ₦60,000,000",
+              ],
+            },
+            {
+              title: "GBP Limits",
+              items: [
+                "Per transaction: £1,000",
+                "Daily: £3,000",
+                "Weekly: £10,000",
+                "Monthly: £20,000",
+              ],
+            },
+          ],
+        },
+      },
+    ],
+  },
+
+  {
+    key: "security-compliance",
+    category: "Compliance & Safety",
+    faqs: [
+      {
+        category: "Compliance & Safety",
+        question: "Is my information secure?",
+        answer: {
+          type: "text",
+          content:
+            "Yes. Payva uses bank-grade encryption, secure data storage, fraud monitoring, and Persona-powered identity verification.",
+        },
+      },
+      {
+        category: "Compliance & Safety",
+        question: "How can I contact Payva support?",
+        answer: {
+          type: "text",
+          content:
+            "You can contact Payva Support at support@payvapayment.com or via @PayvaPayment on all social media channels. Support is available 7 days a week.",
+        },
       },
     ],
   },

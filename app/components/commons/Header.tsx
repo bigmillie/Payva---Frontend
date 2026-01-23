@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import Logo from "./Logo";
 import Link from "next/link";
@@ -18,6 +18,7 @@ const navLinks = [
 
 const Header = () => {
   const [open, setOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
 
   const { currency, setCurrency, currencies } = useCurrency();
@@ -26,21 +27,37 @@ const Header = () => {
 
   const isActive = (href: string) => pathname === href;
 
+  // Scroll detection
+  useEffect(() => {
+    const handleScroll = () => {
+      // Check if scrolled past hero section (viewport height)
+      const heroHeight = window.innerHeight;
+      setIsScrolled(window.scrollY > heroHeight - 100); // -100 for smooth transition
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <>
-      <header className="absolute top-10 w-full mx-auto z-50">
+      <header
+        className={`
+          w-full z-50 transition-all duration-300 ease-in-out
+          ${isScrolled ? "fixed top-0 bg-[linear-gradient(116.28deg,#006D68_0%,#09253F_131.82%)]" : "absolute top-10"}
+        `}
+      >
         <nav
-          className="
-          mx-6 lg:mx-10
+          className={`
           py-4 px-6 lg:px-12
           bg-[#E6F9F74D]
-          shadow-[10.78px_10.78px_9.7px_1.8px_rgba(0,0,0,0.16)]
           border border-[#f3f3f3]
-          rounded-4xl
           flex items-center justify-between
           backdrop-blur-md
           md:h-20
-        "
+          transition-all duration-300 ease-in-out
+          ${isScrolled ? "mx-0 rounded-none border-0 bg-[linear-gradient(116.28deg,#006D68_0%,#09253F_131.82%)]" : "mx-6 lg:mx-10 rounded-4xl shadow-[10.78px_10.78px_9.7px_1.8px_rgba(0,0,0,0.16)]"}
+        `}
         >
           {/* Logo */}
           <Logo type="primary" />

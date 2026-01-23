@@ -3,23 +3,14 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { CircleMinus, CirclePlus } from "lucide-react";
+import { FAQItemMain } from "@/utils/types";
 
-interface FAQAnswer {
-  type: "text" | "list" | "nested";
-  content: any;
-}
-
-interface FAQItem {
-  question: string;
-  answer: FAQAnswer;
-}
-
-export default function FAQAccordion({ faqs }: { faqs: FAQItem[] }) {
+export default function FAQAccordionFull({ faqs }: { faqs: FAQItemMain[] }) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
     <motion.div
-      className="space-y-4 max-w-5xl mx-auto"
+      className="space-y-4 w-full text-lg mt-0"
       initial="hidden"
       animate="visible"
       variants={{
@@ -41,14 +32,16 @@ export default function FAQAccordion({ faqs }: { faqs: FAQItem[] }) {
               visible: { opacity: 1, y: 0 },
             }}
             transition={{ duration: 0.25 }}
-            className="bg-[#FCFCFC] rounded-3xl overflow-hidden"
+            className={`${
+              isOpen ? "bg-[#F4FFFE]" : "bg-[#FCFCFC]"
+            } rounded-3xl overflow-hidden w-full`}
           >
             <button
               onClick={() => setOpenIndex(isOpen ? null : index)}
               className="w-full flex gap-5 items-center p-8 text-left"
             >
               <motion.span
-                className="text-teal-600 shrink-0"
+                className="text-teal-600"
                 animate={{ rotate: isOpen ? 180 : 0 }}
                 transition={{ duration: 0.2 }}
               >
@@ -68,38 +61,9 @@ export default function FAQAccordion({ faqs }: { faqs: FAQItem[] }) {
                   animate={{ height: "auto", opacity: 1 }}
                   exit={{ height: 0, opacity: 0 }}
                   transition={{ duration: 0.25, ease: "easeOut" }}
-                  className="px-8 pb-8 text-gray-600 text-sm leading-relaxed space-y-4"
+                  className="px-6 pb-6 text-gray-600 text-sm leading-relaxed"
                 >
-                  {/* TEXT */}
-                  {faq.answer.type === "text" && <p>{faq.answer.content}</p>}
-
-                  {/* SIMPLE BULLET LIST */}
-                  {faq.answer.type === "list" && (
-                    <ul className="list-disc pl-5 space-y-2">
-                      {faq.answer.content.map((item: string, i: number) => (
-                        <li key={i}>{item}</li>
-                      ))}
-                    </ul>
-                  )}
-
-                  {/* NESTED SECTIONS */}
-                  {faq.answer.type === "nested" && (
-                    <div className="space-y-5">
-                      {faq.answer.content.map((section: any, i: number) => (
-                        <div key={i}>
-                          <p className="font-medium text-[#2A2A2A] mb-2">
-                            {section.title}
-                          </p>
-
-                          <ul className="list-disc pl-5 space-y-2">
-                            {section.items.map((item: string, j: number) => (
-                              <li key={j}>{item}</li>
-                            ))}
-                          </ul>
-                        </div>
-                      ))}
-                    </div>
-                  )}
+                  {renderAnswer(faq.answer)}
                 </motion.div>
               )}
             </AnimatePresence>
@@ -108,4 +72,42 @@ export default function FAQAccordion({ faqs }: { faqs: FAQItem[] }) {
       })}
     </motion.div>
   );
+}
+
+/* ----------------------------
+   Answer Renderer
+----------------------------- */
+
+function renderAnswer(answer: FAQItemMain["answer"]) {
+  switch (answer.type) {
+    case "text":
+      return <p>{answer.content}</p>;
+
+    case "list":
+      return (
+        <ul className="list-disc pl-5 space-y-2">
+          {answer.content.map((item, idx) => (
+            <li key={idx}>{item}</li>
+          ))}
+        </ul>
+      );
+
+    case "nested":
+      return (
+        <div className="space-y-4">
+          {answer.content.map((group, idx) => (
+            <div key={idx}>
+              {group.title && (
+                <p className="font-medium text-gray-900 mb-2">{group.title}</p>
+              )}
+              <ul className="list-disc pl-5 space-y-2">
+                {group.items.map((item, i) => (
+                  <li key={i}>{item}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      );
+  }
 }

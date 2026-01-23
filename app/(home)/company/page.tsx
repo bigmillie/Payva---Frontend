@@ -4,7 +4,8 @@ import CompanyHero from "@/app/components/company/CompanyHero";
 import OurLeadership from "@/app/components/company/OurLeadership";
 import OurLens from "@/app/components/company/OurLens";
 import OurValues from "@/app/components/company/OurValues";
-import FAQTabs from "@/app/components/faq/FAQTabs";
+import FAQSection from "@/app/components/faq/FAQSection";
+import { ourCompanyFAQs } from "@/utils/contents";
 import Script from "next/script";
 
 <Script
@@ -68,7 +69,10 @@ const page = () => {
       <OurLens />
       <OurValues />
       <OurLeadership />
-      <FAQTabs />
+      <FAQSection
+        faqs={ourCompanyFAQs}
+        subtitle="Here Are Answers to Some of our Frequently Asked Questions"
+      />
       <ChoosePayva />
     </main>
   );

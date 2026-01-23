@@ -1,24 +1,41 @@
 "use client";
+
 import HeadingTag from "../commons/HeadingTag";
 import Image from "next/image";
 import { ourFeatures } from "@/utils/contents";
-import Button from "../commons/Button";
+// import Button from "../commons/Button";
 import { useState } from "react";
 import WaitlistPopup from "../commons/WaitlistPopup";
+import { motion } from "framer-motion";
+import {
+  containerVariants,
+  imageVariants,
+  itemVariants,
+} from "@/utils/lib/variants";
 
 const OurFeatures = () => {
   const [showWaitlist, setShowWaitlist] = useState(false);
+
   return (
     <>
       <section className="bg-[#FFFFFF]">
-        <div className="px-6 md:px-12 py-24 space-y-16 max-w-7xl mx-auto font-famil">
+        <motion.div
+          className="px-6 md:px-12 py-24 space-y-16 max-w-7xl mx-auto font-famil"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-80px" }}
+          variants={containerVariants}
+        >
           {/* Section Heading */}
-          <div className="flex flex-col items-start gap-4">
+          <motion.div
+            className="flex flex-col items-start gap-4"
+            variants={itemVariants}
+          >
             <HeadingTag>Our Features</HeadingTag>
             <h1 className="text-[#2A2A2A] font-famil text-xl md:text-5xl font-bold leading-tight">
               Your Money, Your Way—With Payva
             </h1>
-          </div>
+          </motion.div>
 
           {/* Features */}
           <div className="space-y-24">
@@ -26,14 +43,21 @@ const OurFeatures = () => {
               const isReversed = index % 2 !== 0;
 
               return (
-                <div
+                <motion.div
                   key={feature.title}
                   className={`flex flex-col md:flex-row items-center gap-16 ${
                     isReversed ? "md:flex-row-reverse" : ""
                   }`}
+                  // variants={containerVariants}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, margin: "-100px" }}
                 >
                   {/* Image */}
-                  <div className="w-full md:w-1/2 flex justify-center">
+                  <motion.div
+                    className="w-full md:w-1/2 flex justify-center"
+                    variants={imageVariants}
+                  >
                     <Image
                       src={feature.imageUrl}
                       alt={feature.title}
@@ -41,43 +65,62 @@ const OurFeatures = () => {
                       height={520}
                       className="w-full max-w-md object-contain"
                     />
-                  </div>
+                  </motion.div>
 
                   {/* Content */}
-                  <div className="w-full font-famil md:w-1/2 space-y-6">
-                    <h2 className="text-3xl font-bold text-[#2A2A2A]">
+                  <motion.div
+                    className="w-full font-famil md:w-1/2 space-y-6"
+                    variants={containerVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                  >
+                    <motion.h2
+                      className="text-3xl font-bold text-[#2A2A2A]"
+                      variants={itemVariants}
+                    >
                       {feature.title}
-                    </h2>
+                    </motion.h2>
 
-                    <p className="text-[#4F4F4F] leading-relaxed">
+                    <motion.p
+                      className="text-[#4F4F4F] leading-relaxed"
+                      variants={itemVariants}
+                    >
                       {feature.description}
-                    </p>
+                    </motion.p>
 
-                    <ul className="space-y-3">
+                    <motion.ul
+                      className="space-y-3"
+                      variants={containerVariants}
+                    >
                       {feature.points.map((point, i) => (
-                        <li
+                        <motion.li
                           key={i}
                           className="flex items-start gap-3 text-[#4F4F4F]"
+                          variants={itemVariants}
                         >
-                          <span className="mt-2 h-2 w-2 rounded-full bg-[#00C2A8]" />
+                          <span className="mt-2 h-1 w-1 rounded-full bg-[#00C2A8]" />
                           <span>{point}</span>
-                        </li>
+                        </motion.li>
                       ))}
-                    </ul>
+                    </motion.ul>
 
-                    <Button
-                      onClick={() => setShowWaitlist(true)}
-                      className="text-sm shrink-0 px-5"
-                    >
-                      Join the waitlist
-                    </Button>
-                  </div>
-                </div>
+                    {/* <motion.div variants={itemVariants}>
+                      <Button
+                        onClick={() => setShowWaitlist(true)}
+                        className="text-sm shrink-0 px-5"
+                      >
+                        Join the waitlist
+                      </Button>
+                    </motion.div> */}
+                  </motion.div>
+                </motion.div>
               );
             })}
           </div>
-        </div>
+        </motion.div>
       </section>
+
       <WaitlistPopup
         open={showWaitlist}
         onClose={() => setShowWaitlist(false)}

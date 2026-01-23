@@ -1,8 +1,10 @@
 import ReadyToExperience from "../components/commons/ReadyToExperience";
-import FAQTabs from "../components/faq/FAQTabs";
 import FeatureCarousel from "../components/home/FeatureCarousel";
 import HomeHero from "../components/home/HomeHero";
 import ValueProposition from "../components/home/ValueProposition";
+import LayersOfSecurity from "../components/home/LayersOfSecurity";
+import { ourHomeFAQs } from "@/utils/contents";
+import FAQSection from "../components/faq/FAQSection";
 
 export default function Home() {
   return (
@@ -10,7 +12,11 @@ export default function Home() {
       <HomeHero />
       <ValueProposition />
       <FeatureCarousel />
-      <FAQTabs />
+      <LayersOfSecurity />
+      <FAQSection
+        faqs={ourHomeFAQs}
+        subtitle="Here Are Answers to Some of our Frequently Asked Questions"
+      />
       <ReadyToExperience />
     </main>
   );

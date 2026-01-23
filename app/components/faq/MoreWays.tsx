@@ -1,17 +1,44 @@
+"use client";
+
+import {
+  cardVariants,
+  containerVariants,
+  fadeInUp,
+  sectionVariants,
+} from "@/utils/lib/variants";
+import { motion } from "framer-motion";
 import Link from "next/link";
 
 const MoreWays = () => {
   return (
-    <section className="bg-[#FFFFFF]">
-      <div className="px-4 md:px-12 pt-24 pb-32 max-w-7xl mx-auto font-famil">
-        <h1 className="text-3xl md:text-5xl text-[#01070D] font-bold leading-[100%] tracking-[-2%]">
+    <section className="bg-[#FFFFFF] overflow-hidden">
+      <motion.div
+        className="px-4 md:px-12 pt-24 pb-32 max-w-7xl mx-auto font-famil"
+        variants={sectionVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+      >
+        {/* Heading */}
+        <motion.h1
+          variants={fadeInUp}
+          className="text-3xl md:text-5xl text-[#01070D] font-bold leading-[100%] tracking-[-2%]"
+        >
           More Ways to Reach Us
-        </h1>
+        </motion.h1>
 
         {/* Cards */}
-        <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+        <motion.div
+          className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-8"
+          variants={containerVariants}
+        >
           {/* Card */}
-          <div className="bg-[#EBF2F6] p-8 md:p-12 rounded-xl flex flex-col justify-between">
+          <motion.div
+            variants={cardVariants}
+            whileHover={{ y: -6 }}
+            transition={{ type: "spring", stiffness: 200, damping: 20 }}
+            className="bg-[#EBF2F6] p-8 md:p-12 rounded-xl flex flex-col justify-between"
+          >
             <div>
               <h2 className="text-2xl md:text-3xl text-[#2A2A2A] font-bold mb-4">
                 Email Us
@@ -27,10 +54,15 @@ const MoreWays = () => {
                 </Link>
               </p>
             </div>
-          </div>
+          </motion.div>
 
           {/* Card */}
-          <div className="bg-[#EBF2F6] p-8 md:p-12 rounded-xl flex flex-col justify-between">
+          <motion.div
+            variants={cardVariants}
+            whileHover={{ y: -6 }}
+            transition={{ type: "spring", stiffness: 200, damping: 20 }}
+            className="bg-[#EBF2F6] p-8 md:p-12 rounded-xl flex flex-col justify-between"
+          >
             <div>
               <h2 className="text-2xl md:text-3xl text-[#2A2A2A] font-bold mb-4">
                 Live 24/7 Chat
@@ -43,10 +75,15 @@ const MoreWays = () => {
                 </span>
               </p>
             </div>
-          </div>
+          </motion.div>
 
           {/* Card */}
-          <div className="bg-[#EBF2F6] p-8 md:p-12 rounded-xl flex flex-col justify-between">
+          <motion.div
+            variants={cardVariants}
+            whileHover={{ y: -6 }}
+            transition={{ type: "spring", stiffness: 200, damping: 20 }}
+            className="bg-[#EBF2F6] p-8 md:p-12 rounded-xl flex flex-col justify-between"
+          >
             <div>
               <h2 className="text-2xl md:text-3xl text-[#2A2A2A] font-bold mb-4">
                 WhatsApp Support
@@ -61,9 +98,9 @@ const MoreWays = () => {
                 </Link>
               </p>
             </div>
-          </div>
-        </div>
-      </div>
+          </motion.div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 };

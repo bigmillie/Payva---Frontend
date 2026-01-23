@@ -1,9 +1,9 @@
 import ReadyToExperience from "@/app/components/commons/ReadyToExperience";
-import FAQTabs from "@/app/components/faq/FAQTabs";
+import FAQSection from "@/app/components/faq/FAQSection";
 import FeatureHero from "@/app/components/features/FeatureHero";
 import OurFeatures from "@/app/components/features/OurFeatures";
 import UniqueSellingPoint from "@/app/components/features/UniqueSellingPoint";
-import Script from "next/script";
+import { ourFeaturesFAQs } from "@/utils/contents";
 
 const page = () => {
   return (
@@ -11,7 +11,10 @@ const page = () => {
       <FeatureHero />
       <OurFeatures />
       <UniqueSellingPoint />
-      <FAQTabs />
+      <FAQSection
+        faqs={ourFeaturesFAQs}
+        subtitle="Here Are Answers to Some of our Frequently Asked Questions"
+      />
       <ReadyToExperience />
     </main>
   );

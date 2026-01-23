@@ -58,11 +58,13 @@ const ReadyToExperience = () => {
             px-4
           "
         >
-          Ready to Experience Cross-Border Payments the Payva Way?
+          Take Control of Your Money Today.
         </h1>
 
-        <p className="text-white text-center text-sm md:text-base">
-          Sign up and you&apos;ll be the first to know when the app is live
+        <p className="text-white text-center text-sm md:text-base max-w-lg">
+          Join the waitlist and be the first to know when Payva Launches. We're
+          here to make cross-border transfers, bill and tuition fees payment
+          simpler than ever.
         </p>
 
         <div
@@ -81,7 +83,7 @@ const ReadyToExperience = () => {
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="Enter your email address"
+            placeholder="Type your email"
             className="
               flex-1
               px-4
@@ -98,7 +100,7 @@ const ReadyToExperience = () => {
             onClick={handleSubmit}
             disabled={isSubmitting}
           >
-            {isSubmitting ? "Submitting..." : "Submit"}
+            {isSubmitting ? "Submitting..." : "Join the waitlist"}
           </Button>
         </div>
       </div>

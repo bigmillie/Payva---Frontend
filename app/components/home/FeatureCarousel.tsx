@@ -3,6 +3,7 @@ import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import HeadingTag from "../commons/HeadingTag";
 import { useFeatureCarousel } from "@/context/useFeatureCarousel";
+import Link from "next/link";
 
 const features = [
   {
@@ -179,6 +180,18 @@ export default function FeatureCarousel() {
               </p>
             </motion.div>
           ))}
+
+          <div className="mt-4 bg-[#E6F9F7] px-9 md:px-16 py-4 md:py-8 rounded-xl border border-[#B3B3B3] flex items-center justify-between gap-4 w-full">
+            <h3 className="text-lg font-bold text-gray-900 max-w-60">
+              Want to See Everything Payva Can Do?
+            </h3>
+            <Link
+              href="/features"
+              className="inline-block px-3 py-2 text-sm font-semibold text-white bg-[#008984] rounded-xl"
+            >
+              explore all features
+            </Link>
+          </div>
         </div>
       </div>
     </section>

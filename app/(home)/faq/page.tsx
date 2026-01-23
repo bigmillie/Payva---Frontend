@@ -1,6 +1,6 @@
 import ContactUsForm from "@/app/components/faq/ContactUsForm";
 import FaqHero from "@/app/components/faq/FaqHero";
-import FAQMainTab from "@/app/components/faq/FAQMainTab";
+import FAQMainTabsFull from "@/app/components/faq/FAQMainTabsFull";
 import FollowUs from "@/app/components/faq/FollowUs";
 import MoreWays from "@/app/components/faq/MoreWays";
 import Script from "next/script";
@@ -31,7 +31,7 @@ const page = () => {
   return (
     <main>
       <FaqHero />
-      <FAQMainTab />
+      <FAQMainTabsFull />
       <ContactUsForm />
       <MoreWays />
       <FollowUs />
