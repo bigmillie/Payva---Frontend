@@ -20,7 +20,7 @@ const FeatureHero = () => {
         relative
         min-h-screen
         overflow-hidden
-        bg-[url('/grid-lines.svg'),linear-gradient(116.28deg,#09253F_0%,#006D68_131.82%)]
+        bg-[url('/grid-lines.sg'),linear-gradient(116.28deg,#09253F_0%,#006D68_131.82%)]
         bg-no-repeat
         bg-cover
         bg-center
