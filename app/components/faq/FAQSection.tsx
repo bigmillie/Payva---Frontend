@@ -46,8 +46,8 @@ export default function FAQSection({
       {/* Link button */}
       <div className="mt-8 flex items-center justify-center">
         <Link
-          href="/faq"
-          className="mx-auto text-center inline-block px-3 py-2 text-sm font-semibold text-white bg-[#008984] rounded-xl w-fit mt-8 hover:bg-[#006f6c] transition"
+          href="/contact"
+          className="mx-auto text-center inline-block px-4 py-2 text-sm font-semibold text-white bg-[#008984] rounded-lg w-fit mt-8 hover:bg-[#006f6c] transition"
         >
           Read more FAQs
         </Link>

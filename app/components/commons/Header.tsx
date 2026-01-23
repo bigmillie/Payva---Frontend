@@ -13,7 +13,7 @@ import WaitlistPopup from "./WaitlistPopup";
 const navLinks = [
   { label: "Features", href: "/features" },
   { label: "Company", href: "/company" },
-  { label: "Faq", href: "/faq" },
+  { label: "Contact Us", href: "/contact" },
 ];
 
 const Header = () => {
