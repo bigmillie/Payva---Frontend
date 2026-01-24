@@ -1,6 +1,6 @@
 "use client";
 
-import HeadingTag from "../commons/HeadingTag";
+// import HeadingTag from "../commons/HeadingTag";
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { itemVariants, sectionVariants } from "@/utils/lib/variants";
@@ -49,9 +49,9 @@ const ValueProposition = () => {
       >
         {/* ---------------- Header ---------------- */}
         <motion.div className="flex flex-col gap-4" variants={itemVariants}>
-          <HeadingTag className="w-fit font-famil">
+          {/* <HeadingTag className="w-fit font-famil">
             Our Value Proposition
-          </HeadingTag>
+          </HeadingTag> */}
           <h1 className="text-[#2A2A2A] font-famil text-xl sm:text-3xl lg:text-4xl font-bold leading-tight max-w-3xl">
             Sending Money Home Just Got Better with Payva
           </h1>
