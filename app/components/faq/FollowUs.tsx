@@ -9,6 +9,7 @@ import {
   fadeInUp,
   cardVariants,
 } from "@/utils/lib/variants";
+import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
 
 const FollowUs = () => {
   return (
@@ -48,12 +49,23 @@ const FollowUs = () => {
               target="_blank"
               className="text-white"
             >
-              <Image
+              {/* <Image
                 src="/assets/about/facebook.svg"
                 alt="Facebook"
                 width={28}
                 height={28}
-              />
+              /> */}
+              <Facebook className="text-white w-5 h-5" />
+            </Link>
+          </motion.div>
+          <motion.div variants={cardVariants} whileHover={{ scale: 1.1 }}>
+            <Link href="https://www.instagram.com/payvapayment/">
+              <Instagram className="text-white w-5 h-5" />
+            </Link>
+          </motion.div>
+          <motion.div variants={cardVariants} whileHover={{ scale: 1.1 }}>
+            <Link href="https://x.com/Payvapayment">
+              <Twitter className="text-white w-5 h-5" />
             </Link>
           </motion.div>
 
@@ -78,12 +90,13 @@ const FollowUs = () => {
               target="_blank"
               className="text-white"
             >
-              <Image
+              {/* <Image
                 src="/assets/about/linkedin.svg"
                 alt="LinkedIn"
                 width={28}
                 height={28}
-              />
+              /> */}
+              <Linkedin className="text-white w-5 h-5" />
             </Link>
           </motion.div>
         </motion.div>

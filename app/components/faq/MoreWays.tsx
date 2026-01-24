@@ -57,7 +57,7 @@ const MoreWays = () => {
           </motion.div>
 
           {/* Card */}
-          <motion.div
+          {/* <motion.div
             variants={cardVariants}
             whileHover={{ y: -6 }}
             transition={{ type: "spring", stiffness: 200, damping: 20 }}
@@ -75,7 +75,7 @@ const MoreWays = () => {
                 </span>
               </p>
             </div>
-          </motion.div>
+          </motion.div> */}
 
           {/* Card */}
           <motion.div

@@ -28,10 +28,10 @@ const Footer = () => {
       <div
         className="
           flex flex-col
-          gap-14 md:gap-16
+          gap-8 md:gap-10
           items-start
-          px-4 md:px-32
-          py-14 md:py-20
+          px-4 md:px-20
+          py-8 md:py-10
           w-full
           font-famil
         "
@@ -83,35 +83,20 @@ const Footer = () => {
             w-full
           "
         >
-          <div className="text-white text-sm text-center md:text-left max-w-sm">
-            <Link
-              href="https://maps.app.goo.gl/9vSza4jcYcu6HmX8A"
-              className="flex flex-col md:flex-row items-center gap-1"
-            >
-              <LocateFixedIcon className="inline-block mb-1 mr-2 w-5 h-5" />
-              <span>
-                Suite 900, 903 8 Avenue SW, Calgary, Alberta, T2P 0P7 Canada
-              </span>
-            </Link>
-          </div>
-
-          <div className="flex text-sm text-white text-center md:text-left">
-            <Link href="tel:+18254885474" className="flex items-center gap-1">
-              <Phone className="inline-block mr-2 w-5 h-5" />
-              <span>+18254885474</span>
-            </Link>
-          </div>
+          <p className="text-white text-sm text-center md:text-left">
+            &copy; 2026 — Copyright.
+          </p>
 
           <div className="flex items-center gap-5">
             <Link href="https://www.facebook.com/Payvaofficial?ref=1">
               <Facebook className="text-white w-5 h-5" />
             </Link>
-            {/* <Link href="">
+            <Link href="https://www.instagram.com/payvapayment/">
               <Instagram className="text-white w-5 h-5" />
             </Link>
-            <Link href="">
+            <Link href="https://x.com/Payvapayment">
               <Twitter className="text-white w-5 h-5" />
-            </Link> */}
+            </Link>
             <Link href="https://www.tiktok.com/@payvaofficial?is_from_webapp=1&sender_device=pc">
               <Image
                 src="/assets/tiktok.svg"
@@ -137,11 +122,7 @@ const Footer = () => {
             w-full
           "
         >
-          <p className="text-white text-sm text-center md:text-left">
-            &copy; 2026 — Copyright.
-          </p>
-
-          <p className="text-white text-sm text-center md:text-left max-w-xl">
+          <p className="text-white text-sm text-center md:text-left w-full">
             Payva Payment Limited is registered and regulated by the Financial
             Transactions and Reports Analysis Centre of Canada (FINTRAC) as a
             Money Service Business (C100000757)

@@ -63,9 +63,9 @@ const ValueProposition = () => {
           variants={itemVariants}
         >
           <div className="flex flex-col gap-6 p-8 pt-12 md:p-18 max-w-2xl">
-            <span className="uppercase text-[#09253F] font-medium text-sm tracking-wide">
+            {/* <span className="uppercase text-[#09253F] font-medium text-sm tracking-wide">
               Free Transfer
-            </span>
+            </span> */}
             <h2 className="font-bold text-2xl md:text-3xl text-[#2A2A2A]">
               Zero Transfer Fee
             </h2>
@@ -104,9 +104,9 @@ const ValueProposition = () => {
 
           <div className="w-full bg-[#EBF2F6] rounded-3xl md:rounded-4xl overflow-hidden h-145 relative">
             <div className="flex flex-col gap-6 p-8 pt-12 md:p-16 max-w-xl">
-              <span className="uppercase text-[#09253F] font-medium text-sm tracking-wide">
+              {/* <span className="uppercase text-[#09253F] font-medium text-sm tracking-wide">
                 Fast Transfers
-              </span>
+              </span> */}
               <h2 className="font-bold text-2xl md:text-3xl text-[#2A2A2A]">
                 Fast Transfers, Wherever You Are
               </h2>
@@ -141,9 +141,9 @@ const ValueProposition = () => {
           variants={itemVariants}
         >
           <div className="flex flex-col gap-6 p-8 pt-12 md:p-16 max-w-xl">
-            <span className="uppercase text-[#09253F] font-medium text-sm tracking-wide">
+            {/* <span className="uppercase text-[#09253F] font-medium text-sm tracking-wide">
               Great Rates
-            </span>
+            </span> */}
             <h2 className="font-bold text-2xl md:text-3xl text-[#2A2A2A]">
               Real-Time Exchange Rates That Favour You
             </h2>
@@ -177,9 +177,9 @@ const ValueProposition = () => {
 
           <div className="w-full h-145 bg-[#ECFDF5] rounded-3xl md:rounded-4xl md:h-147 overflow-hidden relative">
             <div className="flex flex-col gap-6 p-8 pt-12 md:p-16 max-w-xl">
-              <span className="uppercase text-[#09253F] font-medium text-sm tracking-wide">
+              {/* <span className="uppercase text-[#09253F] font-medium text-sm tracking-wide">
                 Multi-Currency Wallet
-              </span>
+              </span> */}
               <h2 className="font-bold text-2xl md:text-3xl text-[#2A2A2A]">
                 One App, Multiple Wallet, Multiple Currencies.
               </h2>
