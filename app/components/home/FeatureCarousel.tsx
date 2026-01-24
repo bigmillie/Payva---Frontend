@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import HeadingTag from "../commons/HeadingTag";
+// import HeadingTag from "../commons/HeadingTag";
 import { useFeatureCarousel } from "@/context/useFeatureCarousel";
 import Link from "next/link";
 
@@ -60,7 +60,7 @@ export default function FeatureCarousel() {
     <section className="bg-transparent pb-24 font-famil">
       {/* ================= HEADER ================= */}
       <div className="max-w-7xl px-6 lg:mx-auto py-16">
-        <HeadingTag>Our Features</HeadingTag>
+        {/* <HeadingTag>Our Features</HeadingTag> */}
         <h2 className="mt-4 text-xl md:text-3xl lg:text-4xl font-bold text-[#2A2A2A]">
           One App for All Your Cross-Border Money Needs
         </h2>
