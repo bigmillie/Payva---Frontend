@@ -722,7 +722,7 @@ export const ourFeatures = [
     ],
   },
   {
-    title: "Pay Tuition Abroad Directly (Coming Soon)",
+    title: "Pay Tuition Abroad Directly",
     imageUrl: "/assets/pay-tuition.png",
     tag: "Coming Soon",
     description:

@@ -75,12 +75,20 @@ const OurFeatures = () => {
                     whileInView="visible"
                     viewport={{ once: true }}
                   >
-                    <motion.h2
-                      className="text-3xl font-bold text-[#2A2A2A]"
+                    <motion.div
+                      className="flex items-center gap-3 flex-wrap"
                       variants={itemVariants}
                     >
-                      {feature.title}
-                    </motion.h2>
+                      <h2 className="text-3xl font-bold text-[#2A2A2A]">
+                        {feature.title}
+                      </h2>
+
+                      {feature.tag && (
+                        <span className="text-sm px-3 py-2 bg-[#0284C7] text-white rounded-xl">
+                          {feature.tag}
+                        </span>
+                      )}
+                    </motion.div>
 
                     <motion.p
                       className="text-[#4F4F4F] leading-relaxed"
