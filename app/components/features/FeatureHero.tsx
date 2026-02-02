@@ -24,7 +24,6 @@ const FeatureHero = () => {
         bg-no-repeat
         bg-cover
         bg-center
-        py-12 md:py-20
       "
       >
         {/* DECORATIVE BACKGROUND */}
