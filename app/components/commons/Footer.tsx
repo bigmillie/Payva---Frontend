@@ -1,13 +1,6 @@
 import Logo from "./Logo";
 import Link from "next/link";
-import {
-  Facebook,
-  Instagram,
-  Linkedin,
-  LocateFixedIcon,
-  Phone,
-  Twitter,
-} from "lucide-react";
+import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
 import { quickLinks } from "@/utils/contents/Footer.Content";
 import Image from "next/image";
 
@@ -23,22 +16,23 @@ const Footer = () => {
         overflow-hidden
         mx-0 md:mx-12
         rounded-none md:rounded-4xl
+        mb-12
       "
     >
       <div
         className="
           flex flex-col
-          gap-8 md:gap-10
+          gap-8 md:gap-8
           items-start
           px-4 md:px-20
-          py-8 md:py-10
+          py-8 md:pb-10 md:pt-4
           w-full
           font-famil
         "
       >
         {/* Logo */}
-        <div className="px-4 md:ml-5">
-          <Logo className="scale-110 md:scale-140" type="primary" />
+        <div className="px-4 md:ml-1">
+          <Logo className="scale-110 md:scale-120" type="primary" />
         </div>
 
         {/* Links */}
@@ -85,6 +79,9 @@ const Footer = () => {
         >
           <p className="text-white text-sm text-center md:text-left">
             &copy; 2026 — Copyright.
+          </p>
+          <p className="text-white text-sm text-center md:text-left">
+            Suite 900, 903 8 Avenue SW, Calgary, Alberta, T2P 0P7 Canada
           </p>
 
           <div className="flex items-center gap-5">

@@ -10,9 +10,9 @@ export interface Currency {
 }
 
 const currencies: Currency[] = [
-  { code: "NGN", name: "Nigerian Naira", flag: "🇳🇬", symbol: "₦" },
-  { code: "CAD", name: "Canadian Dollar", flag: "🇨🇦", symbol: "$" },
-  { code: "GBP", name: "British Pound", flag: "🇬🇧", symbol: "£" },
+  { code: "NGN", name: "Nigerian Naira", flag: "/nigeria.png", symbol: "₦" },
+  { code: "CAD", name: "Canadian Dollar", flag: "/canada.png", symbol: "$" },
+  { code: "GBP", name: "British Pound", flag: "/british.png", symbol: "£" },
 ];
 
 interface CurrencyContextType {

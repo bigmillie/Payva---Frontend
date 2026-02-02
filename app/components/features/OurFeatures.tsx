@@ -1,6 +1,6 @@
 "use client";
 
-import HeadingTag from "../commons/HeadingTag";
+// import HeadingTag from "../commons/HeadingTag";
 import Image from "next/image";
 import { ourFeatures } from "@/utils/contents";
 // import Button from "../commons/Button";
@@ -31,7 +31,7 @@ const OurFeatures = () => {
             className="flex flex-col items-start gap-4"
             variants={itemVariants}
           >
-            <HeadingTag>Our Features</HeadingTag>
+            {/* <HeadingTag>Our Features</HeadingTag> */}
             <h1 className="text-[#2A2A2A] font-famil text-xl md:text-5xl font-bold leading-tight">
               Your Money, Your Way—With Payva
             </h1>

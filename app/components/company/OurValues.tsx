@@ -1,14 +1,14 @@
 "use client";
 
-import { useState } from "react";
+// import { useState } from "react";
 import { motion } from "framer-motion";
-import Button from "../commons/Button";
+// import Button from "../commons/Button";
 // import HeadingTag from "../commons/HeadingTag";
-import WaitlistPopup from "../commons/WaitlistPopup";
+// import WaitlistPopup from "../commons/WaitlistPopup";
 import { containerVariants, itemVariants } from "@/utils/lib/variants";
 
 const OurValues = () => {
-  const [showWaitlist, setShowWaitlist] = useState(false);
+  // const [showWaitlist, setShowWaitlist] = useState(false);
 
   return (
     <>
@@ -58,12 +58,12 @@ const OurValues = () => {
               Our Core Values
             </h1>
 
-            <Button
+            {/* <Button
               onClick={() => setShowWaitlist(true)}
               className="text-sm px-5 mt-2"
             >
               Join the waitlist
-            </Button>
+            </Button> */}
           </div>
 
           {/* Values Grid */}
@@ -121,10 +121,10 @@ const OurValues = () => {
         </motion.div>
       </section>
 
-      <WaitlistPopup
+      {/* <WaitlistPopup
         open={showWaitlist}
         onClose={() => setShowWaitlist(false)}
-      />
+      /> */}
     </>
   );
 };

@@ -483,7 +483,7 @@ export const ourFeatures = [
     description:
       "Sending money across borders shouldn’t take days or hours. With Payva, your funds move instantly between Nigeria, Canada, and the UK—with zero fees, no delays, no friction.",
     points: [
-      "Instant auto-conversion from CAD or GBP to naira.",
+      "Instant auto-conversion from CAD or GBP to Naira.",
       "Transparent rates, so you always know exactly what they’ll receive.",
       "Perfect for putting a smile on your loved ones’ faces—in their time of need and on the days worth celebrating.",
     ],
@@ -513,7 +513,7 @@ export const ourFeatures = [
     ],
   },
   {
-    title: "Pay Tuition Abroad Directly",
+    title: "Pay Tuition Abroad Directly (Coming Soon)",
     imageUrl: "/assets/pay-tuition.png",
     tag: "Coming Soon",
     description:

@@ -21,7 +21,7 @@ export const quickLinks: IQuickLink[] = [
         route: featurePage,
       },
       {
-        title: "Pay Bils",
+        title: "Pay Bills",
         route: featurePage,
       },
       {

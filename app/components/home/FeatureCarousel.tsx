@@ -10,7 +10,7 @@ const features = [
     id: 1,
     title: "Enjoy Instant Transfers",
     description:
-      "Send money instantly across Nigeria, the UK, and Canada. No delays, no complications—just reliable transfers whenever you need them.",
+      "Send money instantly across Nigeria, Canada, and the UK (coming soon). No delays, no complications—just reliable transfers whenever you need them.",
     image: "/assets/img-p-1.png",
     highlight: false,
   },
@@ -34,7 +34,7 @@ const features = [
     id: 4,
     title: "Make Tuition Payment Abroad Directly",
     description:
-      "Make secure, direct tuition payment to Canadian schools from Nigeria in a few taps-right from the Payva app.",
+      "Make secure, direct tuition payment to Canadian schools from Nigeria in a few taps—right from the Payva app.",
     image: "/assets/img-p-4.png",
     highlight: false,
     comingSoon: true,

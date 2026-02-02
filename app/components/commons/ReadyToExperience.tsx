@@ -2,28 +2,11 @@
 
 import { useState } from "react";
 import Button from "./Button";
+import WaitlistPopup from "./WaitlistPopup";
 
 const ReadyToExperience = () => {
   const [email, setEmail] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
-
-  const handleSubmit = async () => {
-    if (!email) return;
-
-    setIsSubmitting(true);
-    setSubmitted(false);
-
-    // ⏳ Simulate API request
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-
-    setIsSubmitting(false);
-    setSubmitted(true);
-    setEmail("");
-
-    // Optional: hide success message after a while
-    setTimeout(() => setSubmitted(false), 4000);
-  };
+  const [showWaitlist, setShowWaitlist] = useState(false);
 
   return (
     <section
@@ -58,52 +41,33 @@ const ReadyToExperience = () => {
             px-4
           "
         >
-          Take Control of Your Money Today.
+          Ready to Experience Cross-Border Payments the Payva Way?
         </h1>
 
         <p className="text-white text-center text-sm md:text-base max-w-lg">
-          Join the waitlist and be the first to know when Payva Launches. We're
-          here to make cross-border transfers, bill and tuition fees payment
-          simpler than ever.
+          Sign up, and you&apos;ll be the first to know when the app is live
         </p>
 
         <div
           className="
             flex flex-row
-            items-stretch md:items-center
-            bg-white
-            p-1
-            rounded-lg
-            gap-2
-            w-full
+            items-center justify-center
+            mx-auto
             max-w-xl
           "
         >
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="Type your email"
-            className="
-              flex-1
-              px-4
-              py-3
-              outline-none
-              placeholder:text-slate-400
-              text-[#006D68]
-              rounded-md
-            "
-          />
-
           <Button
             className="text-sm md:px-5 py-3 w-auto"
-            onClick={handleSubmit}
-            disabled={isSubmitting}
+            onClick={() => setShowWaitlist(true)}
           >
-            {isSubmitting ? "Submitting..." : "Join the waitlist"}
+            Join the waitlist
           </Button>
         </div>
       </div>
+      <WaitlistPopup
+        open={showWaitlist}
+        onClose={() => setShowWaitlist(false)}
+      />
     </section>
   );
 };

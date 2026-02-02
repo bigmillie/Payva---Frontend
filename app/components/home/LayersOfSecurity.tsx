@@ -90,7 +90,8 @@ const LayersOfSecurity = () => {
               every payment, and sign in with{" "}
               <span className="text-[#008984]">
                 Face ID or your fingerprint.
-              </span>
+              </span>{" "}
+              It keeps your account secure and makes access quick and easy.
             </p>
           </motion.div>
 
@@ -121,7 +122,10 @@ const LayersOfSecurity = () => {
             </h2>
             <p className="text-sm md:text-[20px] text-[#4D4D4D]">
               We comply with{" "}
-              <span className="text-[#008984]">AML / KYC global standards</span>{" "}
+              <span className="text-[#008984]">
+                Anti-Money Laundering (AML)/Know Your Customer (KYC) global
+                standards
+              </span>{" "}
               to ensure secure payments.
             </p>
           </motion.div>
@@ -135,7 +139,8 @@ const LayersOfSecurity = () => {
               Fully Regulated and Compliant
             </h2>
             <p className="text-sm md:text-[20px] text-[#4D4D4D]">
-              We operate under{" "}
+              Your money deserves real protection. That&apos;s why we operate
+              under{" "}
               <span className="text-[#008984]">FINTRAC, AML/ATF, and RPAA</span>{" "}
               guidelines to safeguard every transaction.
             </p>

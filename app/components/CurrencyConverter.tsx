@@ -2,6 +2,7 @@
 import { HelpCircle, Percent, Repeat } from "lucide-react";
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 interface Currency {
   code: string;
@@ -25,13 +26,12 @@ const CurrencyConverter: React.FC = () => {
   const [showReceiveDropdown, setShowReceiveDropdown] =
     useState<boolean>(false);
   const [rotationCount, setRotationCount] = useState<number>(0);
-  const [showTooltip, setShowTooltip] = useState<boolean>(false);
 
   const currencies: Currency[] = [
-    { code: "NGN", name: "Nigerian Naira", flag: "🇳🇬", symbol: "₦" },
+    { code: "NGN", name: "Nigerian Naira", flag: "/nigeria.png", symbol: "₦" },
     // { code: "USD", name: "US Dollar", flag: "🇺🇸", symbol: "$" },
-    { code: "CAD", name: "Canadian Dollar", flag: "🇨🇦", symbol: "$" },
-    { code: "GBP", name: "British Pound", flag: "🇬🇧", symbol: "£" },
+    { code: "CAD", name: "Canadian Dollar", flag: "/canada.png", symbol: "$" },
+    { code: "GBP", name: "British Pound", flag: "/british.png", symbol: "£" },
   ];
 
   // Fetch exchange rates
@@ -110,7 +110,13 @@ const CurrencyConverter: React.FC = () => {
               className="flex items-center gap-2 bg-white px-4 py-3 rounded-xl shadow-sm hover:shadow-md transition-shadow"
             >
               <div className="w-6 h-6 rounded-full overflow-hidden flex items-center justify-center">
-                <span className="text-5xl">{sendInfo.flag}</span>
+                {/* <span className="text-5xl">{sendInfo.flag}</span> */}
+                <Image
+                  src={sendInfo.flag}
+                  alt={sendInfo.name}
+                  width={80}
+                  height={80}
+                />
               </div>
 
               <span className="font-semibold text-[#4D4D4D] text-[15.32px]">
@@ -134,7 +140,7 @@ const CurrencyConverter: React.FC = () => {
 
             {/* SEND DROPDOWN */}
             {showSendDropdown && (
-              <div className="absolute top-full mt-2 bg-white rounded-xl shadow-xl border border-gray-200 z-20 w-64 max-h-64 overflow-y-auto">
+              <div className="absolute top-full mt-2 bg-white rounded-xl shadow-xl border border-gray-200 z-20 w-40 max-h-64 overflow-y-auto">
                 {currencies.map((currency) => (
                   <button
                     key={currency.code}
@@ -144,7 +150,13 @@ const CurrencyConverter: React.FC = () => {
                     }}
                     className="w-full flex items-center gap-3 px-4 py-3 hover:bg-gray-50 transition-colors"
                   >
-                    <span className="text-2xl">{currency.flag}</span>
+                    {/* <span className="text-2xl">{currency.flag}</span> */}
+                    <Image
+                      src={currency.flag}
+                      alt={currency.name}
+                      width={28}
+                      height={28}
+                    />
 
                     <div className="text-left">
                       <div className="font-semibold text-gray-700">
@@ -204,7 +216,13 @@ const CurrencyConverter: React.FC = () => {
               className="flex items-center gap-2 bg-white px-4 py-3 rounded-xl shadow-sm hover:shadow-md transition-shadow"
             >
               <div className="w-6 h-6 rounded-full overflow-hidden flex items-center justify-center bg-none">
-                <span className="text-5xl">{receiveInfo.flag}</span>
+                {/* <span className="text-5xl">{receiveInfo.flag}</span> */}
+                <Image
+                  src={receiveInfo.flag}
+                  alt={receiveInfo.name}
+                  width={80}
+                  height={80}
+                />
               </div>
               <span className="font-semibold text-[#4D4D4D]">
                 {receiveCurrency}
@@ -226,7 +244,7 @@ const CurrencyConverter: React.FC = () => {
 
             {/* Dropdown */}
             {showReceiveDropdown && (
-              <div className="absolute top-full mt-2 bg-white rounded-xl shadow-xl border border-gray-200 z-10 w-64 max-h-64 overflow-y-auto">
+              <div className="absolute top-full mt-2 bg-white rounded-xl shadow-xl border border-gray-200 z-10 w-40 max-h-64 overflow-y-auto">
                 {currencies.map((currency) => (
                   <button
                     key={currency.code}
@@ -236,7 +254,13 @@ const CurrencyConverter: React.FC = () => {
                     }}
                     className="w-full flex items-center gap-3 px-4 py-3 hover:bg-gray-50 transition-colors"
                   >
-                    <span className="text-2xl">{currency.flag}</span>
+                    {/* <span className="text-2xl">{currency.flag}</span> */}
+                    <Image
+                      src={currency.flag}
+                      alt={currency.name}
+                      width={28}
+                      height={28}
+                    />
                     <div className="text-left">
                       <div className="font-semibold text-gray-700">
                         {currency.code}
@@ -268,9 +292,9 @@ const CurrencyConverter: React.FC = () => {
       <div className="w-full h-[0.64px] bg-[#E0E0E0] mt-10" />
 
       {/* Exchange Rate */}
-      <div className="mt-6 flex items-center gap-1 text-gray-600 pb-5">
+      <div className="mt-6 flex items-center gap-1 text-gray-600 pb-3">
         <div className="bg-gray-100 p-2 rounded-full">
-          <Percent />
+          <Percent size={14} />
         </div>
         <span className="text-lg">
           <span className="text-[#999999] text-[12.76px] leading-[17.87px]">
@@ -286,29 +310,14 @@ const CurrencyConverter: React.FC = () => {
             )}
           </span>
         </span>
-
-        {/* Tooltip */}
-        <div
-          className="relative"
-          onMouseEnter={() => setShowTooltip(true)}
-          onMouseLeave={() => setShowTooltip(false)}
-        >
-          <div className="bg-gray-100 p-1.5 rounded-full cursor-help">
-            <HelpCircle className="w-4 h-4 text-gray-600" />
-          </div>
-
-          {/* Tooltip Content */}
-          {showTooltip && (
-            <div className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 w-max z-50 animate-in fade-in duration-200">
-              <div className="bg-gray-800 text-white text-xs px-3 py-2 rounded-lg shadow-lg">
-                Rate changes after every 30 seconds
-                {/* Arrow */}
-                <div className="absolute left-1/2 -translate-x-1/2 top-full">
-                  <div className="border-4 border-transparent border-t-gray-800"></div>
-                </div>
-              </div>
-            </div>
-          )}
+      </div>
+      {/* Tooltip */}
+      <div className="relative">
+        <div className="bg-gray-100 p-2 rounded-xl cursor-help flex items-center gap-1 w-max">
+          <HelpCircle className="w-4 h-4 text-gray-600" />
+          <span className="text-xs text-black">
+            Rate changes after every 30 seconds
+          </span>
         </div>
       </div>
     </div>

@@ -92,7 +92,13 @@ const Header = () => {
                   className="flex items-center gap-2 bg-white px-1 md:px-4 py-1 rounded-xl border border-[#082C42] transition-shadow"
                 >
                   <div className="w-6 h-6 rounded-full overflow-hidden flex items-center justify-center">
-                    <span className="text-5xl">{currency.flag}</span>
+                    {/* <span className="text-5xl"></span> */}
+                    <Image
+                      src={currency.flag}
+                      alt={currency.name}
+                      width={80}
+                      height={80}
+                    />
                   </div>
                   <span className="font-semibold text-[#4D4D4D]">
                     {currency.code}
@@ -113,7 +119,7 @@ const Header = () => {
                 </button>
 
                 {showCurrencyDropdown && (
-                  <div className="absolute top-full mt-2 bg-white rounded-xl shadow-xl border border-gray-200 z-50 w-64">
+                  <div className="absolute top-full mt-2 bg-white rounded-xl shadow-xl border border-gray-200 z-50 w-40">
                     {currencies.map((c) => (
                       <button
                         key={c.code}
@@ -124,7 +130,13 @@ const Header = () => {
                         className="w-full flex items-center gap-3 px-4 py-3 hover:bg-gray-50 rounded-3xl"
                       >
                         <div className="w-6 h-6 rounded-full overflow-hidden flex items-center justify-center">
-                          <span className="text-5xl">{c.flag}</span>
+                          {/* <span className="text-5xl">{c.flag}</span> */}
+                          <Image
+                            src={c.flag}
+                            alt={c.name}
+                            width={80}
+                            height={80}
+                          />
                         </div>
                         <div className="text-left">
                           <div className="font-semibold">{c.code}</div>

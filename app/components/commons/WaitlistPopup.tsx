@@ -104,7 +104,7 @@ const WaitlistPopup = ({ open, onClose }: WaitlistPopupProps) => {
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Enter your email address"
+                  placeholder="Type in your email address"
                   disabled={isSubmitting}
                   className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none focus:border-[#006D68] disabled:bg-gray-100"
                 />
@@ -114,7 +114,7 @@ const WaitlistPopup = ({ open, onClose }: WaitlistPopupProps) => {
                   className="w-full justify-center"
                   disabled={isSubmitting}
                 >
-                  {isSubmitting ? "Joining..." : "Join Waitlist"}
+                  {isSubmitting ? "Joining..." : "Join the waitlist"}
                 </Button>
               </form>
 
@@ -125,12 +125,12 @@ const WaitlistPopup = ({ open, onClose }: WaitlistPopupProps) => {
           ) : (
             <>
               <h3 className="text-xl font-bold text-[#09253F]">
-                You’re on the list 🎉
+                You&apos;re on the list 🎉
               </h3>
 
               <p className="text-sm text-gray-600">
-                Thanks for joining the Payva waitlist. We’ll notify you as soon
-                as we launch.
+                Thanks for joining the Payva waitlist. We&apos;ll notify you as
+                soon as we launch.
               </p>
 
               <Button

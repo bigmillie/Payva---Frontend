@@ -13,7 +13,7 @@ const MoreWays = () => {
   return (
     <section className="bg-[#FFFFFF] overflow-hidden">
       <motion.div
-        className="px-4 md:px-12 pt-24 pb-32 max-w-7xl mx-auto font-famil"
+        className="px-4 md:px-12 pt-24 pb-32 max-w-3xl mx-auto font-famil flex flex-col gap-6 items-center justify-center"
         variants={sectionVariants}
         initial="hidden"
         whileInView="visible"
@@ -29,7 +29,7 @@ const MoreWays = () => {
 
         {/* Cards */}
         <motion.div
-          className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-8"
+          className="mt-8 flex items-center justify-center w-fit"
           variants={containerVariants}
         >
           {/* Card */}
@@ -37,13 +37,13 @@ const MoreWays = () => {
             variants={cardVariants}
             whileHover={{ y: -6 }}
             transition={{ type: "spring", stiffness: 200, damping: 20 }}
-            className="bg-[#EBF2F6] p-8 md:p-12 rounded-xl flex flex-col justify-between"
+            className="bg-[#EBF2F6] p-8 md:p-12 rounded-xl flex flex-col items-center text-center justify-between"
           >
             <div>
               <h2 className="text-2xl md:text-3xl text-[#2A2A2A] font-bold mb-4">
                 Email Us
               </h2>
-              <p className="text-[#4D4D4D] text-base">
+              <p className="text-[#4D4D4D] text-lg">
                 Prefer email? Drop us a message, and we&apos;ll get back to you
                 as soon as possible:{" "}
                 <Link
@@ -78,7 +78,7 @@ const MoreWays = () => {
           </motion.div> */}
 
           {/* Card */}
-          <motion.div
+          {/* <motion.div
             variants={cardVariants}
             whileHover={{ y: -6 }}
             transition={{ type: "spring", stiffness: 200, damping: 20 }}
@@ -98,7 +98,7 @@ const MoreWays = () => {
                 </Link>
               </p>
             </div>
-          </motion.div>
+          </motion.div> */}
         </motion.div>
       </motion.div>
     </section>

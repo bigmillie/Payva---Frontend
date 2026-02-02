@@ -87,8 +87,8 @@ const HomeHero = () => {
               "
             >
               Make fast cross-border payments with ease. Send and receive funds,
-              pay bills in Nigeria and tuition fees in the UK or Canada—all on
-              the go with the Payva app.
+              pay bills in Nigeria and tuition fees abroad—all on the go with
+              the Payva app.
             </motion.p>
 
             <motion.div

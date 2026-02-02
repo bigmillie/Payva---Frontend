@@ -181,7 +181,7 @@ const ValueProposition = () => {
                 Multi-Currency Wallet
               </span> */}
               <h2 className="font-bold text-2xl md:text-3xl text-[#2A2A2A]">
-                One App, Multiple Wallet, Multiple Currencies.
+                One App, Multiple Wallets, Multiple Currencies.
               </h2>
               <p className="text-base md:text-xl text-[#4D4D4D]">
                 Every currency gets its own wallet, so your money stays

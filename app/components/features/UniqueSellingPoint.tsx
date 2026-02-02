@@ -1,7 +1,7 @@
 "use client";
 
-import React from "react";
-import HeadingTag from "../commons/HeadingTag";
+// import React from "react";
+// import HeadingTag from "../commons/HeadingTag";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import {
@@ -26,7 +26,7 @@ const UniqueSellingPoint = () => {
           className="flex flex-col items-start gap-4"
           variants={itemVariants}
         >
-          <HeadingTag>Our Features</HeadingTag>
+          {/* <HeadingTag>Our Features</HeadingTag> */}
           <h1 className="text-[#ffffff] font-famil text-xl md:text-5xl font-bold leading-tight">
             How is Payva Different from Others?
           </h1>

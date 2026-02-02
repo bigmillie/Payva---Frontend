@@ -51,7 +51,7 @@ const AboutUs = () => {
             >
               <h2 className="text-3xl text-[#2A2A2A] font-bold">About Payva</h2>
 
-              <p className="text-[#4D4D4D] text-base">
+              <p className="text-[#4D4D4D] text-lg">
                 Behind every transfer is someone showing up for family. Payva
                 makes that easier. We help Nigerians home and abroad move money
                 across the UK, Canada, and Nigeria with confidence—easier, more
@@ -82,10 +82,10 @@ const AboutUs = () => {
             <motion.div className="space-y-6" variants={containerVariants}>
               {[
                 "Many Nigerians abroad carry a steady sense of responsibility—the quiet duty to show up for the people who raised them and still count on them back home.",
-                "When our founder moved abroad, he faced the same uphill battle countless immigrants know too well. Sending money back home or to Canada required far more effort than it should have.",
-                "There were days he waited hours, refreshing Telegram chats, hoping the exchanger on the other end would release the funds.",
-                "Payva grew out of that frustration, but it's driven by something bigger: a promise that no one should have to risk their hard-earned money just to show up for family.",
-                "What started as one person's struggle has become our mission—making cross-border payments feel local, simple, and trustworthy.",
+                "When our founder moved abroad, he faced the same uphill battle countless immigrants know too well. Sending money back home or to Canada required far more effort than it should have. He needed to support his family, pay bills, and stay connected. The formal options were slow and expensive. The informal ones promised good rates but came with real fear—no protection, no guarantees, and no peace of mind until the money finally dropped.",
+                "There were days he waited hours, refreshing Telegram chats, hoping the exchanger on the other end would release the funds. The rates kept shifting, the delays were frustrating, and the uncertainty never really went away. Eventually, he realised this wasn’t just his story. It was the story of millions of immigrants trying to support loved ones, build new lives, and manage their finances with dignity.",
+                "Payva grew out of that frustration, but it’s driven by something bigger: a promise that no one should have to risk their hard-earned money just to show up for family.",
+                "What started as one person’s struggle has become our mission—making cross-border payments feel local, simple, and trustworthy for every immigrant sending love back home.",
               ].map((text, i) => (
                 <motion.p
                   key={i}
@@ -103,7 +103,8 @@ const AboutUs = () => {
               >
                 <p className="text-[#E6F9F7] text-base">
                   “Payva is more than a product. It&apos;s a promise that what
-                  we went through, others shouldn&apos;t have to.
+                  we went through, others shouldn&apos;t have to. We started
+                  from a personal struggle, but our mission is global:
                   <br />
                   <span className="text-[#99E1DD] text-xl font-medium italic">
                     To make international payments feel local, effortless, and
