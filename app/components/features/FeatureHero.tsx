@@ -24,6 +24,7 @@ const FeatureHero = () => {
         bg-no-repeat
         bg-cover
         bg-center
+        py-12 md:py-20
       "
       >
         {/* DECORATIVE BACKGROUND */}
@@ -124,7 +125,7 @@ const FeatureHero = () => {
 
           {/* RIGHT */}
           <motion.div
-            className="relative z-20 mt-10 md:mt-0 -bottom-20 right-2"
+            className="relative z-20 mt-10 md:mt-0 -bottom-20 md:-bottom-30 right-2 md:-right-6"
             initial={{ opacity: 0, x: 100, scale: 0.9 }}
             animate={{ opacity: 1, x: 0, scale: 1 }}
             transition={{ duration: 1, delay: 0.4, ease: "easeOut" }}
@@ -134,7 +135,7 @@ const FeatureHero = () => {
               alt="Payva Mobile Payment"
               height={1200}
               width={900}
-              className="w-full scale-80 lg:scale-100"
+              className="w-full scale-100 md:scale-90 lg:scale-100"
               priority
             />
           </motion.div>

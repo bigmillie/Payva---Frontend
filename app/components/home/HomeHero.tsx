@@ -27,7 +27,7 @@ const HomeHero = () => {
 
       <section
         className="
-          pb-20
+          pb-24 md:pb-30
           relative
           overflow-hidden
           bg-[url('/grid-lines.sg'),linear-gradient(116.28deg,#09253F_0%,#006D68_131.82%)]
