@@ -67,7 +67,7 @@ export const metadata: Metadata = {
   icons: {
     icon: "/favicon.ico", // browser tab
     shortcut: "/favicon.ico", // legacy
-    apple: "https://www.payvapayment.com/thumbnail.png", // iOS home screen
+    apple: "https://www.payvapayment.com/thumbnail.jpeg", // iOS home screen
   },
 
   /* -------------------------------
@@ -83,7 +83,7 @@ export const metadata: Metadata = {
       "The most convenient money transfer platform to help you manage global payments faster, smarter, and more efficiently.",
     images: [
       {
-        url: "https://www.payvapayment.com/thumbnail.png",
+        url: "https://www.payvapayment.com/thumbnail.jpeg",
         width: 180,
         height: 180,
         alt: "Payva — Seamless Global Money Transfers",
@@ -99,7 +99,7 @@ export const metadata: Metadata = {
     title: "Payva Payment — Seamless Global Money Transfers",
     description:
       "Send, receive, and manage global payments effortlessly with Payva — built for individuals and businesses.",
-    images: ["https://www.payvapayment.com/thumbnail.png"],
+    images: ["https://www.payvapayment.com/thumbnail.jpeg"],
     creator: "@payvapayment", // optional
   },
 };
