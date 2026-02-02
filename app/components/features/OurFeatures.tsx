@@ -32,8 +32,8 @@ const OurFeatures = () => {
             variants={itemVariants}
           >
             {/* <HeadingTag>Our Features</HeadingTag> */}
-            <h1 className="text-[#2A2A2A] font-famil text-xl md:text-5xl font-bold leading-tight">
-              Your Money, Your Way—With Payva
+            <h1 className="text-[#4D4D4D] font-famil text-xl md:text-5xl font-bold leading-tight">
+              One App for All Your Cross-Border Money Needs
             </h1>
           </motion.div>
 
