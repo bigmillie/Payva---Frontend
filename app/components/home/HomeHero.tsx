@@ -35,6 +35,7 @@ const HomeHero = () => {
           bg-contain
           bg-center
         "
+        id="exchange-calculator"
       >
         <motion.div
           className="

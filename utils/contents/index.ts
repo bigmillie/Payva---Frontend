@@ -341,17 +341,17 @@ export const ourMainFAQs: FAQCategoryMain[] = [
             "Send a bank transfer to your unique NGN Payva account powered by Paga.",
         },
       },
-      {
-        category: "Funding Your Wallets",
-        question: "How do I fund my GBP wallet?",
-        answer: {
-          type: "list",
-          content: [
-            "Each user receives a personal IBAN",
-            "Send GBP via bank transfer directly to this IBAN",
-          ],
-        },
-      },
+      // {
+      //   category: "Funding Your Wallets",
+      //   question: "How do I fund my GBP wallet?",
+      //   answer: {
+      //     type: "list",
+      //     content: [
+      //       "Each user receives a personal IBAN",
+      //       "Send GBP via bank transfer directly to this IBAN",
+      //     ],
+      //   },
+      // },
     ],
   },
 
@@ -392,6 +392,102 @@ export const ourMainFAQs: FAQCategoryMain[] = [
           type: "text",
           content:
             "You’ll need the recipient’s full name, bank name, account number, and country-specific banking details.",
+        },
+      },
+    ],
+  },
+
+  {
+    key: "transfer-status",
+    category: "Transfer Status & Tracking",
+    faqs: [
+      {
+        category: "Transfer Status & Tracking",
+        question: "How do I track my transfer?",
+        answer: {
+          type: "nested",
+          content: [
+            {
+              title:
+                "You can track all transfers directly in the app. Each transfer displays one of the following statuses:",
+              items: [
+                "Pending: We’re confirming payment.",
+                "Processing: Transfer is being sent to the receiving bank.",
+                "Completed: Recipient has received the funds.",
+                "Failed: Transfer did not go through (you’ll receive instructions to resolve it).",
+              ],
+            },
+          ],
+        },
+      },
+      {
+        category: "Transfer Status & Tracking",
+        question:
+          "What should I do if my recipient hasn’t received the funds sent?",
+        answer: {
+          type: "text",
+          content:
+            "Confirm the account details and check the transfer status. If still unresolved, contact Payva  Support (support@payvapayment.com) with your transaction reference.",
+        },
+      },
+      {
+        category: "Transfer Status & Tracking",
+        question: "Why is my transfer delayed?",
+        answer: {
+          type: "text",
+          content:
+            "Your transfers could be delayed due to compliance checks, incorrect details, receiving bank delays, or high network traffic.",
+        },
+      },
+    ],
+  },
+
+  {
+    key: "bill-payment-nigeria",
+    category: "Bill Payment (Nigeria)",
+    faqs: [
+      {
+        category: "Bill Payment (Nigeria)",
+        question: "What bills can I pay with Payva?",
+        answer: {
+          type: "text",
+          content:
+            "Payva supports instant payment of Nigerian airtime, data, electricity bills, and cable TV subscriptions.",
+        },
+      },
+      {
+        category: "Bill Payment (Nigeria)",
+        question: "Are bill payments instant?",
+        answer: {
+          type: "text",
+          content: "Yes, payments for bills are processed immediately.",
+        },
+      },
+    ],
+  },
+  {
+    key: "exchange-rates",
+    category: "Exchange Rates",
+    faqs: [
+      {
+        category: "Exchange Rates",
+        question: "How does Payva set exchange rates?",
+        answer: {
+          type: "text",
+          content: "Payva uses live market rates, updated in real time.",
+        },
+      },
+      {
+        category: "Exchange Rates",
+        question: "Do exchange rates change?",
+        answer: {
+          type: "text",
+          content:
+            "Yes, rates fluctuate based on global markets, but we always ensure the rates are favourable to you. Try out our exchange rate converter.",
+          link: {
+            label: "Exchange rate converter",
+            href: "/#exchange-calculator",
+          },
         },
       },
     ],
@@ -444,6 +540,119 @@ export const ourMainFAQs: FAQCategoryMain[] = [
               ],
             },
           ],
+        },
+      },
+      {
+        category: "Fees & Limits",
+        question: "How can I increase my transfer limits?",
+        answer: {
+          type: "text",
+          content:
+            "Submit additional documents such as proof of income, bank statements, or source-of-funds  declarations for compliance review.",
+        },
+      },
+      {
+        category: "Fees & Limits",
+        question: "How do I get a receipt?",
+        answer: {
+          type: "text",
+          content:
+            "Go to Dashboard → Transaction History → Select transaction → Download",
+        },
+      },
+    ],
+  },
+
+  {
+    key: "troubleshooting-common-issues",
+    category: "Troubleshooting & Common Issues",
+    faqs: [
+      {
+        category: "Troubleshooting & Common Issues",
+        question: "Why am I not receiving my OTP?",
+        answer: {
+          type: "text",
+          content:
+            "Ensure your number is active, SMS is enabled, and your device is not blocking messages. Disable VPN if necessary.",
+        },
+      },
+      {
+        category: "Troubleshooting & Common Issues",
+        question: "Why was my transaction declined?",
+        answer: {
+          type: "text",
+          content:
+            "Possible reasons include incorrect details, verification not completed, exceeded limits, or compliance-related issues.",
+        },
+      },
+      {
+        category: "Troubleshooting & Common Issues",
+        question: "What if my deposit hasn’t shown up?",
+        answer: {
+          type: "text",
+          content:
+            "Share your deposit receipt with support (support@payvapayment.com).",
+        },
+      },
+    ],
+  },
+
+  {
+    key: "account-security",
+    category: "Account & Security",
+    faqs: [
+      {
+        category: "Account & Security",
+        question: "Can I use Payva on multiple devices?",
+        answer: {
+          type: "text",
+          content:
+            "No. To protect your account, you can only be logged in on one device at a time.",
+        },
+      },
+      {
+        category: "Account & Security",
+        question: "How do I reset my password or PIN?",
+        answer: {
+          type: "text",
+          content:
+            "Go to Profile → Security, select Password or Transaction PIN, and follow the reset instructions.",
+        },
+      },
+      {
+        category: "Account & Security",
+        question: "Can I change my email?",
+        answer: {
+          type: "text",
+          content:
+            "Yes. Changes are subject to compliance approval and will be reflected within 7–14 business days.",
+        },
+      },
+      {
+        category: "Account & Security",
+        question: "Can I change my phone number?",
+        answer: {
+          type: "text",
+          content:
+            "This feature isn't available yet but will be added in a future update.",
+        },
+      },
+      {
+        category: "Account & Security",
+        question: "How do I enable or disable biometrics login?",
+        answer: {
+          type: "text",
+          content:
+            "Navigate to Profile → Settings → Biometrics and toggle the option.",
+        },
+      },
+      {
+        category: "Account & Security",
+        question: "How do I delete my account?",
+        answer: {
+          type: "text",
+          content:
+            "To delete your account, go to Profile and select delete account at the bottom of the profile menu. Please note: Account deletion is permanent. You'll need to create a new account if you want to use Payva again.",
         },
       },
     ],

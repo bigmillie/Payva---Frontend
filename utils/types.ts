@@ -23,10 +23,16 @@ export interface FAQCategory {
   faqs: FAQItem[];
 }
 
+export interface FAQLink {
+  label: string;
+  href: string;
+}
+
 export type FAQAnswerMain =
   | {
       type: "text";
       content: string;
+      link?: FAQLink;
     }
   | {
       type: "list";

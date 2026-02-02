@@ -81,7 +81,16 @@ export default function FAQAccordionFull({ faqs }: { faqs: FAQItemMain[] }) {
 function renderAnswer(answer: FAQItemMain["answer"]) {
   switch (answer.type) {
     case "text":
-      return <p>{answer.content}</p>;
+      return (
+        <p>
+          {answer.content}{" "}
+          {answer.link && (
+            <a href={answer.link.href} className="text-primary underline">
+              {answer.link.label}
+            </a>
+          )}
+        </p>
+      );
 
     case "list":
       return (
