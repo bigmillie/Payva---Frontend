@@ -101,7 +101,7 @@ const HomeHero = () => {
               </span>
 
               <div className="mx-0 -ml-2.5 md:ml-0 lg:ml-8 lg:text-start">
-                <FlipCountdown launchDate="2026-02-14T00:00:00" />
+                <FlipCountdown launchDate="2026-03-14T00:00:00" />
               </div>
 
               <motion.div
