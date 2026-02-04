@@ -102,13 +102,13 @@ const AboutUs = () => {
                 variants={itemVariants}
               >
                 <p className="text-[#E6F9F7] text-base">
-                  “Payva is more than a product. It&apos;s a promise that what
-                  we went through, others shouldn&apos;t have to. We started
-                  from a personal struggle, but our mission is global:
+                  &rduo;Payva is more than a product. It&apos;s a promise that
+                  what we went through, others shouldn&apos;t have to. We
+                  started from a personal struggle, but our mission is global:
                   <br />
                   <span className="text-[#99E1DD] text-xl font-medium italic">
                     To make international payments feel local, effortless, and
-                    secure, no matter where home is.”
+                    secure, no matter where home is.&ldquo;
                   </span>
                 </p>
 
