@@ -1,9 +1,47 @@
+"use client";
+
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  cardVariants,
+  containerVariants,
+  fadeInUp,
+  sectionVariants,
+} from "@/utils/lib/variants";
+
 const ContactUsForm = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    setIsSubmitting(true);
+    setSubmitted(false);
+
+    // ⏳ Simulate API request
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+
+    setIsSubmitting(false);
+    setSubmitted(true);
+
+    (e.target as HTMLFormElement).reset();
+  };
+
   return (
-    <section className="bg-[#EBF2F6] mx-4 md:mx-12 rounded-3xl md:rounded-4xl mb-12">
-      <div className="p-6 md:p-12 flex flex-col md:flex-row items-start gap-10 md:gap-18">
+    <section className="bg-[#EBF2F6] mx-4 md:mx-12 rounded-3xl md:rounded-4xl mb-12 overflow-hidden">
+      <motion.div
+        className="md:p-12 flex flex-col md:flex-row items-start gap-10 md:gap-18"
+        variants={sectionVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+      >
         {/* Section Heading */}
-        <div className="flex flex-col gap-4 max-w-full md:max-w-md">
+        <motion.div
+          variants={fadeInUp}
+          className="p-6 pb-2 md:p-0 flex flex-col gap-4 max-w-full md:max-w-md"
+        >
           <h1 className="text-[#01070D] font-famil text-3xl md:text-4xl font-bold leading-tight">
             Can&apos;t Find an Answer? Reach out to us.
           </h1>
@@ -11,37 +49,46 @@ const ContactUsForm = () => {
             Fill out the form with your details, and our team will reach out to
             assist you.
           </p>
-        </div>
+        </motion.div>
 
         {/* Contact Form */}
-        <div className="w-full max-w-full md:max-w-2xl">
-          <form className="bg-[#C5D4E0] p-6 md:p-8 rounded-2xl md:rounded-3xl font-famil">
+        <motion.div
+          variants={fadeInUp}
+          className="w-full max-w-full md:max-w-2xl"
+        >
+          <motion.form
+            onSubmit={handleSubmit}
+            className="bg-[#C5D4E0] p-5 md:p-8 rounded-2xl md:rounded-3xl font-famil"
+            variants={containerVariants}
+          >
             {/* Name */}
-            <div className="mb-4">
+            <motion.div variants={cardVariants} className="mb-4">
               <label className="block text-gray-700 font-semibold mb-2">
                 Name
               </label>
               <input
+                required
                 type="text"
                 className="w-full px-4 md:px-5 py-3 bg-[#EBF2F6] rounded-lg focus:outline-none focus:ring-1 focus:ring-[#006D68]"
                 placeholder="Your Name"
               />
-            </div>
+            </motion.div>
 
             {/* Email */}
-            <div className="mb-4">
+            <motion.div variants={cardVariants} className="mb-4">
               <label className="block text-gray-700 font-semibold mb-2">
                 Email
               </label>
               <input
+                required
                 type="email"
                 className="w-full px-4 md:px-5 py-3 bg-[#EBF2F6] rounded-lg focus:outline-none focus:ring-1 focus:ring-[#006D68]"
                 placeholder="Enter your email address"
               />
-            </div>
+            </motion.div>
 
             {/* Phone */}
-            <div className="mb-4">
+            <motion.div variants={cardVariants} className="mb-4">
               <label className="block text-gray-700 font-semibold mb-2">
                 Phone Number <span className="text-gray-500">(optional)</span>
               </label>
@@ -50,16 +97,17 @@ const ContactUsForm = () => {
                 className="w-full px-4 md:px-5 py-3 bg-[#EBF2F6] rounded-lg focus:outline-none focus:ring-1 focus:ring-[#006D68]"
                 placeholder="Enter your phone number"
               />
-            </div>
+            </motion.div>
 
             {/* Category */}
-            <div className="mb-4">
+            <motion.div variants={cardVariants} className="mb-4">
               <label className="block text-gray-700 font-semibold mb-2">
                 Question Category
               </label>
               <select
-                className="w-full px-4 md:px-5 py-3 bg-[#EBF2F6] rounded-lg focus:outline-none focus:ring-1 focus:ring-[#006D68]"
+                required
                 defaultValue=""
+                className="w-full px-4 md:px-5 py-3 bg-[#EBF2F6] rounded-lg focus:outline-none focus:ring-1 focus:ring-[#006D68]"
               >
                 <option value="" disabled>
                   Select a category
@@ -69,42 +117,66 @@ const ContactUsForm = () => {
                 <option value="technical">Technical Support</option>
                 <option value="other">Other Inquiries</option>
               </select>
-            </div>
+            </motion.div>
 
             {/* Title */}
-            <div className="mb-4">
+            <motion.div variants={cardVariants} className="mb-4">
               <label className="block text-gray-700 font-semibold mb-2">
                 Title
               </label>
               <input
+                required
                 type="text"
                 className="w-full px-4 md:px-5 py-3 bg-[#EBF2F6] rounded-lg focus:outline-none focus:ring-1 focus:ring-[#006D68]"
                 placeholder="Enter your question title"
               />
-            </div>
+            </motion.div>
 
             {/* Message */}
-            <div className="mb-6">
+            <motion.div variants={cardVariants} className="mb-6">
               <label className="block text-gray-700 font-semibold mb-2">
                 Message
               </label>
               <textarea
+                required
                 rows={4}
                 className="w-full px-4 md:px-5 py-3 bg-[#EBF2F6] rounded-lg focus:outline-none focus:ring-1 focus:ring-[#006D68]"
                 placeholder="Please be as detailed as possible so we can help you"
               />
-            </div>
+            </motion.div>
+
+            {/* Success Message */}
+            <AnimatePresence>
+              {submitted && (
+                <motion.p
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.3, ease: "easeOut" }}
+                  className="mb-4 text-sm text-[#006D68] font-semibold"
+                >
+                  Your message has been sent successfully. We&apos;ll get back
+                  to you shortly.
+                </motion.p>
+              )}
+            </AnimatePresence>
 
             {/* Button */}
-            <button
+            <motion.button
+              variants={cardVariants}
               type="submit"
-              className="w-full md:w-auto bg-[#006D68] text-white px-8 py-3 rounded-lg hover:bg-[#005853] transition-colors"
+              disabled={isSubmitting}
+              className={`w-full md:w-auto px-8 py-3 rounded-lg transition-colors ${
+                isSubmitting
+                  ? "bg-[#006D68]/60 cursor-not-allowed"
+                  : "bg-[#006D68] hover:bg-[#005853]"
+              } text-white`}
             >
-              Submit
-            </button>
-          </form>
-        </div>
-      </div>
+              {isSubmitting ? "Submitting..." : "Submit"}
+            </motion.button>
+          </motion.form>
+        </motion.div>
+      </motion.div>
     </section>
   );
 };

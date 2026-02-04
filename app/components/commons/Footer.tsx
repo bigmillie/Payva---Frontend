@@ -2,12 +2,13 @@ import Logo from "./Logo";
 import Link from "next/link";
 import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
 import { quickLinks } from "@/utils/contents/Footer.Content";
+import Image from "next/image";
 
 const Footer = () => {
   return (
     <footer
       className="
-        bg-[url('/grid-lines.svg'),linear-gradient(116.28deg,#09253F_0%,#006D68_131.82%)]
+        bg-[url('/grid-lines.sg'),linear-gradient(116.28deg,#09253F_0%,#006D68_131.82%)]
         bg-no-repeat
         bg-contain
         bg-center
@@ -15,21 +16,23 @@ const Footer = () => {
         overflow-hidden
         mx-0 md:mx-12
         rounded-none md:rounded-4xl
+        mb-12
       "
     >
       <div
         className="
           flex flex-col
-          gap-14 md:gap-20
+          gap-8 md:gap-8
           items-start
-          px-4 md:px-32
-          py-14 md:py-20
+          px-4 md:px-20
+          py-8 md:pb-10 md:pt-4
           w-full
+          font-famil
         "
       >
         {/* Logo */}
-        <div className="px-4 md:ml-5">
-          <Logo className="scale-110 md:scale-140" type="primary" />
+        <div className="px-4 md:ml-1">
+          <Logo className="scale-110 md:scale-120" type="primary" />
         </div>
 
         {/* Links */}
@@ -64,6 +67,48 @@ const Footer = () => {
           ))}
         </div>
 
+        {/* Address and Contact */}
+        <div
+          className="
+            flex flex-col-reverse md:flex-row
+            items-center
+            justify-between
+            gap-8
+            w-full
+          "
+        >
+          <p className="text-white text-sm text-center md:text-left">
+            &copy; 2026 — Copyright.
+          </p>
+          <p className="text-white text-sm text-center md:text-left">
+            Suite 900, 903 8 Avenue SW, Calgary, Alberta, T2P 0P7 Canada
+          </p>
+
+          <div className="flex items-center gap-5">
+            <Link href="https://www.facebook.com/Payvaofficial?ref=1">
+              <Facebook className="text-white w-5 h-5" />
+            </Link>
+            <Link href="https://www.instagram.com/payvapayment/">
+              <Instagram className="text-white w-5 h-5" />
+            </Link>
+            <Link href="https://x.com/Payvapayment">
+              <Twitter className="text-white w-5 h-5" />
+            </Link>
+            <Link href="https://www.tiktok.com/@payvaofficial?is_from_webapp=1&sender_device=pc">
+              <Image
+                src="/assets/tiktok.svg"
+                alt="Payva Payments Tiktok"
+                height={10}
+                width={10}
+                className="text-white w-6 h-6"
+              />
+            </Link>
+            <Link href="https://www.linkedin.com/company/payvapayment">
+              <Linkedin className="text-white w-5 h-5" />
+            </Link>
+          </div>
+        </div>
+
         {/* Bottom bar */}
         <div
           className="
@@ -74,24 +119,11 @@ const Footer = () => {
             w-full
           "
         >
-          <p className="text-white text-sm text-center md:text-left">
-            &copy; 2026 — Copyright.
+          <p className="text-white text-sm text-center md:text-left w-full">
+            Payva Payment Limited is registered and regulated by the Financial
+            Transactions and Reports Analysis Centre of Canada (FINTRAC) as a
+            Money Service Business (C100000757)
           </p>
-
-          <div className="flex items-center gap-5">
-            <Link href="">
-              <Facebook className="text-white w-5 h-5" />
-            </Link>
-            <Link href="">
-              <Instagram className="text-white w-5 h-5" />
-            </Link>
-            <Link href="">
-              <Twitter className="text-white w-5 h-5" />
-            </Link>
-            <Link href="">
-              <Linkedin className="text-white w-5 h-5" />
-            </Link>
-          </div>
         </div>
       </div>
     </footer>

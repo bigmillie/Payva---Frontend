@@ -1,7 +1,8 @@
 "use client";
-import { Percent, Repeat } from "lucide-react";
+import { HelpCircle, Percent, Repeat } from "lucide-react";
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 interface Currency {
   code: string;
@@ -15,10 +16,10 @@ interface ExchangeRates {
 }
 
 const CurrencyConverter: React.FC = () => {
-  const [sendAmount, setSendAmount] = useState<string>("0.00");
+  const [sendAmount, setSendAmount] = useState<string>("1000.00");
   const [receiveAmount, setReceiveAmount] = useState<string>("0.00");
-  const [sendCurrency, setSendCurrency] = useState<string>("CAD");
-  const [receiveCurrency, setReceiveCurrency] = useState<string>("NGN");
+  const [sendCurrency, setSendCurrency] = useState<string>("NGN");
+  const [receiveCurrency, setReceiveCurrency] = useState<string>("GBP");
   const [exchangeRates, setExchangeRates] = useState<ExchangeRates>({});
   const [loading, setLoading] = useState<boolean>(true);
   const [showSendDropdown, setShowSendDropdown] = useState<boolean>(false);
@@ -27,14 +28,10 @@ const CurrencyConverter: React.FC = () => {
   const [rotationCount, setRotationCount] = useState<number>(0);
 
   const currencies: Currency[] = [
-    { code: "CAD", name: "Canadian Dollar", flag: "🇨🇦", symbol: "$" },
-    { code: "NGN", name: "Nigerian Naira", flag: "🇳🇬", symbol: "₦" },
-    { code: "USD", name: "US Dollar", flag: "🇺🇸", symbol: "$" },
-    { code: "EUR", name: "Euro", flag: "🇪🇺", symbol: "€" },
-    { code: "GBP", name: "British Pound", flag: "🇬🇧", symbol: "£" },
-    { code: "JPY", name: "Japanese Yen", flag: "🇯🇵", symbol: "¥" },
-    { code: "AUD", name: "Australian Dollar", flag: "🇦🇺", symbol: "$" },
-    { code: "CHF", name: "Swiss Franc", flag: "🇨🇭", symbol: "Fr" },
+    { code: "NGN", name: "Nigerian Naira", flag: "/nigeria.png", symbol: "₦" },
+    // { code: "USD", name: "US Dollar", flag: "🇺🇸", symbol: "$" },
+    { code: "CAD", name: "Canadian Dollar", flag: "/canada.png", symbol: "$" },
+    { code: "GBP", name: "British Pound", flag: "/british.png", symbol: "£" },
   ];
 
   // Fetch exchange rates
@@ -44,7 +41,7 @@ const CurrencyConverter: React.FC = () => {
         setLoading(true);
         // Using exchangerate-api.com (free tier)
         const response = await fetch(
-          `https://api.exchangerate-api.com/v4/latest/${sendCurrency}`
+          `https://api.exchangerate-api.com/v4/latest/${sendCurrency}`,
         );
         const data = await response.json();
         setExchangeRates(data.rates);
@@ -106,15 +103,26 @@ const CurrencyConverter: React.FC = () => {
           {/* Currency Selector */}
           <div className="relative">
             <button
-              onClick={() => setShowSendDropdown(!showSendDropdown)}
+              onClick={() => {
+                setShowSendDropdown((prev) => !prev);
+                setShowReceiveDropdown(false); // close other dropdown
+              }}
               className="flex items-center gap-2 bg-white px-4 py-3 rounded-xl shadow-sm hover:shadow-md transition-shadow"
             >
               <div className="w-6 h-6 rounded-full overflow-hidden flex items-center justify-center">
-                <span className="text-5xl">{sendInfo.flag}</span>
+                {/* <span className="text-5xl">{sendInfo.flag}</span> */}
+                <Image
+                  src={sendInfo.flag}
+                  alt={sendInfo.name}
+                  width={80}
+                  height={80}
+                />
               </div>
+
               <span className="font-semibold text-[#4D4D4D] text-[15.32px]">
                 {sendCurrency}
               </span>
+
               <svg
                 className="w-4 h-4 text-gray-500"
                 fill="none"
@@ -129,19 +137,48 @@ const CurrencyConverter: React.FC = () => {
                 />
               </svg>
             </button>
+
+            {/* SEND DROPDOWN */}
+            {showSendDropdown && (
+              <div className="absolute top-full mt-2 bg-white rounded-xl shadow-xl border border-gray-200 z-20 w-40 max-h-64 overflow-y-auto">
+                {currencies.map((currency) => (
+                  <button
+                    key={currency.code}
+                    onClick={() => {
+                      setSendCurrency(currency.code);
+                      setShowSendDropdown(false);
+                    }}
+                    className="w-full flex items-center gap-3 px-4 py-3 hover:bg-gray-50 transition-colors"
+                  >
+                    {/* <span className="text-2xl">{currency.flag}</span> */}
+                    <Image
+                      src={currency.flag}
+                      alt={currency.name}
+                      width={28}
+                      height={28}
+                    />
+
+                    <div className="text-left">
+                      <div className="font-semibold text-gray-700">
+                        {currency.code}
+                      </div>
+                      <div className="text-xs text-gray-500">
+                        {currency.name}
+                      </div>
+                    </div>
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
 
           {/* Amount Input WITH currency symbol */}
           <div className="flex items-center">
-            {/* <span className="text-[25.53px] font-semibold text-[#4D4D4D] -mr-20">
-              {sendInfo.symbol}
-            </span> */}
-
             <input
               type="text"
               value={sendAmount}
               onChange={(e) => handleSendAmountChange(e.target.value)}
-              className="text-[25.53px] leading-[35.74px] font-semibold text-[#4D4D4D] text-right bg-transparent outline-none w-48"
+              className="-ml-16 text-[25.53px] leading-[35.74px] font-semibold text-[#4D4D4D] text-right bg-transparent outline-none w-48"
               placeholder="0.00"
             />
           </div>
@@ -172,11 +209,20 @@ const CurrencyConverter: React.FC = () => {
           {/* Currency Selector */}
           <div className="relative">
             <button
-              onClick={() => setShowReceiveDropdown(!showReceiveDropdown)}
+              onClick={() => {
+                setShowReceiveDropdown(!showReceiveDropdown);
+                setShowSendDropdown(false); // close other dropdown
+              }}
               className="flex items-center gap-2 bg-white px-4 py-3 rounded-xl shadow-sm hover:shadow-md transition-shadow"
             >
               <div className="w-6 h-6 rounded-full overflow-hidden flex items-center justify-center bg-none">
-                <span className="text-5xl">{receiveInfo.flag}</span>
+                {/* <span className="text-5xl">{receiveInfo.flag}</span> */}
+                <Image
+                  src={receiveInfo.flag}
+                  alt={receiveInfo.name}
+                  width={80}
+                  height={80}
+                />
               </div>
               <span className="font-semibold text-[#4D4D4D]">
                 {receiveCurrency}
@@ -198,7 +244,7 @@ const CurrencyConverter: React.FC = () => {
 
             {/* Dropdown */}
             {showReceiveDropdown && (
-              <div className="absolute top-full mt-2 bg-white rounded-xl shadow-xl border border-gray-200 z-10 w-64 max-h-64 overflow-y-auto">
+              <div className="absolute top-full mt-2 bg-white rounded-xl shadow-xl border border-gray-200 z-10 w-40 max-h-64 overflow-y-auto">
                 {currencies.map((currency) => (
                   <button
                     key={currency.code}
@@ -208,7 +254,13 @@ const CurrencyConverter: React.FC = () => {
                     }}
                     className="w-full flex items-center gap-3 px-4 py-3 hover:bg-gray-50 transition-colors"
                   >
-                    <span className="text-2xl">{currency.flag}</span>
+                    {/* <span className="text-2xl">{currency.flag}</span> */}
+                    <Image
+                      src={currency.flag}
+                      alt={currency.name}
+                      width={28}
+                      height={28}
+                    />
                     <div className="text-left">
                       <div className="font-semibold text-gray-700">
                         {currency.code}
@@ -225,7 +277,13 @@ const CurrencyConverter: React.FC = () => {
 
           {/* Amount Display */}
           <div className="text-[25.53px] leading-[35.74px] font-semibold text-[#4D4D4D]">
-            {receiveInfo.symbol} {receiveAmount}
+            {loading ? (
+              <span className="text-gray-400">Calculating...</span>
+            ) : (
+              <>
+                {receiveInfo.symbol} {receiveAmount}
+              </>
+            )}
           </div>
         </div>
       </div>
@@ -234,25 +292,34 @@ const CurrencyConverter: React.FC = () => {
       <div className="w-full h-[0.64px] bg-[#E0E0E0] mt-10" />
 
       {/* Exchange Rate */}
-      <div className="mt-6 flex items-center gap-1 text-gray-600 pb-5">
+      <div className="mt-6 flex items-center gap-1 text-gray-600 pb-3">
         <div className="bg-gray-100 p-2 rounded-full">
-          <Percent />
+          <Percent size={14} />
         </div>
         <span className="text-lg">
           <span className="text-[#999999] text-[12.76px] leading-[17.87px]">
             Exchange rate:
           </span>{" "}
           <span className="font-semibold text-[15.32px] leading-[20.42px] tracking-normal">
-            1 {sendCurrency} = {currentRate.toFixed(2)} {receiveCurrency}
+            {loading ? (
+              <span className="text-gray-400">Loading...</span>
+            ) : (
+              <>
+                1 {sendCurrency} = {currentRate.toFixed(4)} {receiveCurrency}
+              </>
+            )}
           </span>
         </span>
       </div>
-
-      {/* {loading && (
-        <div className="text-center text-gray-500 mt-4">
-          Loading exchange rates...
+      {/* Tooltip */}
+      <div className="relative">
+        <div className="bg-gray-100 p-2 rounded-xl cursor-help flex items-center gap-1 w-max">
+          <HelpCircle className="w-4 h-4 text-gray-600" />
+          <span className="text-xs text-black">
+            Rate changes after every 30 seconds
+          </span>
         </div>
-      )} */}
+      </div>
     </div>
   );
 };

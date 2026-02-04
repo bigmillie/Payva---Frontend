@@ -1,15 +1,16 @@
 "use client";
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import HeadingTag from "../commons/HeadingTag";
+// import HeadingTag from "../commons/HeadingTag";
 import { useFeatureCarousel } from "@/context/useFeatureCarousel";
+import Link from "next/link";
 
 const features = [
   {
     id: 1,
     title: "Enjoy Instant Transfers",
     description:
-      "Send money instantly across Nigeria, the UK, and Canada. No delays, no complications—just reliable transfers whenever you need them",
+      "Send money instantly across Nigeria, Canada, and the UK (coming soon). No delays, no complications—just reliable transfers whenever you need them.",
     image: "/assets/img-p-1.png",
     highlight: false,
   },
@@ -25,7 +26,7 @@ const features = [
     id: 3,
     title: "Pay Bills on the Go",
     description:
-      "Stay connected to home with easy bill payments for electricity, data, internet, and more.",
+      "Stay connected to home with easy bill payments for electricity, data, internet, and more. It’s quick, simple, and stress-free.",
     image: "/assets/img-p-3.png",
     highlight: true,
   },
@@ -33,7 +34,7 @@ const features = [
     id: 4,
     title: "Make Tuition Payment Abroad Directly",
     description:
-      "Make secure, direct tuition payment to Canadian schools from Nigeria in a few taps.",
+      "Make secure, direct tuition payment to Canadian schools from Nigeria in a few taps—right from the Payva app.",
     image: "/assets/img-p-4.png",
     highlight: false,
     comingSoon: true,
@@ -59,7 +60,7 @@ export default function FeatureCarousel() {
     <section className="bg-transparent pb-24 font-famil">
       {/* ================= HEADER ================= */}
       <div className="max-w-7xl px-6 lg:mx-auto py-16">
-        <HeadingTag>Our Features</HeadingTag>
+        {/* <HeadingTag>Our Features</HeadingTag> */}
         <h2 className="mt-4 text-xl md:text-3xl lg:text-4xl font-bold text-[#2A2A2A]">
           One App for All Your Cross-Border Money Needs
         </h2>
@@ -179,6 +180,18 @@ export default function FeatureCarousel() {
               </p>
             </motion.div>
           ))}
+
+          <div className="mt-4 bg-[#E6F9F7] px-9 md:px-16 py-4 md:py-8 rounded-xl border border-[#B3B3B3] flex items-center justify-between gap-4 w-full">
+            <h3 className="text-lg font-bold text-gray-900 max-w-60">
+              Want to See Everything Payva Can Do?
+            </h3>
+            <Link
+              href="/features"
+              className="inline-block px-3 py-2 text-sm font-semibold text-white bg-[#008984] rounded-xl"
+            >
+              explore all features
+            </Link>
+          </div>
         </div>
       </div>
     </section>

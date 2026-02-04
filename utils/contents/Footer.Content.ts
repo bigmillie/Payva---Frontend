@@ -3,7 +3,6 @@ import {
   contactPage,
   faqPage,
   featurePage,
-  kycRoute,
   privacyPolyPage,
   termOfUsePage,
 } from "../routes";
@@ -22,7 +21,7 @@ export const quickLinks: IQuickLink[] = [
         route: featurePage,
       },
       {
-        title: "Pay Bils",
+        title: "Pay Bills",
         route: featurePage,
       },
       {
@@ -63,10 +62,6 @@ export const quickLinks: IQuickLink[] = [
       {
         title: "Privacy policy",
         route: privacyPolyPage,
-      },
-      {
-        title: "KYC policy",
-        route: kycRoute,
       },
     ],
   },
