@@ -18,7 +18,7 @@ const FeatureHero = () => {
       <section
         className="
         relative
-        min-h-screen
+        
         overflow-hidden
         bg-[url('/grid-lines.sg'),linear-gradient(116.28deg,#09253F_0%,#006D68_131.82%)]
         bg-no-repeat
@@ -44,7 +44,7 @@ const FeatureHero = () => {
                 bottom-32
                 w-[60%]
                 lg:w-[65%]
-                max-w-none
+                max-w-240
                 translate-x-1/4
                 translate-y-1/4
               "
@@ -53,7 +53,7 @@ const FeatureHero = () => {
         </div>
 
         {/* CONTENT */}
-        <div className="z-10 px-6 lg:px-16 pt-48 flex items-center text-center flex-col lg:flex-row text-white">
+        <div className="z-10 px-6 lg:px-16 pt-48 flex w-full mx-auto max-w-7xl 2xl:max-w-360 items-center text-center flex-col lg:flex-row text-white">
           {/* LEFT */}
           <motion.div
             className="flex flex-col text-center lg:items-start lg:text-start gap-5 lg:max-w-2.5xl font-famil"
@@ -72,7 +72,7 @@ const FeatureHero = () => {
             </motion.h1>
 
             <motion.p
-              className="text-white text-sm md:text-xl md:leading-8 max-w-2xl"
+              className="text-white text-sm md:text-xl md:leading-8 max-w-2xl mx-auto lg:ml-0"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
@@ -83,7 +83,7 @@ const FeatureHero = () => {
             </motion.p>
 
             <motion.div
-              className="max-w-md w-full mx-auto md:mx-0"
+              className="w-full mx-auto ml-0 lg:mx-0 text-center lg:text-start lg:pb-20"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
@@ -92,7 +92,7 @@ const FeatureHero = () => {
                 Be the first to know when the Payva app is live.
               </span>
 
-              <div className="mx-0 lg:ml-8 lg:text-start">
+              <div className="flex justify-center lg:justify-start">
                 <FlipCountdown launchDate="2026-03-14T00:00:00" />
               </div>
 
@@ -124,17 +124,17 @@ const FeatureHero = () => {
 
           {/* RIGHT */}
           <motion.div
-            className="relative z-20 mt-10 md:mt-0 -bottom-20 md:-bottom-30 right-2 md:-right-6"
+            className="relative z-20 md:mt-0 -bottom-20 md:-bottom-40 right-2 md:-right-6"
             initial={{ opacity: 0, x: 100, scale: 0.9 }}
             animate={{ opacity: 1, x: 0, scale: 1 }}
             transition={{ duration: 1, delay: 0.4, ease: "easeOut" }}
           >
             <Image
-              src="/assets/phones.png"
+              src="/assets/phones1.png"
               alt="Payva Mobile Payment"
               height={1200}
               width={900}
-              className="w-full scale-100 md:scale-90 lg:scale-100"
+              className="w-full scale-100 md:scale-80 lg:scale-100"
               priority
             />
           </motion.div>

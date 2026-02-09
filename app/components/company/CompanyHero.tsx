@@ -58,7 +58,7 @@ const CompanyHero = () => {
           relative
           z-10
           px-6 md:px-16
-          pt-44 md:pt-68
+          pt-40 pb-10 md:pt-52
           flex
           items-center
           justify-between
@@ -132,12 +132,13 @@ const CompanyHero = () => {
                 className="
                 flex
                 items-center
-                justify-center lg:justify-start
+                justify-center md:justify-start
                 mx-4 md:mx-0
                 bg-transparent
                 p-0.5
                 rounded-lg
                 mt-5
+                mb-10
                 gap-2
               "
                 initial={{ opacity: 0, scale: 0.95 }}
@@ -173,7 +174,7 @@ const CompanyHero = () => {
               width={900}
               className="
               w-full
-              scale-140 md:scale-180
+              scale-190 md:scale-200
             "
               priority
             />

@@ -91,7 +91,7 @@ const FlipCountdown: React.FC<FlipCountdownProps> = ({ launchDate }) => {
   }, [launchDate]);
 
   return (
-    <div className="flex justify-center items-start gap-2 md:gap-4 bg-transparent pl-0 lg:px-10 md:px-0 mx-auto md:mx-0 mt-4 min-w-90.25">
+    <div className="flex justify-center items-start gap-2 md:gap-4 bg-transparent  mx-auto md:mx-0 mt-4 min-w-90.25">
       <TimeGroup label="Days" value={timeLeft.days} prevValue={prevTime.days} />
       <span className="md:text-3xl text-slate-200 mt-2">:</span>
 

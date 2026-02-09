@@ -13,7 +13,7 @@ import {
 
 const UniqueSellingPoint = () => {
   return (
-    <section className="bg-[linear-gradient(116.28deg,#006D68_0%,#09253F_131.82%)] mx-3 md:mx-12 rounded-4xl mb-12">
+    <section className="bg-[linear-gradient(116.28deg,#006D68_0%,#09253F_131.82%)] mx-auto w-full max-w-7xl 2xl:max-w-360  md:mx-12 rounded-4xl mb-12">
       <motion.div
         className="flex font-famil flex-col gap-4 items-start justify-center p-6 py-10 md:p-18"
         initial="hidden"
@@ -144,7 +144,7 @@ const UniqueSellingPoint = () => {
               <Image
                 height={550}
                 width={350}
-                src="/assets/features/hiddenfees.png"
+                src="/assets/features/hiddenfees1.png"
                 alt="Transaction receipt showing no fees"
                 className="w-50 md:h-140 md:w-85.5 md:max-w-md object-contain"
               />
