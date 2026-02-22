@@ -1,0 +1,178 @@
+[
+  {
+    "url": "https://www.payvapayment.com/",
+    "strategy": "mobile",
+    "performanceScore": 74,
+    "accessibilityScore": 81,
+    "lcpDisplay": "9.0 s",
+    "lcpMs": 9032.921999999999,
+    "inpDisplay": "n/a",
+    "inpMs": null,
+    "clsDisplay": "0.003",
+    "cls": 0.003426265135353835,
+    "opportunities": [
+      {
+        "title": "Reduce unused JavaScript",
+        "savingsMs": 1
+      },
+      {
+        "title": "Initial server response time was short",
+        "savingsMs": 0
+      }
+    ]
+  },
+  {
+    "url": "https://www.payvapayment.com/",
+    "strategy": "desktop",
+    "performanceScore": 81,
+    "accessibilityScore": 82,
+    "lcpDisplay": "2.9 s",
+    "lcpMs": 2949.5575,
+    "inpDisplay": "n/a",
+    "inpMs": null,
+    "clsDisplay": "0",
+    "cls": 0,
+    "opportunities": [
+      {
+        "title": "Initial server response time was short",
+        "savingsMs": 0
+      },
+      {
+        "title": "Reduce unused JavaScript",
+        "savingsMs": 0
+      }
+    ]
+  },
+  {
+    "url": "https://www.payvapayment.com/features",
+    "strategy": "mobile",
+    "performanceScore": 67,
+    "accessibilityScore": 91,
+    "lcpDisplay": "7.7 s",
+    "lcpMs": 7712.481499999998,
+    "inpDisplay": "n/a",
+    "inpMs": null,
+    "clsDisplay": "0.085",
+    "cls": 0.08526632459105109,
+    "opportunities": [
+      {
+        "title": "Reduce unused JavaScript",
+        "savingsMs": 1
+      },
+      {
+        "title": "Initial server response time was short",
+        "savingsMs": 0
+      }
+    ]
+  },
+  {
+    "url": "https://www.payvapayment.com/features",
+    "strategy": "desktop",
+    "performanceScore": 91,
+    "accessibilityScore": 87,
+    "lcpDisplay": "1.9 s",
+    "lcpMs": 1941.862,
+    "inpDisplay": "n/a",
+    "inpMs": null,
+    "clsDisplay": "0.022",
+    "cls": 0.02230417651694247,
+    "opportunities": [
+      {
+        "title": "Initial server response time was short",
+        "savingsMs": 0
+      },
+      {
+        "title": "Reduce unused JavaScript",
+        "savingsMs": 0
+      }
+    ]
+  },
+  {
+    "url": "https://www.payvapayment.com/company",
+    "strategy": "mobile",
+    "performanceScore": 68,
+    "accessibilityScore": 91,
+    "lcpDisplay": "5.8 s",
+    "lcpMs": 5805.759,
+    "inpDisplay": "n/a",
+    "inpMs": null,
+    "clsDisplay": "0.129",
+    "cls": 0.1294599566971276,
+    "opportunities": [
+      {
+        "title": "Reduce unused JavaScript",
+        "savingsMs": 1
+      },
+      {
+        "title": "Initial server response time was short",
+        "savingsMs": 0
+      }
+    ]
+  },
+  {
+    "url": "https://www.payvapayment.com/company",
+    "strategy": "desktop",
+    "performanceScore": 98,
+    "accessibilityScore": 87,
+    "lcpDisplay": "1.1 s",
+    "lcpMs": 1101.2247499999999,
+    "inpDisplay": "n/a",
+    "inpMs": null,
+    "clsDisplay": "0",
+    "cls": 0,
+    "opportunities": [
+      {
+        "title": "Reduce unused JavaScript",
+        "savingsMs": 0
+      },
+      {
+        "title": "Initial server response time was short",
+        "savingsMs": 0
+      }
+    ]
+  },
+  {
+    "url": "https://www.payvapayment.com/contact",
+    "strategy": "mobile",
+    "performanceScore": 67,
+    "accessibilityScore": 89,
+    "lcpDisplay": "7.3 s",
+    "lcpMs": 7306.295500000002,
+    "inpDisplay": "n/a",
+    "inpMs": null,
+    "clsDisplay": "0.118",
+    "cls": 0.11846901579586877,
+    "opportunities": [
+      {
+        "title": "Reduce unused JavaScript",
+        "savingsMs": 1
+      },
+      {
+        "title": "Initial server response time was short",
+        "savingsMs": 0
+      }
+    ]
+  },
+  {
+    "url": "https://www.payvapayment.com/contact",
+    "strategy": "desktop",
+    "performanceScore": 92,
+    "accessibilityScore": 86,
+    "lcpDisplay": "1.9 s",
+    "lcpMs": 1896.0960000000005,
+    "inpDisplay": "n/a",
+    "inpMs": null,
+    "clsDisplay": "0.006",
+    "cls": 0.00593320024516242,
+    "opportunities": [
+      {
+        "title": "Initial server response time was short",
+        "savingsMs": 0
+      },
+      {
+        "title": "Reduce unused JavaScript",
+        "savingsMs": 0
+      }
+    ]
+  }
+]

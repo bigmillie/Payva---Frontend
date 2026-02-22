@@ -6,7 +6,14 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "audit:crawl": "node scripts/crawl-site.mjs --url https://www.payvapayment.com/",
+    "audit:vitals": "node scripts/analyze-web-vitals.mjs",
+    "audit:a11y": "node scripts/run-accessibility-check.mjs",
+    "audit:integrations": "node scripts/test-integrations.mjs",
+    "audit:redirects": "node scripts/validate-redirects.mjs --base-url https://www.payvapayment.com",
+    "audit:backups": "node scripts/audit-backups.mjs",
+    "audit:all": "npm run audit:crawl && npm run audit:vitals && npm run audit:a11y && npm run audit:integrations && npm run audit:redirects && npm run audit:backups"
   },
   "dependencies": {
     "framer-motion": "^12.23.26",

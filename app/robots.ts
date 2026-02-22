@@ -1,7 +1,7 @@
 import { MetadataRoute } from "next";
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = "payvapayment.com";
+  const siteUrl = "https://www.payvapayment.com";
   return {
     rules: [
       {
@@ -10,8 +10,8 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/api/", "/admin/"],
       },
     ],
-    sitemap: `${baseUrl}/sitemap.xml`,
+    sitemap: `${siteUrl}/sitemap.xml`,
 
-    host: baseUrl,
+    host: "www.payvapayment.com",
   };
 }

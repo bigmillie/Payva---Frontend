@@ -8,6 +8,7 @@ import {
   fadeInUp,
   sectionVariants,
 } from "@/utils/lib/variants";
+import { trackEvent } from "@/utils/lib/analytics";
 
 const ContactUsForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -16,16 +17,26 @@ const ContactUsForm = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    const form = e.currentTarget as HTMLFormElement;
+    const formData = new FormData(form);
+    const questionCategory = String(formData.get("questionCategory") || "");
+
     setIsSubmitting(true);
     setSubmitted(false);
+    trackEvent("contact_submit_start", {
+      question_category: questionCategory || "unknown",
+    });
 
     // ⏳ Simulate API request
     await new Promise((resolve) => setTimeout(resolve, 2000));
 
     setIsSubmitting(false);
     setSubmitted(true);
+    trackEvent("contact_submit_success", {
+      question_category: questionCategory || "unknown",
+    });
 
-    (e.target as HTMLFormElement).reset();
+    form.reset();
   };
 
   return (
@@ -68,6 +79,7 @@ const ContactUsForm = () => {
               </label>
               <input
                 required
+                name="name"
                 type="text"
                 className="w-full px-4 md:px-5 py-3 bg-[#EBF2F6] rounded-lg focus:outline-none focus:ring-1 focus:ring-[#006D68]"
                 placeholder="Your Name"
@@ -81,6 +93,7 @@ const ContactUsForm = () => {
               </label>
               <input
                 required
+                name="email"
                 type="email"
                 className="w-full px-4 md:px-5 py-3 bg-[#EBF2F6] rounded-lg focus:outline-none focus:ring-1 focus:ring-[#006D68]"
                 placeholder="Enter your email address"
@@ -93,6 +106,7 @@ const ContactUsForm = () => {
                 Phone Number <span className="text-gray-500">(optional)</span>
               </label>
               <input
+                name="phoneNumber"
                 type="tel"
                 className="w-full px-4 md:px-5 py-3 bg-[#EBF2F6] rounded-lg focus:outline-none focus:ring-1 focus:ring-[#006D68]"
                 placeholder="Enter your phone number"
@@ -106,6 +120,7 @@ const ContactUsForm = () => {
               </label>
               <select
                 required
+                name="questionCategory"
                 defaultValue=""
                 className="w-full px-4 md:px-5 py-3 bg-[#EBF2F6] rounded-lg focus:outline-none focus:ring-1 focus:ring-[#006D68]"
               >
@@ -126,6 +141,7 @@ const ContactUsForm = () => {
               </label>
               <input
                 required
+                name="title"
                 type="text"
                 className="w-full px-4 md:px-5 py-3 bg-[#EBF2F6] rounded-lg focus:outline-none focus:ring-1 focus:ring-[#006D68]"
                 placeholder="Enter your question title"
@@ -139,6 +155,7 @@ const ContactUsForm = () => {
               </label>
               <textarea
                 required
+                name="message"
                 rows={4}
                 className="w-full px-4 md:px-5 py-3 bg-[#EBF2F6] rounded-lg focus:outline-none focus:ring-1 focus:ring-[#006D68]"
                 placeholder="Please be as detailed as possible so we can help you"
