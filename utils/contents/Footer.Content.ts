@@ -44,7 +44,7 @@ export const quickLinks: IQuickLink[] = [
     links: [
       {
         title: "FAQs",
-        route: faqPage,
+        route: contactPage,
       },
       {
         title: "Contact us",

@@ -1,38 +1,25 @@
 "use client";
 import { HelpCircle, Percent, Repeat } from "lucide-react";
-import React, { useState, useEffect } from "react";
+import React, { useMemo, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-
-interface Currency {
-  code: string;
-  name: string;
-  flag: string;
-  symbol: string;
-}
+import { useCurrency } from "@/context/CurrencyContext";
 
 interface ExchangeRates {
   [key: string]: number;
 }
 
 const CurrencyConverter: React.FC = () => {
+  const { currency, setCurrency, currencies } = useCurrency();
   const [sendAmount, setSendAmount] = useState<string>("1000.00");
-  const [receiveAmount, setReceiveAmount] = useState<string>("0.00");
-  const [sendCurrency, setSendCurrency] = useState<string>("NGN");
-  const [receiveCurrency, setReceiveCurrency] = useState<string>("GBP");
+  const [receiveCurrency, setReceiveCurrency] = useState<string>("CAD");
   const [exchangeRates, setExchangeRates] = useState<ExchangeRates>({});
   const [loading, setLoading] = useState<boolean>(true);
   const [showSendDropdown, setShowSendDropdown] = useState<boolean>(false);
   const [showReceiveDropdown, setShowReceiveDropdown] =
     useState<boolean>(false);
   const [rotationCount, setRotationCount] = useState<number>(0);
-
-  const currencies: Currency[] = [
-    { code: "NGN", name: "Nigerian Naira", flag: "/nigeria.png", symbol: "₦" },
-    // { code: "USD", name: "US Dollar", flag: "🇺🇸", symbol: "$" },
-    { code: "CAD", name: "Canadian Dollar", flag: "/canada.png", symbol: "$" },
-    { code: "GBP", name: "British Pound", flag: "/british.png", symbol: "£" },
-  ];
+  const sendCurrency = currency.code;
 
   // Fetch exchange rates
   useEffect(() => {
@@ -55,14 +42,12 @@ const CurrencyConverter: React.FC = () => {
     fetchRates();
   }, [sendCurrency]);
 
-  // Calculate conversion
-  useEffect(() => {
-    if (exchangeRates[receiveCurrency]) {
-      const amount = parseFloat(sendAmount) || 0;
-      const converted = amount * exchangeRates[receiveCurrency];
-      setReceiveAmount(converted.toFixed(2));
-    }
-  }, [sendAmount, exchangeRates, receiveCurrency]);
+  const receiveAmount = useMemo(() => {
+    if (!exchangeRates[receiveCurrency]) return "0.00";
+
+    const amount = parseFloat(sendAmount) || 0;
+    return (amount * exchangeRates[receiveCurrency]).toFixed(2);
+  }, [exchangeRates, receiveCurrency, sendAmount]);
 
   const handleSendAmountChange = (value: string) => {
     // Allow only numbers and decimal point
@@ -73,13 +58,13 @@ const CurrencyConverter: React.FC = () => {
 
   const handleSwapCurrencies = () => {
     setRotationCount(rotationCount + 1);
-    setSendCurrency(receiveCurrency);
+    setCurrency(receiveCurrency);
     setReceiveCurrency(sendCurrency);
     setSendAmount(receiveAmount);
   };
 
   const getCurrencyInfo = (code: string) => {
-    return currencies.find((c) => c.code === code) || currencies[0];
+    return currencies.find((c) => c.code === code) || currency;
   };
 
   const currentRate = exchangeRates[receiveCurrency] || 0;
@@ -145,7 +130,7 @@ const CurrencyConverter: React.FC = () => {
                   <button
                     key={currency.code}
                     onClick={() => {
-                      setSendCurrency(currency.code);
+                      setCurrency(currency.code);
                       setShowSendDropdown(false);
                     }}
                     className="w-full flex items-center gap-3 px-4 py-3 hover:bg-gray-50 transition-colors"
