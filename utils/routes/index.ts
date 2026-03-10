@@ -1,4 +1,5 @@
 export const homePage = "/";
+export const blogPage = "/blog";
 export const featurePage = "/features";
 export const aboutPage = "/company";
 export const howItWorksPage = "/features";

@@ -44,6 +44,14 @@ function loadRedirectMap(): RedirectRule[] {
 
 const nextConfig: NextConfig = {
   /* config options here */
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "cdn.sanity.io",
+      },
+    ],
+  },
   async redirects() {
     return loadRedirectMap();
   },

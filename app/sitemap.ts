@@ -1,7 +1,24 @@
 import { MetadataRoute } from "next";
+import { getBlogSlugs } from "@/sanity/lib/api";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const siteUrl = "https://www.payvapayment.com";
+  const blogSlugs = await getBlogSlugs();
+
+  const blogEntries: MetadataRoute.Sitemap = [
+    {
+      url: `${siteUrl}/blog`,
+      lastModified: new Date(),
+      changeFrequency: "daily",
+      priority: 0.9,
+    },
+    ...blogSlugs.map((entry) => ({
+      url: `${siteUrl}/blog/${entry.slug}`,
+      lastModified: entry.updatedAt ? new Date(entry.updatedAt) : new Date(),
+      changeFrequency: "weekly" as const,
+      priority: 0.7,
+    })),
+  ];
 
   return [
     {
@@ -40,5 +57,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.6,
     },
+    ...blogEntries,
   ];
 }
