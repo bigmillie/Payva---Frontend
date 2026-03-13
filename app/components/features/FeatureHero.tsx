@@ -93,7 +93,7 @@ const FeatureHero = () => {
               </span>
 
               <div className="flex justify-center lg:justify-start">
-                <FlipCountdown launchDate="2026-03-14T00:00:00" />
+                <FlipCountdown launchDate="2026-04-04T00:00:00" />
               </div>
 
               <motion.div
