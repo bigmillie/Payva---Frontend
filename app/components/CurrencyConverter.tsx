@@ -20,10 +20,13 @@ interface RatesApiResponse {
 }
 
 const ACTIVE_PAIR = ["CAD", "NGN"] as const;
+const DEFAULT_SEND_AMOUNTS: Record<string, string> = {
+  CAD: "1.00",
+};
 
 const CurrencyConverter: React.FC = () => {
   const { currency, setCurrency, currencies } = useCurrency();
-  const [sendAmount, setSendAmount] = useState<string>("1000.00");
+  const [sendAmount, setSendAmount] = useState<string>(DEFAULT_SEND_AMOUNTS.CAD);
   const [receiveCurrency, setReceiveCurrency] = useState<string>("CAD");
   const [rateRecord, setRateRecord] = useState<RateRecord | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
@@ -56,6 +59,24 @@ const CurrencyConverter: React.FC = () => {
     return 0;
   };
 
+  const getDefaultAmount = (fromCurrency: string, record: RateRecord | null) => {
+    if (fromCurrency === "CAD") {
+      return DEFAULT_SEND_AMOUNTS.CAD;
+    }
+
+    if (
+      fromCurrency === "NGN" &&
+      record &&
+      record.destination === "NGN" &&
+      record.source === "CAD" &&
+      record.sellingRate > 0
+    ) {
+      return record.sellingRate.toFixed(2);
+    }
+
+    return "1.00";
+  };
+
   useEffect(() => {
     const fetchRates = async () => {
       try {
@@ -84,7 +105,7 @@ const CurrencyConverter: React.FC = () => {
 
     fetchRates();
 
-    const interval = setInterval(fetchRates, 30000);
+    const interval = setInterval(fetchRates, 900000);
 
     return () => clearInterval(interval);
   }, []);
@@ -97,6 +118,12 @@ const CurrencyConverter: React.FC = () => {
       }
     }
   }, [receiveCurrency, sendCurrency]);
+
+  useEffect(() => {
+    if (!rateRecord) return;
+
+    setSendAmount(getDefaultAmount(sendCurrency, rateRecord));
+  }, [sendCurrency, rateRecord]);
 
   const currentRate = getCalculatedRate(
     sendCurrency,
@@ -127,6 +154,10 @@ const CurrencyConverter: React.FC = () => {
 
   const sendInfo = getCurrencyInfo(sendCurrency);
   const receiveInfo = getCurrencyInfo(receiveCurrency);
+  const exchangeRateDisplay =
+    sendCurrency === "NGN" && rateRecord && rateRecord.sellingRate > 0
+      ? `${rateRecord.sellingRate.toFixed(2)} NGN = 1 CAD`
+      : `1 ${sendCurrency} = ${currentRate.toFixed(2)} ${receiveCurrency}`;
 
   return (
     <div className="w-full max-w-2xl mx-auto bg-white rounded-3xl shadow-lg border-4 border-teal-500 p-4 z-40">
@@ -346,9 +377,7 @@ const CurrencyConverter: React.FC = () => {
             {loading ? (
               <span className="text-gray-400">Loading...</span>
             ) : (
-              <>
-                1 {sendCurrency} = {currentRate.toFixed(4)} {receiveCurrency}
-              </>
+              <>{exchangeRateDisplay}</>
             )}
           </span>
         </span>
@@ -358,7 +387,7 @@ const CurrencyConverter: React.FC = () => {
         <div className="bg-gray-100 p-2 rounded-xl cursor-help flex items-center gap-1 w-max">
           <HelpCircle className="w-4 h-4 text-gray-600" />
           <span className="text-xs text-black">
-            Rate changes after every 30 seconds
+            Rates refresh automatically every 15 minutes
           </span>
         </div>
       </div>
