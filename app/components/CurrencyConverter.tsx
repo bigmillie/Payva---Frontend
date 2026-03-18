@@ -1,19 +1,31 @@
 "use client";
 import { HelpCircle, Percent, Repeat } from "lucide-react";
-import React, { useMemo, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { useCurrency } from "@/context/CurrencyContext";
 
-interface ExchangeRates {
-  [key: string]: number;
+interface RateRecord {
+  source: string;
+  destination: string;
+  buyingRate: number;
+  sellingRate: number;
 }
+
+interface RatesApiResponse {
+  success: boolean;
+  code: string;
+  message: string;
+  data: RateRecord[];
+}
+
+const ACTIVE_PAIR = ["CAD", "NGN"] as const;
 
 const CurrencyConverter: React.FC = () => {
   const { currency, setCurrency, currencies } = useCurrency();
   const [sendAmount, setSendAmount] = useState<string>("1000.00");
   const [receiveCurrency, setReceiveCurrency] = useState<string>("CAD");
-  const [exchangeRates, setExchangeRates] = useState<ExchangeRates>({});
+  const [rateRecord, setRateRecord] = useState<RateRecord | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [showSendDropdown, setShowSendDropdown] = useState<boolean>(false);
   const [showReceiveDropdown, setShowReceiveDropdown] =
@@ -21,33 +33,79 @@ const CurrencyConverter: React.FC = () => {
   const [rotationCount, setRotationCount] = useState<number>(0);
   const sendCurrency = currency.code;
 
-  // Fetch exchange rates
+  const getCalculatedRate = (
+    fromCurrency: string,
+    toCurrency: string,
+    record: RateRecord | null,
+  ) => {
+    if (!record) return 0;
+    if (fromCurrency === toCurrency) return 1;
+
+    if (fromCurrency === record.source && toCurrency === record.destination) {
+      return record.buyingRate;
+    }
+
+    if (
+      fromCurrency === record.destination &&
+      toCurrency === record.source &&
+      record.sellingRate > 0
+    ) {
+      return 1 / record.sellingRate;
+    }
+
+    return 0;
+  };
+
   useEffect(() => {
     const fetchRates = async () => {
       try {
         setLoading(true);
-        // Using exchangerate-api.com (free tier)
-        const response = await fetch(
-          `https://api.exchangerate-api.com/v4/latest/${sendCurrency}`,
-        );
-        const data = await response.json();
-        setExchangeRates(data.rates);
-        setLoading(false);
+        const response = await fetch("/api/rates", {
+          cache: "no-store",
+        });
+
+        if (!response.ok) {
+          throw new Error("Failed to load rates");
+        }
+
+        const payload = (await response.json()) as RatesApiResponse;
+        const cadToNgnRate =
+          payload.data.find(
+            (record) => record.source === "CAD" && record.destination === "NGN",
+          ) || null;
+
+        setRateRecord(cadToNgnRate);
       } catch (error) {
         console.error("Error fetching exchange rates:", error);
+      } finally {
         setLoading(false);
       }
     };
 
     fetchRates();
-  }, [sendCurrency]);
 
-  const receiveAmount = useMemo(() => {
-    if (!exchangeRates[receiveCurrency]) return "0.00";
+    const interval = setInterval(fetchRates, 30000);
 
-    const amount = parseFloat(sendAmount) || 0;
-    return (amount * exchangeRates[receiveCurrency]).toFixed(2);
-  }, [exchangeRates, receiveCurrency, sendAmount]);
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    if (sendCurrency === receiveCurrency) {
+      const nextCurrency = ACTIVE_PAIR.find((code) => code !== sendCurrency);
+      if (nextCurrency) {
+        setReceiveCurrency(nextCurrency);
+      }
+    }
+  }, [receiveCurrency, sendCurrency]);
+
+  const currentRate = getCalculatedRate(
+    sendCurrency,
+    receiveCurrency,
+    rateRecord,
+  );
+  const receiveAmount = currentRate
+    ? ((parseFloat(sendAmount) || 0) * currentRate).toFixed(2)
+    : "0.00";
 
   const handleSendAmountChange = (value: string) => {
     // Allow only numbers and decimal point
@@ -67,7 +125,6 @@ const CurrencyConverter: React.FC = () => {
     return currencies.find((c) => c.code === code) || currency;
   };
 
-  const currentRate = exchangeRates[receiveCurrency] || 0;
   const sendInfo = getCurrencyInfo(sendCurrency);
   const receiveInfo = getCurrencyInfo(receiveCurrency);
 
