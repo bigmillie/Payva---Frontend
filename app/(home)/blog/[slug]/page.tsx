@@ -4,22 +4,23 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import BlogCard from "@/app/components/blog/BlogCard";
 import JsonLd from "@/app/components/blog/JsonLd";
-import PortableTextRenderer from "@/app/components/blog/PortableTextRenderer";
+import ArticleContentRenderer from "@/app/components/blog/ArticleContentRenderer";
 import SingleBlogHero from "@/app/components/blog/SingleBlogHero";
 import {
+  getBlogFallbackImage,
+  getNextBlogPost,
   getBlogPostBySlug,
   getBlogSlugs,
   getRelatedBlogPosts,
-} from "@/sanity/lib/api";
+} from "@/lib/zoho-desk/api";
 import {
-  estimateReadingTime,
+  estimateReadingTimeFromHtml,
   formatDate,
   SITE_DESCRIPTION,
   SITE_NAME,
   SITE_URL,
   toAbsoluteUrl,
-} from "@/sanity/lib/seo";
-import { urlForImage } from "@/sanity/lib/image";
+} from "@/lib/zoho-desk/seo";
 
 export const revalidate = 300;
 
@@ -53,16 +54,9 @@ export async function generateMetadata({
     post.seo?.metaDescription ||
     post.excerpt ||
     "Detailed guide from Payvapayment Blog on cross-border payments and remittance strategy.";
-  const imageUrl =
-    urlForImage(post.seo?.openGraphImage || post.coverImage)
-      ?.width(1200)
-      .height(630)
-      .fit("crop")
-      .auto("format")
-      .url() || `${SITE_URL}/seo-banner.jpeg`;
+  const imageUrl = getBlogFallbackImage(post.coverImageUrl);
 
-  const canonical =
-    post.seo?.canonicalUrl || toAbsoluteUrl(`/blog/${post.slug || slug}`);
+  const canonical = post.seo?.canonicalUrl || toAbsoluteUrl(`/blog/${post.slug || slug}`);
 
   return {
     title,
@@ -119,20 +113,17 @@ export default async function BlogPostPage({
     notFound();
   }
 
-  const categorySlugs = (post.categories || []).map(
-    (category) => category.slug,
+  const categorySlugs = (post.categories || []).map((category) => category.slug);
+  const [relatedPosts, nextPost] = await Promise.all([
+    getRelatedBlogPosts(post.slug, categorySlugs, 3),
+    getNextBlogPost(post.slug, categorySlugs),
+  ]);
+  const visibleRelatedPosts = relatedPosts.filter(
+    (relatedPost) => relatedPost.slug !== nextPost?.slug,
   );
-  const relatedPosts = await getRelatedBlogPosts(post.slug, categorySlugs, 3);
 
-  const coverImage =
-    urlForImage(post.coverImage)
-      ?.width(1600)
-      .height(900)
-      .fit("crop")
-      .auto("format")
-      .url() || `${SITE_URL}/seo-banner.jpeg`;
-
-  const readingTime = estimateReadingTime(post.body || []);
+  const coverImage = getBlogFallbackImage(post.coverImageUrl);
+  const readingTime = estimateReadingTimeFromHtml(post.bodyHtml);
   const postUrl = `${SITE_URL}/blog/${post.slug}`;
 
   const schemas: Array<Record<string, unknown>> = [
@@ -140,16 +131,8 @@ export default async function BlogPostPage({
       "@context": "https://schema.org",
       "@type": "BlogPosting",
       headline: post.title,
-      description:
-        post.seo?.metaDescription || post.excerpt || SITE_DESCRIPTION,
-      image: [
-        urlForImage(post.seo?.openGraphImage || post.coverImage)
-          ?.width(1200)
-          .height(630)
-          .fit("crop")
-          .auto("format")
-          .url() || `${SITE_URL}/seo-banner.jpeg`,
-      ],
+      description: post.seo?.metaDescription || post.excerpt || SITE_DESCRIPTION,
+      image: [coverImage],
       datePublished: post.publishedAt,
       dateModified: post.updatedAt || post.publishedAt,
       mainEntityOfPage: {
@@ -201,8 +184,7 @@ export default async function BlogPostPage({
       "@type": "WebPage",
       name: post.title,
       url: postUrl,
-      description:
-        post.seo?.metaDescription || post.excerpt || SITE_DESCRIPTION,
+      description: post.seo?.metaDescription || post.excerpt || SITE_DESCRIPTION,
       isPartOf: {
         "@type": "WebSite",
         name: SITE_NAME,
@@ -210,21 +192,6 @@ export default async function BlogPostPage({
       },
     },
   ];
-
-  if (post.faqs && post.faqs.length > 0) {
-    schemas.push({
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      mainEntity: post.faqs.map((faq) => ({
-        "@type": "Question",
-        name: faq.question,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: faq.answer,
-        },
-      })),
-    });
-  }
 
   return (
     <main className="bg-slate-50 pb-20">
@@ -280,38 +247,83 @@ export default async function BlogPostPage({
         </div>
 
         <div className="mt-8 rounded-3xl border border-slate-200 bg-white p-8 md:p-10">
-          <PortableTextRenderer value={post.body || []} />
+          <ArticleContentRenderer html={post.bodyHtml} />
 
-          {post.faqs && post.faqs.length > 0 ? (
-            <section className="mt-14 rounded-2xl border border-slate-200 bg-slate-50 p-6">
-              <h2 className="text-2xl font-bold text-slate-900">FAQs</h2>
-              <div className="mt-5 space-y-4">
-                {post.faqs.map((faq, index) => (
-                  <div
-                    key={`${faq.question}-${index}`}
-                    className="rounded-xl bg-white p-4"
+          {nextPost ? (
+            <section className="mt-14 border-t border-slate-200 pt-10">
+              <div className="mb-5 flex items-center gap-3">
+                <span className="inline-flex rounded-full bg-[#E6F9F7] px-3 py-1 text-xs font-semibold uppercase tracking-wide text-[#006D68]">
+                  Recommended Next
+                </span>
+                <p className="text-sm text-slate-500">
+                  Continue reading with another related Payva article.
+                </p>
+              </div>
+
+              <div className="overflow-hidden rounded-3xl border border-slate-200 bg-slate-50">
+                <div className="grid gap-0 lg:grid-cols-[1.1fr_1fr]">
+                  <Link
+                    href={`/blog/${nextPost.slug}`}
+                    className="block h-full overflow-hidden bg-slate-200"
                   >
-                    <h3 className="font-semibold text-slate-900">
-                      {faq.question}
-                    </h3>
-                    <p className="mt-2 text-sm leading-6 text-slate-600">
-                      {faq.answer}
-                    </p>
+                    <Image
+                      src={getBlogFallbackImage(nextPost.coverImageUrl)}
+                      alt={nextPost.title}
+                      width={1400}
+                      height={900}
+                      className="h-full min-h-72 w-full object-cover transition duration-300 hover:scale-[1.02]"
+                    />
+                  </Link>
+
+                  <div className="flex flex-col justify-center gap-4 p-8">
+                    <div className="flex flex-wrap items-center gap-2 text-xs text-slate-500">
+                      {nextPost.publishedAt ? <span>{formatDate(nextPost.publishedAt)}</span> : null}
+                      {nextPost.categories?.[0]?.title ? (
+                        <>
+                          <span>•</span>
+                          <span>{nextPost.categories[0].title}</span>
+                        </>
+                      ) : null}
+                    </div>
+
+                    <h2 className="text-2xl font-bold leading-tight text-slate-900">
+                      <Link
+                        href={`/blog/${nextPost.slug}`}
+                        className="hover:text-[#006D68]"
+                      >
+                        {nextPost.title}
+                      </Link>
+                    </h2>
+
+                    {nextPost.excerpt ? (
+                      <p className="text-base leading-7 text-slate-600">
+                        {nextPost.excerpt}
+                      </p>
+                    ) : null}
+
+                    <div className="pt-2">
+                      <Link
+                        href={`/blog/${nextPost.slug}`}
+                        className="inline-flex rounded-xl bg-[#006D68] px-5 py-3 text-sm font-semibold text-white hover:bg-[#005853]"
+                      >
+                        Read next article
+                      </Link>
+                    </div>
                   </div>
-                ))}
+                </div>
               </div>
             </section>
           ) : null}
         </div>
       </article>
 
-      {relatedPosts.length > 0 ? (
+      {visibleRelatedPosts.length > 0 ? (
         <section className="mx-auto mt-14 w-full max-w-7xl px-6 md:px-12">
           <h2 className="mb-6 text-2xl font-bold text-slate-900 md:text-3xl">
             Related Articles
           </h2>
           <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-            {relatedPosts.map((relatedPost) => (
+            {visibleRelatedPosts.map((relatedPost) => (
               <BlogCard key={relatedPost._id} post={relatedPost} />
             ))}
           </div>

@@ -1,23 +1,15 @@
 import Link from "next/link";
 import Image from "next/image";
-import type { BlogPostCard } from "@/sanity/lib/types";
-import { formatDate } from "@/sanity/lib/seo";
-import { urlForImage } from "@/sanity/lib/image";
+import type { BlogPostCard } from "@/lib/zoho-desk/types";
+import { formatDate } from "@/lib/zoho-desk/seo";
+import { getBlogFallbackImage } from "@/lib/zoho-desk/api";
 
 interface BlogCardProps {
   post: BlogPostCard;
 }
 
-const fallbackImage = "/seo-banner.jpeg";
-
 const BlogCard = ({ post }: BlogCardProps) => {
-  const imageUrl =
-    urlForImage(post.seo?.openGraphImage || post.coverImage)
-      ?.width(1200)
-      .height(675)
-      .fit("crop")
-      .auto("format")
-      .url() || fallbackImage;
+  const imageUrl = getBlogFallbackImage(post.coverImageUrl);
 
   return (
     <article className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:shadow-md">

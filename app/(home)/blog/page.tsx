@@ -2,13 +2,18 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import BlogCard from "@/app/components/blog/BlogCard";
 import JsonLd from "@/app/components/blog/JsonLd";
-import { getBlogCategories, getBlogPosts } from "@/sanity/lib/api";
-import { isSanityConfigured } from "@/sanity/lib/client";
-import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/sanity/lib/seo";
-import { urlForImage } from "@/sanity/lib/image";
 import BlogHero from "@/app/components/company/BlogHero";
+import {
+  getBlogCategories,
+  getBlogFallbackImage,
+  getBlogPosts,
+  getBlogPostsCount,
+} from "@/lib/zoho-desk/api";
+import { isZohoDeskConfigured } from "@/lib/zoho-desk/client";
+import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/zoho-desk/seo";
 
 export const revalidate = 300;
+const POSTS_PER_PAGE = 7;
 
 export const metadata: Metadata = {
   title: "Payva Blog | Remittance, Payments, and Fintech Insights",
@@ -106,8 +111,7 @@ function createBlogListSchemas(
       position: index + 1,
       url: `${SITE_URL}/blog/${post.slug}`,
       name: post.title,
-      description:
-        post.seo?.metaDescription || post.excerpt || SITE_DESCRIPTION,
+      description: post.seo?.metaDescription || post.excerpt || SITE_DESCRIPTION,
       datePublished: post.publishedAt,
       dateModified: post.updatedAt || post.publishedAt,
     })),
@@ -141,14 +145,19 @@ export default async function BlogPage({
   searchParams: Promise<{
     category?: string | string[];
     q?: string | string[];
+    page?: string | string[];
   }>;
 }) {
   const params = await searchParams;
   const selectedCategory = asSingle(params.category).trim();
   const query = asSingle(params.q).trim();
+  const requestedPage = Number.parseInt(asSingle(params.page), 10);
+  const page = Number.isFinite(requestedPage) && requestedPage > 0 ? requestedPage : 1;
+  const visiblePostLimit = page * POSTS_PER_PAGE;
 
-  const [posts, categories] = await Promise.all([
-    getBlogPosts({ category: selectedCategory, search: query, limit: 24 }),
+  const [posts, totalPosts, categories] = await Promise.all([
+    getBlogPosts({ category: selectedCategory, search: query, limit: visiblePostLimit }),
+    getBlogPostsCount({ category: selectedCategory, search: query }),
     getBlogCategories(),
   ]);
 
@@ -164,16 +173,16 @@ export default async function BlogPage({
     return qs ? `/blog?${qs}` : "/blog";
   };
 
-  const schemas = createBlogListSchemas(posts);
+  const loadMoreUrl = (() => {
+    const search = new URLSearchParams();
+    if (query) search.set("q", query);
+    if (selectedCategory) search.set("category", selectedCategory);
+    search.set("page", String(page + 1));
+    return `/blog?${search.toString()}`;
+  })();
 
-  const featuredImage = featuredPost
-    ? urlForImage(featuredPost.seo?.openGraphImage || featuredPost.coverImage)
-        ?.width(1600)
-        .height(900)
-        .fit("crop")
-        .auto("format")
-        .url()
-    : null;
+  const schemas = createBlogListSchemas(posts);
+  const featuredImage = getBlogFallbackImage(featuredPost?.coverImageUrl);
 
   return (
     <main className="pb-20">
@@ -181,26 +190,11 @@ export default async function BlogPage({
       <JsonLd data={schemas} />
 
       <section className="mx-auto w-full max-w-7xl space-y-8 px-6 md:px-12">
-        {/* <div className="space-y-4">
-          <span className="inline-block rounded-full bg-[#E6F9F7] px-3 py-1 text-xs font-semibold uppercase tracking-wide text-[#006D68]">
-            Knowledge Hub
-          </span>
-          <h1 className="text-3xl font-bold text-slate-900 md:text-5xl">
-            Payva Blog: Deep Insights on Global Payments
-          </h1>
-          <p className="max-w-3xl text-base leading-7 text-slate-600 md:text-lg">
-            Learn how to move money smarter across borders with detailed guides,
-            fintech strategy breakdowns, compliance explainers, and practical
-            remittance knowledge.
-          </p>
-        </div> */}
-
-        {!isSanityConfigured ? (
+        {!isZohoDeskConfigured ? (
           <div className="rounded-2xl border border-amber-200 bg-amber-50 p-6 text-sm text-amber-900">
-            Blog is connected in code, but Sanity credentials are missing.
-            Configure `NEXT_PUBLIC_SANITY_PROJECT_ID` and
-            `NEXT_PUBLIC_SANITY_DATASET` in your environment to start
-            publishing.
+            Blog is wired for Zoho Desk, but credentials are missing. Configure
+            `ZOHO_DESK_ORG_ID` and either `ZOHO_DESK_ACCESS_TOKEN` or the
+            refresh-token credentials in your environment to start publishing.
           </div>
         ) : null}
 
@@ -259,7 +253,7 @@ export default async function BlogPage({
               <div
                 className="min-h-72 bg-cover bg-center"
                 style={{
-                  backgroundImage: `url(${featuredImage || "/seo-banner.jpeg"})`,
+                  backgroundImage: `url(${featuredImage})`,
                 }}
               />
               <div className="space-y-4 p-8">
@@ -279,9 +273,7 @@ export default async function BlogPage({
                     "Read this in-depth article to understand strategy, risks, and practical playbooks for international payments."}
                 </p>
                 <div className="flex items-center gap-2 text-sm text-slate-500">
-                  <span>
-                    {featuredPost.author?.name || "Payva Editorial Team"}
-                  </span>
+                  <span>{featuredPost.author?.name || "Payva Editorial Team"}</span>
                   <span>•</span>
                   <span>
                     {featuredPost.publishedAt
@@ -305,11 +297,24 @@ export default async function BlogPage({
         )}
 
         {remainingPosts.length > 0 ? (
-          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-            {remainingPosts.map((post) => (
-              <BlogCard key={post._id} post={post} />
-            ))}
-          </div>
+          <>
+            <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+              {remainingPosts.map((post) => (
+                <BlogCard key={post._id} post={post} />
+              ))}
+            </div>
+
+            {posts.length < totalPosts ? (
+              <div className="flex justify-center pt-2">
+                <Link
+                  href={loadMoreUrl}
+                  className="inline-flex rounded-xl bg-[#006D68] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#005853]"
+                >
+                  Load more articles
+                </Link>
+              </div>
+            ) : null}
+          </>
         ) : null}
       </section>
     </main>

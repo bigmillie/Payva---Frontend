@@ -1,5 +1,5 @@
 import { MetadataRoute } from "next";
-import { getBlogSlugs } from "@/sanity/lib/api";
+import { getBlogSlugs } from "@/lib/zoho-desk/api";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const siteUrl = "https://www.payvapayment.com";

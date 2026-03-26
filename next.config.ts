@@ -42,15 +42,32 @@ function loadRedirectMap(): RedirectRule[] {
   }, []);
 }
 
+function getRemoteImageHostnames() {
+  const hostnames = new Set([
+    "static.zohocdn.com",
+    "desk.zoho.com",
+    "support.payvapayment.com",
+    "www.payvapayment.com",
+  ]);
+
+  const zohoDeskBaseUrl = process.env.ZOHO_DESK_BASE_URL;
+  if (zohoDeskBaseUrl) {
+    try {
+      hostnames.add(new URL(zohoDeskBaseUrl).hostname);
+    } catch {
+      // Ignore malformed env values and keep the static defaults.
+    }
+  }
+
+  return [...hostnames];
+}
+
 const nextConfig: NextConfig = {
-  /* config options here */
   images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "cdn.sanity.io",
-      },
-    ],
+    remotePatterns: getRemoteImageHostnames().map((hostname) => ({
+      protocol: "https",
+      hostname,
+    })),
   },
   async redirects() {
     return loadRedirectMap();
