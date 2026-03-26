@@ -11,10 +11,10 @@ import Image from "next/image";
 import WaitlistPopup from "./WaitlistPopup";
 
 const navLinks = [
-  { label: "Blog", href: "/blog" },
   { label: "Features", href: "/features" },
   { label: "Company", href: "/company" },
   { label: "Contact Us", href: "/contact" },
+  { label: "Blog", href: "/blog" },
 ];
 
 const Header = () => {
