@@ -56,7 +56,8 @@ export async function generateMetadata({
     "Detailed guide from Payvapayment Blog on cross-border payments and remittance strategy.";
   const imageUrl = getBlogFallbackImage(post.coverImageUrl);
 
-  const canonical = post.seo?.canonicalUrl || toAbsoluteUrl(`/blog/${post.slug || slug}`);
+  const canonical =
+    post.seo?.canonicalUrl || toAbsoluteUrl(`/blog/${post.slug || slug}`);
 
   return {
     title,
@@ -113,7 +114,9 @@ export default async function BlogPostPage({
     notFound();
   }
 
-  const categorySlugs = (post.categories || []).map((category) => category.slug);
+  const categorySlugs = (post.categories || []).map(
+    (category) => category.slug,
+  );
   const [relatedPosts, nextPost] = await Promise.all([
     getRelatedBlogPosts(post.slug, categorySlugs, 3),
     getNextBlogPost(post.slug, categorySlugs),
@@ -131,7 +134,8 @@ export default async function BlogPostPage({
       "@context": "https://schema.org",
       "@type": "BlogPosting",
       headline: post.title,
-      description: post.seo?.metaDescription || post.excerpt || SITE_DESCRIPTION,
+      description:
+        post.seo?.metaDescription || post.excerpt || SITE_DESCRIPTION,
       image: [coverImage],
       datePublished: post.publishedAt,
       dateModified: post.updatedAt || post.publishedAt,
@@ -184,7 +188,8 @@ export default async function BlogPostPage({
       "@type": "WebPage",
       name: post.title,
       url: postUrl,
-      description: post.seo?.metaDescription || post.excerpt || SITE_DESCRIPTION,
+      description:
+        post.seo?.metaDescription || post.excerpt || SITE_DESCRIPTION,
       isPartOf: {
         "@type": "WebSite",
         name: SITE_NAME,
@@ -198,7 +203,7 @@ export default async function BlogPostPage({
       <JsonLd data={schemas} />
       <SingleBlogHero title={post.title} excerpt={post.excerpt} />
 
-      <article className="mx-auto w-full max-w-5xl px-6 md:px-12">
+      <article className="mx-auto w-full max-w-7xl px-4 md:px-8">
         <nav className="mb-6 text-sm text-slate-500">
           <Link href="/" className="hover:text-[#006D68]">
             Home
@@ -235,7 +240,7 @@ export default async function BlogPostPage({
           </div>
         </header>
 
-        <div className="mt-8 overflow-hidden rounded-3xl border border-slate-200 bg-white">
+        {/* <div className="mt-8 overflow-hidden rounded-3xl border border-slate-200 bg-white">
           <Image
             src={coverImage}
             alt={post.title}
@@ -244,7 +249,7 @@ export default async function BlogPostPage({
             className="h-auto w-full"
             priority
           />
-        </div>
+        </div> */}
 
         <div className="mt-8 rounded-3xl border border-slate-200 bg-white p-8 md:p-10">
           <ArticleContentRenderer html={post.bodyHtml} />
@@ -277,7 +282,9 @@ export default async function BlogPostPage({
 
                   <div className="flex flex-col justify-center gap-4 p-8">
                     <div className="flex flex-wrap items-center gap-2 text-xs text-slate-500">
-                      {nextPost.publishedAt ? <span>{formatDate(nextPost.publishedAt)}</span> : null}
+                      {nextPost.publishedAt ? (
+                        <span>{formatDate(nextPost.publishedAt)}</span>
+                      ) : null}
                       {nextPost.categories?.[0]?.title ? (
                         <>
                           <span>•</span>

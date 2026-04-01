@@ -95,9 +95,14 @@ function getCanonicalBlogUrl(slug: string) {
 }
 
 function mapArticleSummaryToBlogPostCard(article: ZohoDeskArticleSummary): BlogPostCard {
+  const articleBaseUrl = article.portalUrl || article.webUrl || SITE_URL;
   const slug = article.permalink?.trim() || slugify(article.title) || article.id;
   const excerpt = article.summary?.trim() || undefined;
-  const coverImageUrl = findFirstImageUrl(article.summary) || null;
+  const coverImageUrl =
+    findFirstImageUrl(article.summary, {
+      baseUrl: articleBaseUrl,
+      skipPlaceholderImages: true,
+    }) || null;
   const focusKeywords = parseKeywords(article.seoKeywords);
 
   return {
@@ -125,14 +130,22 @@ function mapArticleSummaryToBlogPostCard(article: ZohoDeskArticleSummary): BlogP
 }
 
 function mapArticleDetailToBlogPost(article: ZohoDeskArticleDetail): BlogPost {
+  const articleBaseUrl = article.portalUrl || article.webUrl || SITE_URL;
   const summaryCard = mapArticleSummaryToBlogPostCard(article);
-  const bodyHtml = sanitizeZohoHtml(article.answer || "");
+  const bodyHtml = sanitizeZohoHtml(article.answer || "", {
+    baseUrl: articleBaseUrl,
+    skipPlaceholderImages: true,
+  });
   const excerpt =
     article.summary?.trim() ||
     article.seoDescription?.trim() ||
     getExcerptFromHtml(bodyHtml) ||
     summaryCard.excerpt;
-  const coverImageUrl = findFirstImageUrl(bodyHtml) || summaryCard.coverImageUrl;
+  const coverImageUrl =
+    findFirstImageUrl(bodyHtml, {
+      baseUrl: articleBaseUrl,
+      skipPlaceholderImages: true,
+    }) || summaryCard.coverImageUrl;
 
   return {
     ...summaryCard,
@@ -217,7 +230,11 @@ async function enrichCardImage(article: ZohoDeskArticleSummary) {
 
   return {
     ...card,
-    coverImageUrl: findFirstImageUrl(detail.answer) || card.coverImageUrl,
+    coverImageUrl:
+      findFirstImageUrl(detail.answer, {
+        baseUrl: detail.portalUrl || detail.webUrl || SITE_URL,
+        skipPlaceholderImages: true,
+      }) || card.coverImageUrl,
   };
 }
 

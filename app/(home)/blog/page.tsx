@@ -111,7 +111,8 @@ function createBlogListSchemas(
       position: index + 1,
       url: `${SITE_URL}/blog/${post.slug}`,
       name: post.title,
-      description: post.seo?.metaDescription || post.excerpt || SITE_DESCRIPTION,
+      description:
+        post.seo?.metaDescription || post.excerpt || SITE_DESCRIPTION,
       datePublished: post.publishedAt,
       dateModified: post.updatedAt || post.publishedAt,
     })),
@@ -152,11 +153,16 @@ export default async function BlogPage({
   const selectedCategory = asSingle(params.category).trim();
   const query = asSingle(params.q).trim();
   const requestedPage = Number.parseInt(asSingle(params.page), 10);
-  const page = Number.isFinite(requestedPage) && requestedPage > 0 ? requestedPage : 1;
+  const page =
+    Number.isFinite(requestedPage) && requestedPage > 0 ? requestedPage : 1;
   const visiblePostLimit = page * POSTS_PER_PAGE;
 
   const [posts, totalPosts, categories] = await Promise.all([
-    getBlogPosts({ category: selectedCategory, search: query, limit: visiblePostLimit }),
+    getBlogPosts({
+      category: selectedCategory,
+      search: query,
+      limit: visiblePostLimit,
+    }),
     getBlogPostsCount({ category: selectedCategory, search: query }),
     getBlogCategories(),
   ]);
@@ -189,7 +195,7 @@ export default async function BlogPage({
       <BlogHero />
       <JsonLd data={schemas} />
 
-      <section className="mx-auto w-full max-w-7xl space-y-8 px-6 md:px-12">
+      <section className="mx-auto w-full max-w-7xl space-y-8 px-4 md:px-8">
         {!isZohoDeskConfigured ? (
           <div className="rounded-2xl border border-amber-200 bg-amber-50 p-6 text-sm text-amber-900">
             Blog is wired for Zoho Desk, but credentials are missing. Configure
@@ -201,7 +207,7 @@ export default async function BlogPage({
         <form
           action="/blog"
           method="GET"
-          className="grid gap-3 rounded-2xl border border-slate-200 bg-white p-4 md:grid-cols-[1fr_auto]"
+          className="grid gap-3 bg-white md:grid-cols-[1fr_auto]"
         >
           <input
             type="search"
@@ -273,7 +279,9 @@ export default async function BlogPage({
                     "Read this in-depth article to understand strategy, risks, and practical playbooks for international payments."}
                 </p>
                 <div className="flex items-center gap-2 text-sm text-slate-500">
-                  <span>{featuredPost.author?.name || "Payva Editorial Team"}</span>
+                  <span>
+                    {featuredPost.author?.name || "Payva Editorial Team"}
+                  </span>
                   <span>•</span>
                   <span>
                     {featuredPost.publishedAt

@@ -84,14 +84,85 @@ export function parseKeywords(value?: string | string[] | null) {
     .filter(Boolean);
 }
 
-export function findFirstImageUrl(html?: string | null) {
-  if (!html) return null;
+type HtmlImageOptions = {
+  baseUrl?: string;
+  skipPlaceholderImages?: boolean;
+};
 
-  const match = html.match(/<img[^>]+src=["']([^"']+)["']/i);
-  return match?.[1] || null;
+const ZOHO_EDITOR_PLACEHOLDER_HOST = "static.zohocdn.com";
+const ZOHO_EDITOR_PLACEHOLDER_PATHS = new Set([
+  "/zoho-desk-editor/static/images/file.png",
+  "/zoho-desk-editor/static/images/image.png",
+  "/zoho-desk-editor/static/images/audio.png",
+  "/zoho-desk-editor/static/images/video.png",
+]);
+
+export function normalizeAssetUrl(url?: string | null, baseUrl = SITE_URL) {
+  if (!url) return null;
+
+  const decodedUrl = decodeHtmlEntities(url).trim();
+  if (!decodedUrl || /^javascript:/i.test(decodedUrl)) return null;
+  if (decodedUrl.startsWith("data:") || decodedUrl.startsWith("blob:")) {
+    return decodedUrl;
+  }
+
+  try {
+    if (decodedUrl.startsWith("//")) {
+      return new URL(`https:${decodedUrl}`).toString();
+    }
+
+    if (/^https?:\/\//i.test(decodedUrl)) {
+      return new URL(decodedUrl).toString();
+    }
+
+    return new URL(decodedUrl, baseUrl).toString();
+  } catch {
+    return null;
+  }
 }
 
-export function sanitizeZohoHtml(html?: string | null) {
+export function isPlaceholderImageUrl(url?: string | null) {
+  const normalizedUrl = normalizeAssetUrl(url);
+  if (!normalizedUrl || normalizedUrl.startsWith("data:")) return false;
+
+  try {
+    const parsedUrl = new URL(normalizedUrl);
+    const normalizedPath = parsedUrl.pathname.replace(/\/+$/, "").toLowerCase();
+
+    return (
+      parsedUrl.hostname.toLowerCase() === ZOHO_EDITOR_PLACEHOLDER_HOST &&
+      ZOHO_EDITOR_PLACEHOLDER_PATHS.has(normalizedPath)
+    );
+  } catch {
+    return false;
+  }
+}
+
+export function findFirstImageUrl(
+  html?: string | null,
+  options: HtmlImageOptions = {},
+) {
+  if (!html) return null;
+
+  const imageMatches = html.matchAll(/<img\b[^>]*\bsrc=["']([^"']+)["'][^>]*>/gi);
+
+  for (const match of imageMatches) {
+    const normalizedUrl = normalizeAssetUrl(match[1], options.baseUrl);
+    if (!normalizedUrl) continue;
+    if (options.skipPlaceholderImages !== false && isPlaceholderImageUrl(normalizedUrl)) {
+      continue;
+    }
+
+    return normalizedUrl;
+  }
+
+  return null;
+}
+
+export function sanitizeZohoHtml(
+  html?: string | null,
+  options: HtmlImageOptions = {},
+) {
   if (!html) return "";
 
   return html
@@ -104,5 +175,29 @@ export function sanitizeZohoHtml(html?: string | null) {
     .replace(/\sstyle=("[^"]*"|'[^']*')/gi, "")
     .replace(/\sclass=("[^"]*"|'[^']*')/gi, "")
     .replace(/\sid=("[^"]*"|'[^']*')/gi, "")
-    .replace(/(href|src)=("|')\s*javascript:[\s\S]*?\2/gi, '$1="#"');
+    .replace(/(href|src)=("|')\s*javascript:[\s\S]*?\2/gi, '$1="#"')
+    .replace(
+      /<img\b([^>]*?)\bsrc=(["'])([^"']+)\2([^>]*)>/gi,
+      (_match, beforeSrc, _quote, src, afterSrc) => {
+        const normalizedUrl = normalizeAssetUrl(src, options.baseUrl);
+
+        if (!normalizedUrl) return "";
+        if (options.skipPlaceholderImages !== false && isPlaceholderImageUrl(normalizedUrl)) {
+          return "";
+        }
+
+        return `<img${beforeSrc}src="${normalizedUrl}"${afterSrc}>`;
+      },
+    )
+    .replace(
+      /<a\b([^>]*?)\bhref=(["'])([^"']+)\2([^>]*)>/gi,
+      (_match, beforeHref, _quote, href, afterHref) => {
+        const normalizedUrl = normalizeAssetUrl(href, options.baseUrl);
+        if (!normalizedUrl) {
+          return `<a${beforeHref}href="#"${afterHref}>`;
+        }
+
+        return `<a${beforeHref}href="${normalizedUrl}"${afterHref}>`;
+      },
+    );
 }
