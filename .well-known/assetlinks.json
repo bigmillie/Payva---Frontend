@@ -1,0 +1,15 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.paymentpayva.payva",
+      "sha256_cert_fingerprints": [
+        "F3:FE:04:85:37:4D:F8:F4:BD:67:CF:C1:81:D6:38:6E:9F:96:93:2E:3F:07:3C:53:F8:58:E1:28:65:AA:E5:40",
+        "1C:7E:AC:75:BA:CA:4D:6A:54:D6:DC:49:3D:FD:F7:10:1A:9F:9F:73:B6:29:68:B9:D6:C7:4D:F8:CC:DF:36:56"
+      ]
+    }
+  }
+]

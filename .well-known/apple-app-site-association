@@ -1,0 +1,26 @@
+
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appIDs": [
+          "R6HXK2GT85.com.paymentpayva.payva"
+        ],
+        "paths": [
+          "*"
+        ],
+        "components": [
+          {
+            "/": "/*"
+          }
+        ]
+      }
+    ]
+  },
+  "webcredentials": {
+    "apps": [
+      "R6HXK2GT85.com.paymentpayva.payva"
+    ]
+  }
+}
