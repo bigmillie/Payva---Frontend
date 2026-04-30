@@ -13,6 +13,7 @@ import { trackEvent } from "@/utils/lib/analytics";
 const ContactUsForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -23,20 +24,52 @@ const ContactUsForm = () => {
 
     setIsSubmitting(true);
     setSubmitted(false);
+    setError(null);
     trackEvent("contact_submit_start", {
       question_category: questionCategory || "unknown",
     });
 
-    // ⏳ Simulate API request
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+    try {
+      const payload = {
+        access_key: "38eaff05-fe06-4b34-9c70-5be99f70a519",
+        name: formData.get("name"),
+        email: formData.get("email"),
+        phone: formData.get("phoneNumber"),
+        subject: `[${questionCategory}] ${formData.get("title")}`,
+        message: formData.get("message"),
+      };
 
-    setIsSubmitting(false);
-    setSubmitted(true);
-    trackEvent("contact_submit_success", {
-      question_category: questionCategory || "unknown",
-    });
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
 
-    form.reset();
+      const data = await res.json();
+
+      if (data.success) {
+        setSubmitted(true);
+        trackEvent("contact_submit_success", {
+          question_category: questionCategory || "unknown",
+        });
+        form.reset();
+      } else {
+        setError(data.message || "Something went wrong. Please try again.");
+        trackEvent("contact_submit_error", {
+          question_category: questionCategory || "unknown",
+          error: data.message,
+        });
+      }
+    } catch {
+      setError(
+        "Failed to send message. Please check your connection and try again.",
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -174,6 +207,18 @@ const ContactUsForm = () => {
                 >
                   Your message has been sent successfully. We&apos;ll get back
                   to you shortly.
+                </motion.p>
+              )}
+              {error && (
+                <motion.p
+                  key="error"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.3, ease: "easeOut" }}
+                  className="mb-4 text-sm text-red-600 font-semibold"
+                >
+                  {error}
                 </motion.p>
               )}
             </AnimatePresence>
