@@ -1,13 +1,8 @@
-"use client";
-
-import { useState } from "react";
+import Link from "next/link";
 import Button from "../commons/Button";
-import WaitlistPopup from "../commons/WaitlistPopup";
+import Image from "next/image";
 
 const TakeControl = () => {
-  const [email, setEmail] = useState("");
-  const [showWaitlist, setShowWaitlist] = useState(false);
-
   return (
     <section
       id="waitlist"
@@ -52,24 +47,36 @@ const TakeControl = () => {
 
         <div
           className="
-            flex flex-row
+            flex flex-col md:flex-row
             items-center justify-center
             mx-auto
-            max-w-xl
+            max-w-xl gap-3
           "
         >
-          <Button
-            className="text-sm md:px-5 py-3 w-auto"
-            onClick={() => setShowWaitlist(true)}
+          <Link
+            href="https://play.google.com/store/apps/details?id=com.paymentpayva.payva"
+            target="_blank"
           >
-            Join the waitlist
-          </Button>
+            <Image
+              src="/google-play.png"
+              width={160}
+              height={160}
+              alt="Google Play Store"
+            />
+          </Link>
+          <Link
+            href="https://apps.apple.com/ng/app/payva-payment/id6755332619"
+            target="_blank"
+          >
+            <Image
+              src="/apple-store.png"
+              width={160}
+              height={160}
+              alt="Apple App Store"
+            />
+          </Link>
         </div>
       </div>
-      <WaitlistPopup
-        open={showWaitlist}
-        onClose={() => setShowWaitlist(false)}
-      />
     </section>
   );
 };

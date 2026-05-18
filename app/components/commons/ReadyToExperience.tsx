@@ -1,13 +1,7 @@
-"use client";
-
-import { useState } from "react";
-import Button from "./Button";
-import WaitlistPopup from "./WaitlistPopup";
+import Link from "next/link";
+import Image from "next/image";
 
 const ReadyToExperience = () => {
-  const [email, setEmail] = useState("");
-  const [showWaitlist, setShowWaitlist] = useState(false);
-
   return (
     <section
       id="waitlist"
@@ -45,29 +39,41 @@ const ReadyToExperience = () => {
         </h1>
 
         <p className="text-white text-center text-sm md:text-base max-w-lg">
-          Sign up, and you&apos;ll be the first to know when the app is live
+          Download the Payva app now and experience cross-border payments.
         </p>
 
         <div
           className="
-            flex flex-row
+            flex flex-col md:flex-row
             items-center justify-center
             mx-auto
-            max-w-xl
+            max-w-xl gap-3
           "
         >
-          <Button
-            className="text-sm md:px-5 py-3 w-auto"
-            onClick={() => setShowWaitlist(true)}
+          <Link
+            href="https://play.google.com/store/apps/details?id=com.paymentpayva.payva"
+            target="_blank"
           >
-            Join the waitlist
-          </Button>
+            <Image
+              src="/google-play.png"
+              width={160}
+              height={160}
+              alt="Google Play Store"
+            />
+          </Link>
+          <Link
+            href="https://apps.apple.com/ng/app/payva-payment/id6755332619"
+            target="_blank"
+          >
+            <Image
+              src="/apple-store.png"
+              width={160}
+              height={160}
+              alt="Apple App Store"
+            />
+          </Link>
         </div>
       </div>
-      <WaitlistPopup
-        open={showWaitlist}
-        onClose={() => setShowWaitlist(false)}
-      />
     </section>
   );
 };

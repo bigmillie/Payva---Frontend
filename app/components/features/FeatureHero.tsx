@@ -5,6 +5,7 @@ import Button from "../commons/Button";
 import { useState } from "react";
 import WaitlistPopup from "../commons/WaitlistPopup";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 const FeatureHero = () => {
   const [showWaitlist, setShowWaitlist] = useState(false);
@@ -89,12 +90,12 @@ const FeatureHero = () => {
               transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
             >
               <span className="text-[#C5D4E0] text-sm md:text-base block pb-4">
-                Be the first to know when the Payva app is live.
+                The Payva app is live.
               </span>
 
-              <div className="flex justify-center lg:justify-start">
+              {/* <div className="flex justify-center lg:justify-start">
                 <FlipCountdown launchDate="2026-05-05T00:00:00" />
-              </div>
+              </div> */}
 
               <motion.div
                 className="
@@ -112,19 +113,41 @@ const FeatureHero = () => {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6, delay: 0.8, ease: "easeOut" }}
               >
-                <Button
+                {/* <Button
                   className="text-sm md:text-base shrink-0 md:px-10 md:py-5"
                   onClick={() => setShowWaitlist(true)}
                 >
                   Join the waitlist
-                </Button>
+                </Button> */}
+                <Link
+                  href="https://play.google.com/store/apps/details?id=com.paymentpayva.payva"
+                  target="_blank"
+                >
+                  <Image
+                    src="/google-play.png"
+                    width={200}
+                    height={160}
+                    alt="Google Play Store"
+                  />
+                </Link>
+                <Link
+                  href="https://apps.apple.com/ng/app/payva-payment/id6755332619"
+                  target="_blank"
+                >
+                  <Image
+                    src="/apple-store.png"
+                    width={200}
+                    height={160}
+                    alt="Apple App Store"
+                  />
+                </Link>
               </motion.div>
             </motion.div>
           </motion.div>
 
           {/* RIGHT */}
           <motion.div
-            className="relative z-20 md:mt-0 -bottom-20 md:-bottom-40 right-2 md:-right-6"
+            className="relative z-20 md:mt-0 -bottom-20 md:-bottom-10 right-2 md:-right-6"
             initial={{ opacity: 0, x: 100, scale: 0.9 }}
             animate={{ opacity: 1, x: 0, scale: 1 }}
             transition={{ duration: 1, delay: 0.4, ease: "easeOut" }}
@@ -132,7 +155,7 @@ const FeatureHero = () => {
             <Image
               src="/assets/phones1.png"
               alt="Payva Mobile Payment"
-              height={1200}
+              height={1800}
               width={900}
               className="w-full scale-100 md:scale-80 lg:scale-100"
               priority

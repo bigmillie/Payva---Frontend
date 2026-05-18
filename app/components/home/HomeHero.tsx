@@ -14,6 +14,7 @@ import {
   imageVariants,
   cardVariants,
 } from "@/utils/lib/variants";
+import Link from "next/link";
 
 const HomeHero = () => {
   const [showWaitlist, setShowWaitlist] = useState(false);
@@ -97,12 +98,12 @@ const HomeHero = () => {
               className="max-w-md w-full mx-auto md:mx-0"
             >
               <span className="text-[#C5D4E0] text-sm md:text-base block pb-4">
-                Be the first to know when the Payva app is live.
+                The Payva app is live.
               </span>
 
-              <div className="mx-0 -ml-2.5 md:ml-0 lg:ml-8 lg:text-start">
+              {/* <div className="mx-0 -ml-2.5 md:ml-0 lg:ml-8 lg:text-start">
                 <FlipCountdown launchDate="2026-05-05T00:00:00" />
-              </div>
+              </div> */}
 
               <motion.div
                 variants={cardVariants}
@@ -118,12 +119,34 @@ const HomeHero = () => {
                   gap-2
                 "
               >
-                <Button
+                {/* <Button
                   className="text-sm md:text-base shrink-0 md:px-10 md:py-5"
                   onClick={() => setShowWaitlist(true)}
                 >
                   Join the waitlist
-                </Button>
+                </Button> */}
+                <Link
+                  href="https://play.google.com/store/apps/details?id=com.paymentpayva.payva"
+                  target="_blank"
+                >
+                  <Image
+                    src="/google-play.png"
+                    width={200}
+                    height={120}
+                    alt="Google Play Store"
+                  />
+                </Link>
+                <Link
+                  href="https://apps.apple.com/ng/app/payva-payment/id6755332619"
+                  target="_blank"
+                >
+                  <Image
+                    src="/apple-store.png"
+                    width={200}
+                    height={120}
+                    alt="Apple App Store"
+                  />
+                </Link>
               </motion.div>
             </motion.div>
           </motion.div>

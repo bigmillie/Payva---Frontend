@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-const RATES_API_URL = "http://138.68.140.11:8087/api/v1/rates/all";
+const RATES_API_URL = "https://api.payvapayment.com/api/v1/rates/all";
 
 interface RateRecord {
   source: string;

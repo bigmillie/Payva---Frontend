@@ -1,11 +1,7 @@
-"use client";
-import { useState } from "react";
-import Button from "../commons/Button";
-import WaitlistPopup from "../commons/WaitlistPopup";
+import Link from "next/link";
+import Image from "next/image";
 
 const ChoosePayva = () => {
-  const [showWaitlist, setShowWaitlist] = useState(false);
-
   return (
     <section className="bg-[linear-gradient(116.28deg,#006D68_0%,#09253F_131.82%)] mx-4 md:mx-12 rounded-2xl md:rounded-4xl mb-12">
       <div className="flex font-famil flex-col gap-3 md:gap-5 items-center justify-center px-4 py-12 md:py-18 md:w-200 mx-auto">
@@ -19,24 +15,36 @@ const ChoosePayva = () => {
 
         <div
           className="
-            flex flex-row
+            flex flex-col md:flex-row
             items-center justify-center
             mx-auto
-            max-w-xl
+            max-w-xl gap-3
           "
         >
-          <Button
-            className="text-sm md:px-5 py-3 w-auto"
-            onClick={() => setShowWaitlist(true)}
+          <Link
+            href="https://play.google.com/store/apps/details?id=com.paymentpayva.payva"
+            target="_blank"
           >
-            Join the waitlist
-          </Button>
+            <Image
+              src="/google-play.png"
+              width={160}
+              height={160}
+              alt="Google Play Store"
+            />
+          </Link>
+          <Link
+            href="https://apps.apple.com/ng/app/payva-payment/id6755332619"
+            target="_blank"
+          >
+            <Image
+              src="/apple-store.png"
+              width={160}
+              height={160}
+              alt="Apple App Store"
+            />
+          </Link>
         </div>
       </div>
-      <WaitlistPopup
-        open={showWaitlist}
-        onClose={() => setShowWaitlist(false)}
-      />
     </section>
   );
 };
