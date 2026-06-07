@@ -45,7 +45,7 @@ const FollowUs = () => {
         >
           <motion.div variants={cardVariants} whileHover={{ scale: 1.1 }}>
             <Link
-              href="https://www.facebook.com/Payvaofficial?ref=1"
+              href="https://www.facebook.com/profile.php?id=61589752765840"
               target="_blank"
               className="text-white"
             >
@@ -59,12 +59,12 @@ const FollowUs = () => {
             </Link>
           </motion.div>
           <motion.div variants={cardVariants} whileHover={{ scale: 1.1 }}>
-            <Link href="https://www.instagram.com/payvapayment/">
+            <Link href="https://www.instagram.com/getpayva_?igsh=MWZycXhyOG8yOHkzYQ==">
               <Instagram className="text-white w-5 h-5" />
             </Link>
           </motion.div>
           <motion.div variants={cardVariants} whileHover={{ scale: 1.1 }}>
-            <Link href="https://x.com/Payvapayment">
+            <Link href="https://x.com/payvapayment?s=11">
               <Twitter className="text-white w-5 h-5" />
             </Link>
           </motion.div>
@@ -86,7 +86,7 @@ const FollowUs = () => {
 
           <motion.div variants={cardVariants} whileHover={{ scale: 1.1 }}>
             <Link
-              href="https://www.linkedin.com/company/payvapayment"
+              href="https://www.linkedin.com/company/payvapayment/"
               target="_blank"
               className="text-white"
             >
