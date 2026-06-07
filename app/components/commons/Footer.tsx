@@ -94,7 +94,7 @@ const Footer = () => {
             <Link href="https://x.com/payvapayment?s=11">
               <Twitter className="text-white w-5 h-5" />
             </Link>
-            <Link href="https://www.tiktok.com/@payvaofficial?is_from_webapp=1&sender_device=pc">
+            <Link href="https://www.tiktok.com/@getpayva_?is_from_webapp=1&sender_device=pc">
               <Image
                 src="/assets/tiktok.svg"
                 alt="Payva Payments Tiktok"

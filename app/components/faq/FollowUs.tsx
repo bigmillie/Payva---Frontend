@@ -71,7 +71,7 @@ const FollowUs = () => {
 
           <motion.div variants={cardVariants} whileHover={{ scale: 1.1 }}>
             <Link
-              href="https://www.tiktok.com/@payvaofficial?is_from_webapp=1&sender_device=pc"
+              href="https://www.tiktok.com/@getpayva_?is_from_webapp=1&sender_device=pc"
               target="_blank"
               className="text-white"
             >
