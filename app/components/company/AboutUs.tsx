@@ -103,7 +103,7 @@ const AboutUs = () => {
                 variants={itemVariants}
               >
                 <p className="text-[#E6F9F7] text-base">
-                  &rduo;Payva is more than a product. It&apos;s a promise that
+                  &rdquo;Payva is more than a product. It&apos;s a promise that
                   what we went through, others shouldn&apos;t have to. We
                   started from a personal struggle, but our mission is global:
                   <br />
