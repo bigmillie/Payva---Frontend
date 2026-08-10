@@ -276,6 +276,7 @@ export default async function BlogPostPage({
                       alt={nextPost.title}
                       width={1400}
                       height={900}
+                      unoptimized
                       className="h-full min-h-72 w-full object-cover transition duration-300 hover:scale-[1.02]"
                     />
                   </Link>

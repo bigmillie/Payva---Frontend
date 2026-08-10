@@ -19,6 +19,7 @@ const BlogCard = ({ post }: BlogCardProps) => {
           alt={post.title}
           width={1200}
           height={675}
+          unoptimized
           className="h-56 w-full object-cover"
         />
       </Link>
