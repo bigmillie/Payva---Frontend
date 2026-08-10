@@ -1,7 +1,7 @@
 import {
   aboutPage,
+  blogPage,
   contactPage,
-  faqPage,
   featurePage,
   privacyPolyPage,
   termOfUsePage,
@@ -37,6 +37,10 @@ export const quickLinks: IQuickLink[] = [
         title: "About Payva",
         route: aboutPage,
       },
+      {
+        title: "Blog",
+        route: blogPage,
+      },
     ],
   },
   {
@@ -44,7 +48,7 @@ export const quickLinks: IQuickLink[] = [
     links: [
       {
         title: "FAQs",
-        route: faqPage,
+        route: contactPage,
       },
       {
         title: "Contact us",

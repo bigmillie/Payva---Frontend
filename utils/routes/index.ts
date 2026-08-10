@@ -1,9 +1,10 @@
 export const homePage = "/";
+export const blogPage = "/blog";
 export const featurePage = "/features";
 export const aboutPage = "/company";
 export const howItWorksPage = "/features";
 export const faqPage = "/faq";
-export const contactPage = "/company";
+export const contactPage = "/contact";
 export const apiPage = "/thoughts";
 export const helpCenterPage = "/faq";
 export const privacyPolyPage = "/privacy-policy";

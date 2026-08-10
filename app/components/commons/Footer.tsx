@@ -85,16 +85,16 @@ const Footer = () => {
           </p>
 
           <div className="flex items-center gap-5">
-            <Link href="https://www.facebook.com/Payvaofficial?ref=1">
+            <Link href="https://www.facebook.com/profile.php?id=61589752765840">
               <Facebook className="text-white w-5 h-5" />
             </Link>
-            <Link href="https://www.instagram.com/payvapayment/">
+            <Link href="https://www.instagram.com/getpayva_?igsh=MWZycXhyOG8yOHkzYQ==">
               <Instagram className="text-white w-5 h-5" />
             </Link>
-            <Link href="https://x.com/Payvapayment">
+            <Link href="https://x.com/payvapayment?s=11">
               <Twitter className="text-white w-5 h-5" />
             </Link>
-            <Link href="https://www.tiktok.com/@payvaofficial?is_from_webapp=1&sender_device=pc">
+            <Link href="https://www.tiktok.com/@getpayva_?is_from_webapp=1&sender_device=pc">
               <Image
                 src="/assets/tiktok.svg"
                 alt="Payva Payments Tiktok"
@@ -103,7 +103,7 @@ const Footer = () => {
                 className="text-white w-6 h-6"
               />
             </Link>
-            <Link href="https://www.linkedin.com/company/payvapayment">
+            <Link href="https://www.linkedin.com/company/payvapayment/">
               <Linkedin className="text-white w-5 h-5" />
             </Link>
           </div>

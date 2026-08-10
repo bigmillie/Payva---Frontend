@@ -3,66 +3,136 @@ import { HelpCircle, Percent, Repeat } from "lucide-react";
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { useCurrency } from "@/context/CurrencyContext";
 
-interface Currency {
+interface RateRecord {
+  source: string;
+  destination: string;
+  buyingRate: number;
+  sellingRate: number;
+}
+
+interface RatesApiResponse {
+  success: boolean;
   code: string;
-  name: string;
-  flag: string;
-  symbol: string;
+  message: string;
+  data: RateRecord[];
 }
 
-interface ExchangeRates {
-  [key: string]: number;
-}
+const ACTIVE_PAIR = ["CAD", "NGN"] as const;
+const DEFAULT_SEND_AMOUNTS: Record<string, string> = {
+  CAD: "1.00",
+};
 
 const CurrencyConverter: React.FC = () => {
-  const [sendAmount, setSendAmount] = useState<string>("1000.00");
-  const [receiveAmount, setReceiveAmount] = useState<string>("0.00");
-  const [sendCurrency, setSendCurrency] = useState<string>("NGN");
-  const [receiveCurrency, setReceiveCurrency] = useState<string>("GBP");
-  const [exchangeRates, setExchangeRates] = useState<ExchangeRates>({});
+  const { currency, setCurrency, currencies } = useCurrency();
+  const [sendAmount, setSendAmount] = useState<string>(DEFAULT_SEND_AMOUNTS.CAD);
+  const [receiveCurrency, setReceiveCurrency] = useState<string>("CAD");
+  const [rateRecord, setRateRecord] = useState<RateRecord | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [showSendDropdown, setShowSendDropdown] = useState<boolean>(false);
   const [showReceiveDropdown, setShowReceiveDropdown] =
     useState<boolean>(false);
   const [rotationCount, setRotationCount] = useState<number>(0);
+  const sendCurrency = currency.code;
 
-  const currencies: Currency[] = [
-    { code: "NGN", name: "Nigerian Naira", flag: "/nigeria.png", symbol: "₦" },
-    // { code: "USD", name: "US Dollar", flag: "🇺🇸", symbol: "$" },
-    { code: "CAD", name: "Canadian Dollar", flag: "/canada.png", symbol: "$" },
-    { code: "GBP", name: "British Pound", flag: "/british.png", symbol: "£" },
-  ];
+  const getCalculatedRate = (
+    fromCurrency: string,
+    toCurrency: string,
+    record: RateRecord | null,
+  ) => {
+    if (!record) return 0;
+    if (fromCurrency === toCurrency) return 1;
 
-  // Fetch exchange rates
+    if (fromCurrency === record.source && toCurrency === record.destination) {
+      return record.buyingRate;
+    }
+
+    if (
+      fromCurrency === record.destination &&
+      toCurrency === record.source &&
+      record.sellingRate > 0
+    ) {
+      return 1 / record.sellingRate;
+    }
+
+    return 0;
+  };
+
+  const getDefaultAmount = (fromCurrency: string, record: RateRecord | null) => {
+    if (fromCurrency === "CAD") {
+      return DEFAULT_SEND_AMOUNTS.CAD;
+    }
+
+    if (
+      fromCurrency === "NGN" &&
+      record &&
+      record.destination === "NGN" &&
+      record.source === "CAD" &&
+      record.sellingRate > 0
+    ) {
+      return record.sellingRate.toFixed(2);
+    }
+
+    return "1.00";
+  };
+
   useEffect(() => {
     const fetchRates = async () => {
       try {
         setLoading(true);
-        // Using exchangerate-api.com (free tier)
-        const response = await fetch(
-          `https://api.exchangerate-api.com/v4/latest/${sendCurrency}`,
-        );
-        const data = await response.json();
-        setExchangeRates(data.rates);
-        setLoading(false);
+        const response = await fetch("/api/rates", {
+          cache: "no-store",
+        });
+
+        if (!response.ok) {
+          throw new Error("Failed to load rates");
+        }
+
+        const payload = (await response.json()) as RatesApiResponse;
+        const cadToNgnRate =
+          payload.data.find(
+            (record) => record.source === "CAD" && record.destination === "NGN",
+          ) || null;
+
+        setRateRecord(cadToNgnRate);
       } catch (error) {
         console.error("Error fetching exchange rates:", error);
+      } finally {
         setLoading(false);
       }
     };
 
     fetchRates();
-  }, [sendCurrency]);
 
-  // Calculate conversion
+    const interval = setInterval(fetchRates, 900000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   useEffect(() => {
-    if (exchangeRates[receiveCurrency]) {
-      const amount = parseFloat(sendAmount) || 0;
-      const converted = amount * exchangeRates[receiveCurrency];
-      setReceiveAmount(converted.toFixed(2));
+    if (sendCurrency === receiveCurrency) {
+      const nextCurrency = ACTIVE_PAIR.find((code) => code !== sendCurrency);
+      if (nextCurrency) {
+        setReceiveCurrency(nextCurrency);
+      }
     }
-  }, [sendAmount, exchangeRates, receiveCurrency]);
+  }, [receiveCurrency, sendCurrency]);
+
+  useEffect(() => {
+    if (!rateRecord) return;
+
+    setSendAmount(getDefaultAmount(sendCurrency, rateRecord));
+  }, [sendCurrency, rateRecord]);
+
+  const currentRate = getCalculatedRate(
+    sendCurrency,
+    receiveCurrency,
+    rateRecord,
+  );
+  const receiveAmount = currentRate
+    ? ((parseFloat(sendAmount) || 0) * currentRate).toFixed(2)
+    : "0.00";
 
   const handleSendAmountChange = (value: string) => {
     // Allow only numbers and decimal point
@@ -73,18 +143,21 @@ const CurrencyConverter: React.FC = () => {
 
   const handleSwapCurrencies = () => {
     setRotationCount(rotationCount + 1);
-    setSendCurrency(receiveCurrency);
+    setCurrency(receiveCurrency);
     setReceiveCurrency(sendCurrency);
     setSendAmount(receiveAmount);
   };
 
   const getCurrencyInfo = (code: string) => {
-    return currencies.find((c) => c.code === code) || currencies[0];
+    return currencies.find((c) => c.code === code) || currency;
   };
 
-  const currentRate = exchangeRates[receiveCurrency] || 0;
   const sendInfo = getCurrencyInfo(sendCurrency);
   const receiveInfo = getCurrencyInfo(receiveCurrency);
+  const exchangeRateDisplay =
+    sendCurrency === "NGN" && rateRecord && rateRecord.sellingRate > 0
+      ? `${rateRecord.sellingRate.toFixed(2)} NGN = 1 CAD`
+      : `1 ${sendCurrency} = ${currentRate.toFixed(2)} ${receiveCurrency}`;
 
   return (
     <div className="w-full max-w-2xl mx-auto bg-white rounded-3xl shadow-lg border-4 border-teal-500 p-4 z-40">
@@ -145,7 +218,7 @@ const CurrencyConverter: React.FC = () => {
                   <button
                     key={currency.code}
                     onClick={() => {
-                      setSendCurrency(currency.code);
+                      setCurrency(currency.code);
                       setShowSendDropdown(false);
                     }}
                     className="w-full flex items-center gap-3 px-4 py-3 hover:bg-gray-50 transition-colors"
@@ -304,9 +377,7 @@ const CurrencyConverter: React.FC = () => {
             {loading ? (
               <span className="text-gray-400">Loading...</span>
             ) : (
-              <>
-                1 {sendCurrency} = {currentRate.toFixed(4)} {receiveCurrency}
-              </>
+              <>{exchangeRateDisplay}</>
             )}
           </span>
         </span>
@@ -316,7 +387,7 @@ const CurrencyConverter: React.FC = () => {
         <div className="bg-gray-100 p-2 rounded-xl cursor-help flex items-center gap-1 w-max">
           <HelpCircle className="w-4 h-4 text-gray-600" />
           <span className="text-xs text-black">
-            Rate changes after every 30 seconds
+            Rates refresh automatically every 15 minutes
           </span>
         </div>
       </div>

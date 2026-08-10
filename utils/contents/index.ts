@@ -422,6 +422,15 @@ export const ourMainFAQs: FAQCategoryMain[] = [
       },
       {
         category: "Transfer Status & Tracking",
+        question: "How do I get a receipt?",
+        answer: {
+          type: "text",
+          content:
+            "Go to Dashboard → Transaction History → Select transaction → Download",
+        },
+      },
+      {
+        category: "Transfer Status & Tracking",
         question:
           "What should I do if my recipient hasn’t received the funds sent?",
         answer: {
@@ -530,15 +539,15 @@ export const ourMainFAQs: FAQCategoryMain[] = [
                 "Monthly: ₦60,000,000",
               ],
             },
-            {
-              title: "GBP Limits",
-              items: [
-                "Per transaction: £1,000",
-                "Daily: £3,000",
-                "Weekly: £10,000",
-                "Monthly: £20,000",
-              ],
-            },
+            // {
+            //   title: "GBP Limits",
+            //   items: [
+            //     "Per transaction: £1,000",
+            //     "Daily: £3,000",
+            //     "Weekly: £10,000",
+            //     "Monthly: £20,000",
+            //   ],
+            // },
           ],
         },
       },
@@ -549,15 +558,6 @@ export const ourMainFAQs: FAQCategoryMain[] = [
           type: "text",
           content:
             "Submit additional documents such as proof of income, bank statements, or source-of-funds  declarations for compliance review.",
-        },
-      },
-      {
-        category: "Fees & Limits",
-        question: "How do I get a receipt?",
-        answer: {
-          type: "text",
-          content:
-            "Go to Dashboard → Transaction History → Select transaction → Download",
         },
       },
     ],
@@ -689,7 +689,7 @@ export const ourFeatures = [
     title: "Enjoy Instant Transfers",
     imageUrl: "/assets/instant-transfer.png",
     description:
-      "Sending money across borders shouldn’t take days or hours. With Payva, your funds move instantly between Nigeria, Canada, and the UK—with zero fees, no delays, no friction.",
+      "Sending money across borders shouldn’t take days or hours. With Payva, your funds move instantly between Nigeria, Canada, and the UK(coming soon) — with zero fees, no delays, no friction.",
     points: [
       "Instant auto-conversion from CAD or GBP to Naira.",
       "Transparent rates, so you always know exactly what they’ll receive.",

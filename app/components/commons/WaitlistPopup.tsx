@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { X } from "lucide-react";
 import Button from "./Button";
+import { trackEvent } from "@/utils/lib/analytics";
 
 interface WaitlistPopupProps {
   open: boolean;
@@ -14,6 +15,20 @@ const WaitlistPopup = ({ open, onClose }: WaitlistPopupProps) => {
   const [name, setName] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const hasTrackedOpen = useRef(false);
+
+  useEffect(() => {
+    if (open && !hasTrackedOpen.current) {
+      trackEvent("waitlist_open", {
+        source: "waitlist_popup",
+      });
+      hasTrackedOpen.current = true;
+    }
+
+    if (!open) {
+      hasTrackedOpen.current = false;
+    }
+  }, [open]);
 
   if (!open) return null;
 
@@ -23,6 +38,9 @@ const WaitlistPopup = ({ open, onClose }: WaitlistPopupProps) => {
     if (!name || !email) return;
 
     setIsSubmitting(true);
+    trackEvent("waitlist_submit_start", {
+      source: "waitlist_popup",
+    });
 
     try {
       const res = await fetch("/api/waitlist", {
@@ -38,8 +56,14 @@ const WaitlistPopup = ({ open, onClose }: WaitlistPopupProps) => {
       setIsSuccess(true);
       setEmail("");
       setName("");
+      trackEvent("waitlist_submit_success", {
+        source: "waitlist_popup",
+      });
     } catch (err) {
       console.error(err);
+      trackEvent("waitlist_submit_failed", {
+        source: "waitlist_popup",
+      });
       alert("Something went wrong. Please try again.");
     } finally {
       setIsSubmitting(false);

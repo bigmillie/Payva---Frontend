@@ -20,3 +20,119 @@ body {
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
+
+.zoho-article-content {
+  font-size: 1.125rem;
+  line-height: 1.9;
+}
+
+.zoho-article-content > * + * {
+  margin-top: 1.5rem;
+}
+
+.zoho-article-content h1,
+.zoho-article-content h2,
+.zoho-article-content h3,
+.zoho-article-content h4 {
+  color: #0f172a;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-top: 2.5rem;
+}
+
+.zoho-article-content h1 {
+  font-size: 2.25rem;
+}
+
+.zoho-article-content h2 {
+  font-size: 1.875rem;
+}
+
+.zoho-article-content h3 {
+  font-size: 1.5rem;
+}
+
+.zoho-article-content p,
+.zoho-article-content li {
+  color: #334155;
+}
+
+.zoho-article-content a {
+  color: #006d68;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.zoho-article-content ul,
+.zoho-article-content ol {
+  margin-top: 1.5rem;
+  padding-left: 1.5rem;
+}
+
+.zoho-article-content ul {
+  list-style: disc;
+}
+
+.zoho-article-content ol {
+  list-style: decimal;
+}
+
+.zoho-article-content blockquote {
+  border-left: 4px solid #006d68;
+  background: #f8fafc;
+  border-radius: 0 1rem 1rem 0;
+  padding: 1.25rem;
+  font-style: italic;
+}
+
+.zoho-article-content img {
+  width: 100%;
+  height: auto;
+  border-radius: 1.5rem;
+  border: 1px solid #e2e8f0;
+  margin-top: 2rem;
+}
+
+.zoho-article-content table {
+  width: 100%;
+  border-collapse: collapse;
+  overflow: hidden;
+  border-radius: 1rem;
+  border: 1px solid #e2e8f0;
+  margin-top: 2rem;
+}
+
+.zoho-article-content th,
+.zoho-article-content td {
+  border: 1px solid #e2e8f0;
+  padding: 0.875rem;
+  text-align: left;
+}
+
+.zoho-article-content th {
+  background: #f8fafc;
+  color: #0f172a;
+}
+
+.zoho-article-content code {
+  background: #e2e8f0;
+  border-radius: 0.375rem;
+  padding: 0.125rem 0.375rem;
+  font-size: 0.95em;
+}
+
+.zoho-article-content pre {
+  background: #0f172a;
+  color: #e2e8f0;
+  overflow-x: auto;
+  border-radius: 1rem;
+  padding: 1rem 1.25rem;
+  margin-top: 2rem;
+}
+
+.zoho-article-content pre code {
+  background: transparent;
+  padding: 0;
+  color: inherit;
+}

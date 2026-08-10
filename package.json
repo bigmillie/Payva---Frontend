@@ -6,19 +6,33 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "audit:crawl": "node scripts/crawl-site.mjs --url https://www.payvapayment.com/",
+    "audit:vitals": "node scripts/analyze-web-vitals.mjs",
+    "audit:a11y": "node scripts/run-accessibility-check.mjs",
+    "audit:integrations": "node scripts/test-integrations.mjs",
+    "audit:redirects": "node scripts/validate-redirects.mjs --base-url https://www.payvapayment.com",
+    "audit:backups": "node scripts/audit-backups.mjs",
+    "audit:all": "npm run audit:crawl && npm run audit:vitals && npm run audit:a11y && npm run audit:integrations && npm run audit:redirects && npm run audit:backups"
   },
   "dependencies": {
+    "@portabletext/react": "^6.0.3",
+    "@portabletext/types": "^4.0.2",
+    "@sanity/image-url": "^2.0.3",
+    "@sanity/vision": "^5.14.1",
     "framer-motion": "^12.23.26",
     "googleapis": "^170.1.0",
     "lucide-react": "^0.562.0",
     "next": "16.1.1",
+    "next-sanity": "^12.1.1",
     "nodemailer": "^7.0.12",
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "react-markdown": "^10.1.0",
     "remark-gfm": "^4.0.1",
-    "sonner": "^2.0.7"
+    "sanity": "^5.14.1",
+    "sonner": "^2.0.7",
+    "styled-components": "^6.3.11"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",

@@ -53,9 +53,10 @@ const AboutUs = () => {
 
               <p className="text-[#4D4D4D] text-lg">
                 Behind every transfer is someone showing up for family. Payva
-                makes that easier. We help Nigerians home and abroad move money
-                across the UK, Canada, and Nigeria with confidence—easier, more
-                affordable, and with no worrying about delays or unclear rates.
+                makes that easier. We help Nigerians at home and abroad move
+                money across Canada, the UK (coming soon) and Nigeria with
+                confidence—easier, more affordable, and with no worrying about
+                delays or unclear rates.
               </p>
 
               {/* <Button
@@ -102,7 +103,7 @@ const AboutUs = () => {
                 variants={itemVariants}
               >
                 <p className="text-[#E6F9F7] text-base">
-                  &rduo;Payva is more than a product. It&apos;s a promise that
+                  &rdquo;Payva is more than a product. It&apos;s a promise that
                   what we went through, others shouldn&apos;t have to. We
                   started from a personal struggle, but our mission is global:
                   <br />

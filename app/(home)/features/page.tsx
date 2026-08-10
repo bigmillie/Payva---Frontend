@@ -1,7 +1,7 @@
-import ReadyToExperience from "@/app/components/commons/ReadyToExperience";
 import FAQSection from "@/app/components/faq/FAQSection";
 import FeatureHero from "@/app/components/features/FeatureHero";
 import OurFeatures from "@/app/components/features/OurFeatures";
+import TakeControl from "@/app/components/features/TakeControl";
 import UniqueSellingPoint from "@/app/components/features/UniqueSellingPoint";
 import { ourFeaturesFAQs } from "@/utils/contents";
 import { Metadata } from "next";
@@ -73,7 +73,7 @@ export default function FeaturesPage() {
         faqs={ourFeaturesFAQs}
         subtitle="Here Are Answers to Some of our Frequently Asked Questions"
       />
-      <ReadyToExperience />
+      <TakeControl />
     </main>
   );
 }

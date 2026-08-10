@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Tracking scripts (GA4/GTM)",
+    "status": "pass",
+    "details": "GA4 and GTM script tags are present in production HTML."
+  },
+  {
+    "name": "Waitlist API validation",
+    "status": "pass",
+    "details": "Validation check passed (missing email -> 400)."
+  },
+  {
+    "name": "Waitlist end-to-end submit",
+    "status": "skip",
+    "details": "Skipped: provide --email to run real Google Sheets + email flow."
+  },
+  {
+    "name": "Exchange rate provider",
+    "status": "pass",
+    "details": "Exchange-rate API responded with rates payload."
+  },
+  {
+    "name": "Geo provider (ipapi)",
+    "status": "warn",
+    "details": "ipapi failed: status=429"
+  },
+  {
+    "name": "Social profile endpoints",
+    "status": "pass",
+    "details": "https://www.facebook.com/Payvaofficial?ref=1 -> 200; https://www.instagram.com/payvapayment/ -> 200; https://x.com/Payvapayment -> 403; https://www.linkedin.com/company/payvapayment -> 200"
+  }
+]

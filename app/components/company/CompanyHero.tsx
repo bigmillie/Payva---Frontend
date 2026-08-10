@@ -1,21 +1,22 @@
 "use client";
 
-import { useState } from "react";
+// import { useState } from "react";
 import Image from "next/image";
-import FlipCountdown from "../Countdown";
-import Button from "../commons/Button";
+// import FlipCountdown from "../Countdown";
+// import Button from "../commons/Button";
 import WaitlistPopup from "../commons/WaitlistPopup";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 const CompanyHero = () => {
-  const [showWaitlist, setShowWaitlist] = useState(false);
+  // const [showWaitlist, setShowWaitlist] = useState(false);
 
   return (
     <>
-      <WaitlistPopup
+      {/* <WaitlistPopup
         open={showWaitlist}
         onClose={() => setShowWaitlist(false)}
-      />
+      /> */}
       <section
         className="
         relative
@@ -58,7 +59,7 @@ const CompanyHero = () => {
           relative
           z-10
           px-6 md:px-16
-          pt-44 md:pt-68
+          pt-40 pb-10 md:pt-52
           flex
           items-center
           justify-between
@@ -121,35 +122,58 @@ const CompanyHero = () => {
               transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
             >
               <span className="text-[#C5D4E0] text-sm md:text-base block pb-4">
-                Be the first to know when the Payva app is live.
+                The Payva app is live.
               </span>
 
-              <div className="mx-0 lg:ml-8 lg:text-start">
-                <FlipCountdown launchDate="2026-03-14T00:00:00" />
-              </div>
+              {/* <div className="mx-0 lg:ml-8 lg:text-start">
+                <FlipCountdown launchDate="2026-05-05T00:00:00" />
+              </div> */}
 
               <motion.div
                 className="
                 flex
                 items-center
-                justify-center lg:justify-start
+                justify-center md:justify-start
                 mx-4 md:mx-0
                 bg-transparent
                 p-0.5
                 rounded-lg
                 mt-5
+                mb-10
                 gap-2
               "
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6, delay: 0.8, ease: "easeOut" }}
               >
-                <Button
+                {/* <Button
                   className="text-sm md:text-base shrink-0 md:px-10 md:py-5"
                   onClick={() => setShowWaitlist(true)}
                 >
                   Join the waitlist
-                </Button>
+                </Button> */}
+                <Link
+                  href="https://play.google.com/store/apps/details?id=com.paymentpayva.payva"
+                  target="_blank"
+                >
+                  <Image
+                    src="/google-play.png"
+                    width={200}
+                    height={160}
+                    alt="Google Play Store"
+                  />
+                </Link>
+                <Link
+                  href="https://apps.apple.com/ng/app/payva-payment/id6755332619"
+                  target="_blank"
+                >
+                  <Image
+                    src="/apple-store.png"
+                    width={200}
+                    height={160}
+                    alt="Apple App Store"
+                  />
+                </Link>
               </motion.div>
             </motion.div>
           </motion.div>
@@ -173,7 +197,7 @@ const CompanyHero = () => {
               width={900}
               className="
               w-full
-              scale-140 md:scale-180
+              scale-190 md:scale-200
             "
               priority
             />

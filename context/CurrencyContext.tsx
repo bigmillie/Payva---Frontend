@@ -12,7 +12,7 @@ export interface Currency {
 const currencies: Currency[] = [
   { code: "NGN", name: "Nigerian Naira", flag: "/nigeria.png", symbol: "₦" },
   { code: "CAD", name: "Canadian Dollar", flag: "/canada.png", symbol: "$" },
-  { code: "GBP", name: "British Pound", flag: "/british.png", symbol: "£" },
+  // { code: "GBP", name: "British Pound", flag: "/british.png", symbol: "£" },
 ];
 
 interface CurrencyContextType {
@@ -56,7 +56,7 @@ export const CurrencyProvider = ({
         const countryToCurrency: Record<string, string> = {
           NG: "NGN", // Nigeria
           CA: "CAD", // Canada
-          GB: "GBP", // United Kingdom
+          // GB: "GBP", // United Kingdom
           // Add more country mappings as needed
         };
 
@@ -71,7 +71,7 @@ export const CurrencyProvider = ({
             // Don't save to localStorage yet - only save when user manually selects
           }
         }
-      } catch (error) {
+      } catch {
         console.log("Could not detect location, using default currency");
         // Keep the default currency (currencies[0])
       } finally {
