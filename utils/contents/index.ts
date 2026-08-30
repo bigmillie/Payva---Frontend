@@ -1826,6 +1826,65 @@ As a general condition, promotions offering monetary value are subject to the fo
 **Amendments:**
 - Monetary awards may be amended, removed, or replaced at any time at Payva's sole discretion`,
       },
+      {
+        title: "Referral Program",
+        slug: "referral-program",
+        content: `Payva may offer a referral program that allows eligible customers to receive rewards for referring new customers to Payva. Participation in the referral program is subject to the terms set out below and any additional promotional conditions communicated by Payva from time to time.
+
+### Eligibility
+
+To participate in the referral program, the referring customer must have an active Payva account in good standing.
+
+The person being referred must be a new Payva customer and must register using a valid referral code or referral link associated with the referring customer. The referred customer must also successfully complete Payva's applicable identity verification and account onboarding requirements.
+
+A customer who already has, or previously maintained, a Payva account may not qualify as a new customer for the purposes of the referral program.
+
+### Qualifying Transaction
+
+Unless otherwise stated as part of a specific Payva promotion, the referred customer must complete their first qualifying Canada-to-Nigeria transfer within 90 days of creating their Payva account.
+
+**To qualify, the transaction must:**
+- Be a single Canada-to-Nigeria transfer of at least CAD $200
+- Be initiated and completed through the referred customer's eligible Payva account
+- Be successfully processed and completed
+- Satisfy Payva's applicable transaction, compliance, and account requirements
+
+Multiple transactions may not be combined to satisfy the CAD $200 minimum transfer requirement.
+
+Cancelled, failed, reversed, refunded, or incomplete transactions do not qualify. Wallet funding, wallet-to-wallet transfers, or currency conversions that do not result in a qualifying Canada-to-Nigeria transfer will not qualify.
+
+### Referral Reward
+
+Upon successful completion and verification of all applicable referral requirements, Payva will credit CAD $20 to the referring customer and CAD $20 to the referred customer.
+
+Only one referral reward may be earned in respect of each successfully referred new customer.
+
+The reward will only become payable after Payva has verified that all applicable eligibility and qualifying transaction requirements have been satisfied. Payva may delay payment of a referral reward while an account, transaction, or referral is undergoing fraud, compliance, or eligibility review.
+
+Both the referring customer and the referred customer must have eligible Payva accounts in good standing when the reward is issued.
+
+### Referral Abuse and Misuse
+
+The referral program is intended for genuine referrals of new customers to Payva.
+
+Customers must not create or control multiple accounts, provide false or misleading information, manipulate transactions, create artificial referrals, coordinate transactions primarily for the purpose of obtaining referral rewards, or otherwise attempt to circumvent the requirements of the referral program.
+
+Payva reserves the right to investigate referral activity and may withhold, decline, reverse, or recover a referral reward where Payva reasonably determines that the referral, account, or qualifying transaction involves fraud, abuse, manipulation, misrepresentation, suspicious activity, or a breach of these Terms.
+
+Payva may also restrict or suspend participation in the referral program where repeated or unusual referral activity reasonably requires further review.
+
+### Program Changes and Availability
+
+The referral program may not be available to all customers, jurisdictions, currencies, transfer corridors, or Payva services.
+
+Payva may establish or change reasonable limits on the number or value of referral rewards that may be earned by a customer.
+
+Subject to applicable law, Payva may modify, suspend, replace, or discontinue the referral program, including its reward amount, qualifying transaction value, eligibility criteria, promotional period, or other program requirements.
+
+Where required, material changes will be communicated to affected customers in accordance with applicable law and Payva's applicable notice procedures.
+
+Participation in the referral program constitutes acceptance of this section of these Terms and any additional referral or promotional conditions communicated by Payva.`,
+      },
     ],
   },
 ];
