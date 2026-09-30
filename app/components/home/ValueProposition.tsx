@@ -77,7 +77,7 @@ const ValueProposition = () => {
           </div>
 
           <motion.img
-            src="/assets/zero-transfer.png"
+            src="/assets/illustrations/zero-fees.webp"
             alt="zero transfer fee"
             className="w-110 h-auto -mb-20 lg:h-120 object-contain"
             animate={shouldReduceMotion ? {} : { y: [0, -12, 0] }}
@@ -95,7 +95,7 @@ const ValueProposition = () => {
           variants={itemVariants}
         >
           <Image
-            src="/assets/man-1.png"
+            src="/assets/illustrations/value-man-street.webp"
             width={1400}
             height={1200}
             alt="man making payment with payva"
@@ -118,7 +118,7 @@ const ValueProposition = () => {
             </div>
 
             <motion.img
-              src="/assets/globe.png"
+              src="/assets/illustrations/globe.webp"
               alt="globe"
               className="absolute w-100 md:w-140 -bottom-32 -right-20"
               animate={
@@ -154,7 +154,7 @@ const ValueProposition = () => {
           </div>
 
           <Image
-            src="/assets/currency.png"
+            src="/assets/illustrations/percent-coins.webp"
             alt="currency"
             width={500}
             height={500}
@@ -168,7 +168,7 @@ const ValueProposition = () => {
           variants={itemVariants}
         >
           <Image
-            src="/assets/man-2.png"
+            src="/assets/illustrations/value-man-cafe.webp"
             width={1400}
             height={1200}
             alt="man making payment with payva"
@@ -190,7 +190,7 @@ const ValueProposition = () => {
             </div>
 
             <motion.img
-              src="/assets/currency-2.png"
+              src="/assets/illustrations/currency-coins.webp"
               alt="multi currency"
               className="md:block w-72.25 md:w-110 absolute right-0 -bottom-32 scale-110"
               animate={shouldReduceMotion ? {} : { rotate: 360 }}

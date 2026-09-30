@@ -153,7 +153,7 @@ const FeatureHero = () => {
             transition={{ duration: 1, delay: 0.4, ease: "easeOut" }}
           >
             <Image
-              src="/assets/phones1.png"
+              src="/assets/illustrations/app/feature-phones.webp"
               alt="Payva Mobile Payment"
               height={1800}
               width={900}

@@ -60,7 +60,7 @@ const UniqueSellingPoint = () => {
               viewport={{ once: true }}
             >
               <img
-                src="/assets/features/paybills.png"
+                src="/assets/illustrations/app/pay-bills-screen.webp"
                 alt="Pay bills interface"
                 className="w-35.5 md:w-60 md:max-w-sm"
               />
@@ -80,7 +80,7 @@ const UniqueSellingPoint = () => {
               viewport={{ once: true }}
             >
               <img
-                src="/assets/features/crossborder.png"
+                src="/assets/illustrations/app/exchange-screen.webp"
                 alt="Cross-border transfers interface"
                 className="w-35.5 md:w-60 md:max-w-sm"
               />
@@ -144,7 +144,7 @@ const UniqueSellingPoint = () => {
               <Image
                 height={550}
                 width={350}
-                src="/assets/features/hiddenfees1.png"
+                src="/assets/illustrations/app/transaction-details.webp"
                 alt="Transaction receipt showing no fees"
                 className="w-50 md:h-140 md:w-85.5 md:max-w-md object-contain"
               />
