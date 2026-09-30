@@ -6,6 +6,7 @@ import { ourFeatures } from "@/utils/contents";
 // import Button from "../commons/Button";
 import { useState } from "react";
 import WaitlistPopup from "../commons/WaitlistPopup";
+import TransferCorridorCard from "./TransferCorridorCard";
 import { motion } from "framer-motion";
 import {
   containerVariants,
@@ -58,13 +59,17 @@ const OurFeatures = () => {
                     className="w-full md:w-1/2 flex justify-center"
                     variants={imageVariants}
                   >
-                    <Image
-                      src={feature.imageUrl}
-                      alt={feature.title}
-                      width={520}
-                      height={520}
-                      className="w-full max-w-md object-contain"
-                    />
+                    {feature.visual === "transfer-corridors" ? (
+                      <TransferCorridorCard />
+                    ) : (
+                      <Image
+                        src={feature.imageUrl}
+                        alt={feature.title}
+                        width={520}
+                        height={520}
+                        className="w-full max-w-md object-contain"
+                      />
+                    )}
                   </motion.div>
 
                   {/* Content */}

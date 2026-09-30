@@ -688,6 +688,8 @@ export const ourFeatures = [
   {
     title: "Enjoy Instant Transfers",
     imageUrl: "/assets/illustrations/app/instant-transfer-v2.webp",
+    // Rendered as the animated TransferCorridorCard instead of the image
+    visual: "transfer-corridors",
     description:
       "Sending money across borders shouldn’t take days or hours. With Payva, your funds move instantly between Nigeria, Canada, and the UK(coming soon) — with zero fees, no delays, no friction.",
     points: [
