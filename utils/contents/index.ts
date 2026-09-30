@@ -698,7 +698,7 @@ export const ourFeatures = [
   },
   {
     title: "Receive Money Easily",
-    imageUrl: "/assets/illustrations/app/fund-wallets-card.webp",
+    imageUrl: "/assets/illustrations/app/fund-wallets-partners.webp",
     description:
       "Whether you’re in Nigeria or abroad, get funds straight into your Payva wallet instantly. It’s fast, seamless, and built for everyday needs.",
     points: [
