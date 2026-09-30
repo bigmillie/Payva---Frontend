@@ -1,4 +1,4 @@
-import { CircleCheck } from "lucide-react";
+import { BadgeCheck } from "lucide-react";
 import { bankOfCanadaRegistryLink, fintracRegistryLink } from "@/utils/routes";
 
 // Payva's regulators, each linking to the public registry that lists it.
@@ -32,7 +32,7 @@ export default function RegulatorBadge({
           rel="noopener noreferrer"
           className="inline-flex items-center gap-1.5 font-semibold hover:underline underline-offset-4"
         >
-          <CircleCheck
+          <BadgeCheck
             size={17}
             className={tone === "dark" ? "text-[#66D2CD]" : "text-[#006D68]"}
           />
