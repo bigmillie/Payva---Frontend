@@ -77,7 +77,7 @@ const ValueProposition = () => {
           </div>
 
           <motion.img
-            src="/assets/illustrations/zero-fees.webp"
+            src="/assets/zero-transfer.png"
             alt="zero transfer fee"
             className="w-110 h-auto -mb-20 lg:h-120 object-contain"
             animate={shouldReduceMotion ? {} : { y: [0, -12, 0] }}
@@ -118,7 +118,7 @@ const ValueProposition = () => {
             </div>
 
             <motion.img
-              src="/assets/illustrations/globe.webp"
+              src="/assets/globe.png"
               alt="globe"
               className="absolute w-100 md:w-140 -bottom-32 -right-20"
               animate={
@@ -154,7 +154,7 @@ const ValueProposition = () => {
           </div>
 
           <Image
-            src="/assets/illustrations/percent-coins.webp"
+            src="/assets/currency.png"
             alt="currency"
             width={500}
             height={500}
@@ -190,7 +190,7 @@ const ValueProposition = () => {
             </div>
 
             <motion.img
-              src="/assets/illustrations/currency-coins.webp"
+              src="/assets/currency-2.png"
               alt="multi currency"
               className="md:block w-72.25 md:w-110 absolute right-0 -bottom-32 scale-110"
               animate={shouldReduceMotion ? {} : { rotate: 360 }}
