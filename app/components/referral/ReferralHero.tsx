@@ -3,16 +3,16 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { imageVariants } from "@/utils/lib/variants";
-import {
-  campaignDates,
-  maxEarnings,
-  referralCampaign,
-} from "@/utils/contents/referral";
+import { formatMoney, type ReferralCampaign } from "@/utils/contents/referral";
 import { ReferralCtaButton } from "./ReferralCta";
 
-export default function ReferralHero() {
-  const { name, reward, minTransfer, maxReferrals, heroImage } =
-    referralCampaign;
+export default function ReferralHero({
+  campaign,
+}: {
+  campaign: ReferralCampaign;
+}) {
+  const reward = formatMoney(campaign, campaign.reward);
+  const minTransfer = formatMoney(campaign, campaign.minTransfer);
 
   return (
     <section className="relative overflow-hidden bg-[linear-gradient(160deg,#09253F_0%,#0B3A4A_55%,#006D68_130%)] text-white">
@@ -22,13 +22,13 @@ export default function ReferralHero() {
         <div className="flex flex-col gap-6 items-start">
           <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 pl-1.5 pr-4 py-1.5 text-xs md:text-sm font-semibold uppercase tracking-[0.14em]">
             <Image
-              src="/canada.png"
+              src={campaign.flag}
               alt=""
               width={22}
               height={22}
               className="rounded-full"
             />
-            {name}
+            {campaign.name}
           </span>
 
           <h1 className="text-5xl md:text-7xl xl:text-8xl font-bold leading-[0.95] tracking-[-0.03em] text-[#E6F9F7]">
@@ -37,12 +37,12 @@ export default function ReferralHero() {
           </h1>
 
           <p className="max-w-xl text-base md:text-xl leading-relaxed text-white/85">
-            Refer a friend to Payva. When they sign up and complete a qualifying
-            ${minTransfer}+ transfer, you both get ${reward}.
+            Refer a friend to Payva. When they sign up and complete a qualifying{" "}
+            {minTransfer}+ transfer, you both get {reward}.
           </p>
 
           <p className="text-sm font-semibold text-[#99E1DD]">
-            Limited time{campaignDates ? `: ${campaignDates}` : " only"}
+            Limited time{campaign.dates ? `: ${campaign.dates}` : " only"}
           </p>
 
           <div className="flex flex-col gap-3 w-full sm:w-auto">
@@ -60,7 +60,8 @@ export default function ReferralHero() {
               </a>
             </div>
             <p className="text-sm text-white/65">
-              Up to {maxReferrals} successful referrals. Up to ${maxEarnings}.
+              Up to {campaign.maxReferrals} successful referrals. Up to{" "}
+              {formatMoney(campaign, campaign.maxEarnings)}.
             </p>
           </div>
         </div>
@@ -73,14 +74,13 @@ export default function ReferralHero() {
         >
           <div className="relative aspect-4/5 sm:aspect-4/3 lg:aspect-4/5 overflow-hidden rounded-4xl">
             <Image
-              src={heroImage}
-              alt="Friends laughing together outdoors"
+              src={campaign.heroImage}
+              alt={campaign.heroAlt}
               fill
               priority
               sizes="(min-width: 1024px) 45vw, 100vw"
-              className="object-cover object-[35%_center]"
+              className="object-cover object-top"
             />
-            <div className="absolute inset-0 bg-linear-to-t from-[#09253F]/50 via-transparent to-transparent" />
           </div>
 
           <div className="absolute -bottom-5 left-4 md:-left-6 rounded-2xl bg-white text-[#09253F] px-5 py-4 shadow-[0_18px_40px_rgba(0,0,0,0.25)]">
@@ -88,7 +88,7 @@ export default function ReferralHero() {
               You + your friend
             </p>
             <p className="text-3xl font-bold leading-tight">
-              ${reward} <span className="text-[#66D2CD]">+</span> ${reward}
+              {reward} <span className="text-[#66D2CD]">+</span> {reward}
             </p>
           </div>
         </motion.div>

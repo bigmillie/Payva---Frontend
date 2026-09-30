@@ -1,16 +1,13 @@
 import Image from "next/image";
-import {
-  ballerOfTheWeek,
-  maxEarnings,
-  sampleBaller,
-} from "@/utils/contents/referral";
+import { formatMoney, type ReferralCampaign } from "@/utils/contents/referral";
 import { ReferralCtaButton } from "./ReferralCta";
 
-const baller =
-  ballerOfTheWeek ??
-  (process.env.NODE_ENV === "production" ? null : sampleBaller);
-
-export default function BallerOfTheWeek() {
+export default function BallerOfTheWeek({
+  campaign,
+}: {
+  campaign: ReferralCampaign;
+}) {
+  const baller = campaign.baller;
   if (!baller) return null;
 
   return (
@@ -54,7 +51,7 @@ export default function BallerOfTheWeek() {
               <div className="rounded-2xl bg-white/8 p-5">
                 <dt className="text-sm text-white/60">Earned</dt>
                 <dd className="mt-1 text-3xl md:text-4xl font-bold text-[#66D2CD]">
-                  ${baller.earned}
+                  {formatMoney(campaign, baller.earned)}
                 </dd>
               </div>
             </dl>
@@ -66,7 +63,7 @@ export default function BallerOfTheWeek() {
               variant="light"
               className="w-fit"
             >
-              Get your own ${maxEarnings}
+              Get your own {formatMoney(campaign, campaign.maxEarnings)}
             </ReferralCtaButton>
           </div>
         </div>

@@ -1,8 +1,8 @@
 import FAQAccordion from "../faq/FAQAccordion";
-import { referralFAQs } from "@/utils/contents/referral";
+import type { FAQItem } from "@/utils/types";
 import { ReferralCtaButton } from "./ReferralCta";
 
-export default function ReferralFAQ() {
+export default function ReferralFAQ({ faqs }: { faqs: FAQItem[] }) {
   return (
     <section id="faqs" className="scroll-mt-20 bg-[#F7F9F9]">
       <div className="mx-auto max-w-5xl px-4 md:px-12 py-20 md:py-28 font-famil">
@@ -12,7 +12,7 @@ export default function ReferralFAQ() {
         </h2>
 
         <div className="mt-10">
-          <FAQAccordion faqs={referralFAQs} />
+          <FAQAccordion faqs={faqs} />
         </div>
 
         <div className="mt-10 flex flex-col sm:flex-row sm:items-center gap-4">

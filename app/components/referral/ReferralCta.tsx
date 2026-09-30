@@ -5,7 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { X } from "lucide-react";
-import { referralCampaign } from "@/utils/contents/referral";
 import { appStoreLink, playStoreLink } from "@/utils/routes";
 import { trackEvent } from "@/utils/lib/analytics";
 
@@ -21,8 +20,12 @@ function detectPlatform(): Platform {
 }
 
 export function ReferralCtaProvider({
+  campaignName,
+  appReferralLink,
   children,
 }: {
+  campaignName: string;
+  appReferralLink: string | null;
   children: React.ReactNode;
 }) {
   const [open, setOpen] = useState(false);
@@ -42,13 +45,17 @@ export function ReferralCtaProvider({
   const openCta = (location: string) => {
     const platform = detectPlatform();
     setPlatform(platform);
-    trackEvent("referral_cta_click", { location, platform });
+    trackEvent("referral_cta_click", {
+      location,
+      platform,
+      campaign: campaignName,
+    });
 
     // Once the app handles links, take existing users straight to the
     // referral screen; the universal link falls back to the store if the
     // app isn't installed.
-    if (referralCampaign.appReferralLink && platform !== "desktop") {
-      window.location.href = referralCampaign.appReferralLink;
+    if (appReferralLink && platform !== "desktop") {
+      window.location.href = appReferralLink;
       return;
     }
     setOpen(true);
@@ -102,7 +109,7 @@ export function ReferralCtaProvider({
               </button>
 
               <p className="text-sm font-semibold uppercase tracking-[0.12em] text-[#006D68]">
-                {referralCampaign.name}
+                {campaignName}
               </p>
               <h2
                 id="referral-cta-title"

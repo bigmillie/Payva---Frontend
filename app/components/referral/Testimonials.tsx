@@ -3,17 +3,13 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import {
-  referralTestimonials,
-  sampleTestimonials,
-} from "@/utils/contents/referral";
+import type { ReferralTestimonial } from "@/utils/contents/referral";
 
-const testimonials =
-  referralTestimonials.length > 0 || process.env.NODE_ENV === "production"
-    ? referralTestimonials
-    : sampleTestimonials;
-
-export default function Testimonials() {
+export default function Testimonials({
+  testimonials,
+}: {
+  testimonials: ReferralTestimonial[];
+}) {
   const trackRef = useRef<HTMLUListElement>(null);
   const [paused, setPaused] = useState(false);
 
@@ -40,7 +36,7 @@ export default function Testimonials() {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const id = setInterval(() => scrollByCard(1), 4500);
     return () => clearInterval(id);
-  }, [paused]);
+  }, [paused, testimonials.length]);
 
   if (testimonials.length === 0) return null;
 

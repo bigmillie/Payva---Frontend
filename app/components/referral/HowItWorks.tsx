@@ -1,17 +1,23 @@
 import {
-  maxEarnings,
-  referralCampaign,
-  referralSteps,
+  formatMoney,
+  type ReferralCampaign,
+  type ReferralStep,
 } from "@/utils/contents/referral";
 import { ReferralCtaButton } from "./ReferralCta";
 
-export default function HowItWorks() {
+export default function HowItWorks({
+  campaign,
+  steps,
+}: {
+  campaign: ReferralCampaign;
+  steps: ReferralStep[];
+}) {
   return (
     <section id="how-it-works" className="scroll-mt-20 bg-white">
       <div className="mx-auto max-w-336 px-4 md:px-12 py-20 md:py-28 font-famil">
         <div className="max-w-2xl">
           <h2 className="text-3xl md:text-5xl font-bold tracking-[-0.02em] text-[#09253F]">
-            How to make a Canada Connection
+            How to make a {campaign.connection}
           </h2>
           <p className="mt-3 text-lg md:text-xl text-[#4D4D4D]">
             Five steps. That&rsquo;s it.
@@ -19,8 +25,8 @@ export default function HowItWorks() {
         </div>
 
         <ol className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-          {referralSteps.map((step, i) => {
-            const isLast = i === referralSteps.length - 1;
+          {steps.map((step, i) => {
+            const isLast = i === steps.length - 1;
             return (
               <li
                 key={step.number}
@@ -65,8 +71,8 @@ export default function HowItWorks() {
 
         <div className="mt-10 flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8">
           <p className="text-base md:text-lg text-[#2A2A2A]">
-            You can make up to {referralCampaign.maxReferrals} successful
-            referrals and earn up to ${maxEarnings}.
+            You can make up to {campaign.maxReferrals} successful referrals and
+            earn up to {formatMoney(campaign, campaign.maxEarnings)}.
           </p>
           <ReferralCtaButton location="how-it-works" className="shrink-0" />
         </div>

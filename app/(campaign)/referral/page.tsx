@@ -1,60 +1,24 @@
-import { Metadata } from "next";
-import ReferralHero from "@/app/components/referral/ReferralHero";
-import CampaignHook from "@/app/components/referral/CampaignHook";
-import HowItWorks from "@/app/components/referral/HowItWorks";
-import Testimonials from "@/app/components/referral/Testimonials";
-import BallerOfTheWeek from "@/app/components/referral/BallerOfTheWeek";
-import ReferralFAQ from "@/app/components/referral/ReferralFAQ";
-import FinalCta from "@/app/components/referral/FinalCta";
-import ReferralTerms from "@/app/components/referral/ReferralTerms";
+import { headers } from "next/headers";
+import { redirect } from "next/navigation";
+import { referralPage } from "@/utils/routes";
 
-const title = "Canada Connections — Refer a Friend, You Both Get $20";
-const description =
-  "Refer a friend to Payva. When they sign up and complete a qualifying $200+ transfer, you both get $20. Up to 5 referrals, up to $100.";
+// /referral sends each visitor to their country's campaign. Vercel sets
+// x-vercel-ip-country on every request; anyone outside the UK (or when the
+// header is missing, e.g. locally) gets the Canada page. Query strings such
+// as UTM tags are carried over so campaign tracking survives the redirect.
+export default async function ReferralRedirect({
+  searchParams,
+}: {
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
+}) {
+  const country = (await headers()).get("x-vercel-ip-country");
+  const region = country === "GB" ? "uk" : "ca";
 
-export const metadata: Metadata = {
-  title,
-  description,
+  const query = new URLSearchParams();
+  for (const [key, value] of Object.entries(await searchParams)) {
+    for (const v of [value].flat()) if (v !== undefined) query.append(key, v);
+  }
+  const qs = query.toString();
 
-  alternates: {
-    canonical: "https://payvapayment.com/referral",
-  },
-
-  openGraph: {
-    title: "Bring your people. Get rewarded. — Payva Canada Connections",
-    description,
-    url: "https://payvapayment.com/referral",
-    siteName: "Payva Payment",
-    images: [
-      {
-        url: "/seo/opengraph-image.webp",
-        width: 1200,
-        height: 630,
-        alt: "Payva Canada Connections referral campaign",
-      },
-    ],
-    type: "website",
-  },
-
-  twitter: {
-    card: "summary_large_image",
-    title: "Bring your people. Get rewarded. — Payva Canada Connections",
-    description,
-    images: ["/seo/opengraph-image.webp"],
-  },
-};
-
-export default function ReferralPage() {
-  return (
-    <main>
-      <ReferralHero />
-      <CampaignHook />
-      <HowItWorks />
-      <Testimonials />
-      <BallerOfTheWeek />
-      <ReferralFAQ />
-      <FinalCta />
-      <ReferralTerms />
-    </main>
-  );
+  redirect(`${referralPage}/${region}${qs ? `?${qs}` : ""}`);
 }

@@ -1,9 +1,11 @@
-import { referralCampaign } from "@/utils/contents/referral";
+import { formatMoney, type ReferralCampaign } from "@/utils/contents/referral";
 import { ReferralCtaButton } from "./ReferralCta";
 
-export default function CampaignHook() {
-  const { name, reward, minTransfer } = referralCampaign;
-
+export default function CampaignHook({
+  campaign,
+}: {
+  campaign: ReferralCampaign;
+}) {
   return (
     <section className="bg-[#E6F9F7]">
       <div className="mx-auto max-w-336 px-4 md:px-12 py-20 md:py-32 font-famil grid gap-10 lg:grid-cols-[1.4fr_1fr] lg:items-end">
@@ -16,10 +18,11 @@ export default function CampaignHook() {
 
         <div className="flex flex-col gap-6 items-start">
           <p className="text-base md:text-lg leading-relaxed text-[#2A2A2A]">
-            {name} is Payva&rsquo;s referral programme for people who know
-            someone who should be using Payva. Send your unique referral link.
-            When your friend signs up through your link and completes a
-            qualifying ${minTransfer}+ transfer, you both get ${reward}.
+            {campaign.name} is Payva&rsquo;s referral programme for people who
+            know someone who should be using Payva. Send your unique referral
+            link. When your friend signs up through your link and completes a
+            qualifying {formatMoney(campaign, campaign.minTransfer)}+ transfer,
+            you both get {formatMoney(campaign, campaign.reward)}.
           </p>
           <ReferralCtaButton location="hook" />
         </div>

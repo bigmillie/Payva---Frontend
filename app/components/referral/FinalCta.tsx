@@ -1,10 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
-import { maxEarnings, referralCampaign } from "@/utils/contents/referral";
+import { formatMoney, type ReferralCampaign } from "@/utils/contents/referral";
 import { appStoreLink, playStoreLink } from "@/utils/routes";
 import { ReferralCtaButton } from "./ReferralCta";
 
-export default function FinalCta() {
+export default function FinalCta({ campaign }: { campaign: ReferralCampaign }) {
   return (
     <section className="px-2 md:px-12 pt-12 md:pt-16 pb-12">
       <div className="mx-auto max-w-336 rounded-4xl bg-[#66D2CD] text-[#09253F] px-6 md:px-16 py-16 md:py-24 font-famil text-center flex flex-col items-center">
@@ -44,8 +44,8 @@ export default function FinalCta() {
         </div>
 
         <p className="mt-8 text-sm text-[#09253F]/75">
-          Up to {referralCampaign.maxReferrals} successful referrals. Up to $
-          {maxEarnings}. Limited-time campaign.
+          Up to {campaign.maxReferrals} successful referrals. Up to{" "}
+          {formatMoney(campaign, campaign.maxEarnings)}. Limited-time campaign.
         </p>
       </div>
     </section>
