@@ -43,36 +43,38 @@ const ReadyToExperience = () => {
           Download the Payva app now and experience cross-border payments.
         </p>
 
-        <div
-          className="
+        <div className="mx-auto inline-flex flex-col gap-3">
+          <div
+            className="
             flex flex-col md:flex-row
             items-center justify-center
             mx-auto
             max-w-xl gap-3
           "
-        >
-          <Link
-            href="https://play.google.com/store/apps/details?id=com.paymentpayva.payva"
-            target="_blank"
           >
-            <Image
-              src="/google-play.png"
-              width={160}
-              height={160}
-              alt="Google Play Store"
-            />
-          </Link>
-          <Link
-            href="https://apps.apple.com/ng/app/payva-payment/id6755332619"
-            target="_blank"
-          >
-            <Image
-              src="/apple-store.png"
-              width={160}
-              height={160}
-              alt="Apple App Store"
-            />
-          </Link>
+            <Link
+              href="https://play.google.com/store/apps/details?id=com.paymentpayva.payva"
+              target="_blank"
+            >
+              <Image
+                src="/google-play.png"
+                width={160}
+                height={160}
+                alt="Google Play Store"
+              />
+            </Link>
+            <Link
+              href="https://apps.apple.com/ng/app/payva-payment/id6755332619"
+              target="_blank"
+            >
+              <Image
+                src="/apple-store.png"
+                width={160}
+                height={160}
+                alt="Apple App Store"
+              />
+            </Link>
+          </div>
           <AppQrTile />
         </div>
       </div>

@@ -19,7 +19,7 @@ const steps = [
   },
   {
     icon: Send,
-    title: "Send. Funds arrive in minutes",
+    title: "Send. Funds arrive instantly",
     body: "Lock in the live rate with zero transfer fees, and follow your transfer in the app until it lands.",
   },
 ];
@@ -29,7 +29,7 @@ export default function HowItWorks() {
 
   return (
     <section id="how-it-works" className="scroll-mt-24 bg-white font-famil">
-      <div className="mx-auto max-w-7xl px-6 py-16 md:py-20">
+      <div className="mx-auto max-w-7xl px-6 pt-16 pb-10 md:pt-20 md:pb-12">
         <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div className="max-w-2xl">
             <p className="text-sm font-semibold uppercase tracking-[0.14em] text-[#006D68]">

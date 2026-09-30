@@ -189,7 +189,7 @@ const CurrencyConverter: React.FC = () => {
     <div className="w-full max-w-2xl mx-auto bg-white rounded-3xl shadow-lg border-4 border-teal-500 p-4 z-40">
       {/* Header */}
       <h2 className="text-[12.58px] tracking-normal leading-[17.97px] font-semibold text-[#4D4D4D] mb-2">
-        Zero transfer fees | Funds arrive in minutes
+        Zero transfer fees | Funds arrive instantly
       </h2>
 
       {/* Send Section */}

@@ -41,7 +41,7 @@ const ValueProposition = () => {
   return (
     <section className="bg-[#F9FFFE]">
       <motion.div
-        className="px-5 md:px-4 py-20 md:py-32 space-y-16 max-w-7xl mx-auto font-famil"
+        className="px-5 md:px-4 pt-12 pb-20 md:pt-16 md:pb-32 space-y-16 max-w-7xl mx-auto font-famil"
         variants={sectionVariants}
         initial="hidden"
         whileInView="visible"

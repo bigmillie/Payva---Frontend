@@ -18,7 +18,8 @@ export const addressLink = "https://maps.app.goo.gl/9vSza4jcYcu6HmX8A";
 export const telePhoneLink = "tel:+18254885474";
 export const fintracRegistryLink =
   "https://fintrac-canafe.canada.ca/msb-esm/reg-eng";
-export const msbRegistrationNumber = "C100000757";
+export const bankOfCanadaRegistryLink =
+  "https://www.bankofcanada.ca/regulatory-oversight/retail-payments/psp-registry/";
 // Universal links into the app (go.payvapayment.com). On a phone they open
 // the app at that screen, or a "Get the Payva app" page if it isn't installed.
 export const appOpenLink = "https://go.payvapayment.com/dl/open";

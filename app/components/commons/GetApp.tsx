@@ -162,28 +162,33 @@ export function GetAppProvider({ children }: { children: React.ReactNode }) {
   );
 }
 
-/** Small "scan to get the app" tile to sit beside the store badges on
- * larger screens. Hidden on phones, where the badges work directly. */
+/** "Scan to get the app" panel that sits under the store badges on larger
+ * screens, spanning their full width. Hidden on phones, where the badges
+ * work directly. */
 export function AppQrTile({ tone = "dark" }: { tone?: "dark" | "light" }) {
   return (
     <div
-      className={`hidden lg:flex shrink-0 self-center items-center gap-3 rounded-xl p-2 pr-4 ${
-        tone === "dark" ? "bg-white/10 text-white" : "bg-white text-[#09253F]"
+      className={`hidden lg:flex w-0 min-w-full items-center gap-4 rounded-2xl p-4 ${
+        tone === "dark"
+          ? "bg-white/10 text-white border border-white/10"
+          : "bg-white text-[#09253F]"
       }`}
     >
       <Image
         src="/assets/qr/get-app.svg"
         alt="QR code to get the Payva app"
-        width={56}
-        height={56}
-        className="size-14 shrink-0 rounded-md bg-white p-0.5"
+        width={112}
+        height={112}
+        className="size-28 shrink-0 rounded-lg bg-white p-1.5"
         unoptimized
       />
-      <span className="text-xs font-semibold leading-tight">
-        Scan to get
-        <br />
-        the app
-      </span>
+      <div className="text-left">
+        <p className="text-base font-bold">Scan to get the app</p>
+        <p className="mt-1 text-sm opacity-75">
+          On a laptop? Point your phone&rsquo;s camera at the code to download
+          Payva.
+        </p>
+      </div>
     </div>
   );
 }
