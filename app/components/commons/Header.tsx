@@ -9,6 +9,7 @@ import { X } from "lucide-react";
 import { useCurrency } from "@/context/CurrencyContext";
 import Image from "next/image";
 import WaitlistPopup from "./WaitlistPopup";
+import { useGetApp } from "./GetApp";
 
 const navLinks = [
   { label: "Features", href: "/features" },
@@ -28,43 +29,9 @@ const Header = () => {
 
   const isActive = (href: string) => pathname === href;
 
-  // 🔥 SMART APP REDIRECT
-  const handleAppRedirect = () => {
-    if (typeof window === "undefined") return;
-
-    const ua = navigator.userAgent;
-
-    const isIOS = /iPhone|iPad|iPod/i.test(ua);
-    const isAndroid = /android/i.test(ua);
-
-    const deepLink = "payva://home";
-
-    const params = new URLSearchParams({
-      utm_source: "website",
-      utm_medium: "header_cta",
-      utm_campaign: "app_download",
-    });
-
-    const androidStore =
-      "https://play.google.com/store/apps/details?id=com.paymentpayva.payva&" +
-      params.toString();
-
-    const iosStore =
-      "https://apps.apple.com/ng/app/payva-payment/id6755332619?" +
-      params.toString();
-
-    const fallback = isIOS ? iosStore : androidStore;
-
-    const timeout = setTimeout(() => {
-      window.location.href = fallback;
-    }, 1500);
-
-    window.location.href = deepLink;
-
-    window.addEventListener("blur", () => {
-      clearTimeout(timeout);
-    });
-  };
+  // Phones open the app (or its download page); laptops get a QR code.
+  const getApp = useGetApp();
+  const handleAppRedirect = () => getApp({ location: "header" });
 
   // Scroll detection
   useEffect(() => {

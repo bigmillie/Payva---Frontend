@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Familjen_Grotesk } from "next/font/google";
 import { CurrencyProvider } from "@/context/CurrencyContext";
+import { GetAppProvider } from "./components/commons/GetApp";
 import "./globals.css";
 import { Toaster } from "sonner";
 import Script from "next/script";
@@ -179,7 +180,9 @@ export default function RootLayout({
             alt=""
           />
         </noscript>
-        <CurrencyProvider>{children}</CurrencyProvider>
+        <CurrencyProvider>
+          <GetAppProvider>{children}</GetAppProvider>
+        </CurrencyProvider>
         <Toaster position="top-center" richColors />
       </body>
     </html>

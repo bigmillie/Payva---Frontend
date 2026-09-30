@@ -15,6 +15,8 @@ import {
   cardVariants,
 } from "@/utils/lib/variants";
 import Link from "next/link";
+import FintracBadge from "../commons/FintracBadge";
+import { AppQrTile } from "../commons/GetApp";
 
 const HomeHero = () => {
   const [showWaitlist, setShowWaitlist] = useState(false);
@@ -147,6 +149,7 @@ const HomeHero = () => {
                     alt="Apple App Store"
                   />
                 </Link>
+                <AppQrTile />
               </motion.div>
             </motion.div>
           </motion.div>
@@ -182,6 +185,9 @@ const HomeHero = () => {
               className="relative z-20 w-full lg:max-w-lg"
             >
               <CurrencyConverter />
+              <div className="mt-4 flex justify-center">
+                <FintracBadge />
+              </div>
             </motion.div>
           </motion.div>
         </motion.div>

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { AppQrTile } from "./GetApp";
 
 const ReadyToExperience = () => {
   return (
@@ -72,6 +73,7 @@ const ReadyToExperience = () => {
               alt="Apple App Store"
             />
           </Link>
+          <AppQrTile />
         </div>
       </div>
     </section>
