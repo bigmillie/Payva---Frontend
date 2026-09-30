@@ -36,9 +36,9 @@ interface RegionSettings {
   // "Limited time" without dates.
   startDate: string | null;
   endDate: string | null;
-  // Universal link into the app's referral screen (Profile → Referral).
-  // The app does not handle incoming links yet; until it does, leave this
-  // null and the CTA shows how to find the link in the app instead.
+  // Universal link into the app's Referral Hub. On phones it opens the app
+  // straight to the Hub (after login); desktop visitors, or null here, get
+  // the sheet explaining where to find the link in the app instead.
   appReferralLink: string | null;
   heroImage: string;
   heroAlt: string;
@@ -66,7 +66,7 @@ const settings: Record<ReferralRegion, RegionSettings> = {
     maxReferrals: 5,
     startDate: null,
     endDate: null,
-    appReferralLink: null,
+    appReferralLink: "https://go.payvapayment.com/dl/referrals",
     heroImage: "/assets/referral/hero-ca.webp",
     heroAlt:
       "Illustration of two friends sharing a Payva referral link, with the Toronto skyline behind them",
@@ -124,7 +124,7 @@ const settings: Record<ReferralRegion, RegionSettings> = {
     maxReferrals: 5,
     startDate: null,
     endDate: null,
-    appReferralLink: null,
+    appReferralLink: "https://go.payvapayment.com/dl/referrals",
     heroImage: "/assets/referral/hero-uk.webp",
     heroAlt:
       "Illustration of two friends sharing a Payva referral link, with the London skyline behind them",
@@ -297,7 +297,7 @@ export function getReferralContent(region: ReferralRegion) {
     {
       question: "Where can I find my referral link?",
       answer: text(
-        "Your referral link is available in the Payva app. Open the app, go to Profile, then Referral.",
+        "Your referral link is available in the Payva app. Open the app and tap the invite card on Home, or go to Profile, then Referrals.",
       ),
     },
     {

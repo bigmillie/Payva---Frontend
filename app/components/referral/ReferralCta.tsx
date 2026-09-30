@@ -51,9 +51,8 @@ export function ReferralCtaProvider({
       campaign: campaignName,
     });
 
-    // Once the app handles links, take existing users straight to the
-    // referral screen; the universal link falls back to the store if the
-    // app isn't installed.
+    // On phones, the universal link opens the app's Referral Hub; without
+    // the app installed, go.payvapayment.com handles the fallback.
     if (appReferralLink && platform !== "desktop") {
       window.location.href = appReferralLink;
       return;
@@ -121,7 +120,7 @@ export function ReferralCtaProvider({
               <ol className="mt-6 space-y-4">
                 {[
                   "Open the Payva app and log in.",
-                  "Tap Profile, then Referral.",
+                  "Tap the invite card on Home, or Profile → Referrals.",
                   "Copy your link and send it to your people.",
                 ].map((step, i) => (
                   <li
@@ -144,7 +143,7 @@ export function ReferralCtaProvider({
                 </p>
                 <p className="mt-1 text-sm text-[#4D4D4D]">
                   Download Payva, sign up, and your link will be waiting under
-                  Profile → Referral.
+                  Profile → Referrals.
                 </p>
                 <div className="mt-4 flex flex-wrap gap-3">
                   {storeBadges.map((b) => (
