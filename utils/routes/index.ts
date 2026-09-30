@@ -16,3 +16,8 @@ export const linkendInLink = "https://linkedin.com";
 export const facebookLink = "https://www.facebook.com/Payvaofficial?ref=1";
 export const addressLink = "https://maps.app.goo.gl/9vSza4jcYcu6HmX8A";
 export const telePhoneLink = "tel:+18254885474";
+export const referralPage = "/referral";
+export const playStoreLink =
+  "https://play.google.com/store/apps/details?id=com.paymentpayva.payva";
+export const appStoreLink =
+  "https://apps.apple.com/ng/app/payva-payment/id6755332619";
