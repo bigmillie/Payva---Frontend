@@ -11,7 +11,7 @@ const features = [
     title: "Enjoy Instant Transfers",
     description:
       "Send money instantly across Nigeria, Canada, and the UK (coming soon). No delays, no complications—just reliable transfers whenever you need them.",
-    image: "/assets/illustrations/app/send-confirm.webp",
+    image: "/assets/illustrations/app/send-confirm-v2.webp",
     highlight: false,
   },
   {
@@ -19,7 +19,7 @@ const features = [
     title: "Receive Money Easily",
     description:
       "Get funds straight into your Payva wallet—seamless and perfect for families, creatives, and students.",
-    image: "/assets/illustrations/app/fund-wallet.webp",
+    image: "/assets/illustrations/app/fund-ngn-wallet.webp",
     highlight: true,
   },
   {
@@ -27,7 +27,7 @@ const features = [
     title: "Pay Bills on the Go",
     description:
       "Stay connected to home with easy bill payments for electricity, data, internet, and more. It’s quick, simple, and stress-free.",
-    image: "/assets/illustrations/app/bills-tab.webp",
+    image: "/assets/illustrations/app/cable-tv.webp",
     highlight: true,
   },
   {
@@ -35,7 +35,7 @@ const features = [
     title: "Make Tuition Payment Abroad Directly",
     description:
       "Make secure, direct tuition payment to Canadian schools from Nigeria in a few taps—right from the Payva app.",
-    image: "/assets/illustrations/app/send-amount.webp",
+    image: "/assets/illustrations/app/send-money-v2.webp",
     highlight: false,
     comingSoon: true,
   },

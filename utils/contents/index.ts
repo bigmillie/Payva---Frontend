@@ -687,7 +687,7 @@ export const ourMainFAQs: FAQCategoryMain[] = [
 export const ourFeatures = [
   {
     title: "Enjoy Instant Transfers",
-    imageUrl: "/assets/illustrations/app/instant-transfer.webp",
+    imageUrl: "/assets/illustrations/app/instant-transfer-v2.webp",
     description:
       "Sending money across borders shouldn’t take days or hours. With Payva, your funds move instantly between Nigeria, Canada, and the UK(coming soon) — with zero fees, no delays, no friction.",
     points: [
@@ -698,7 +698,7 @@ export const ourFeatures = [
   },
   {
     title: "Receive Money Easily",
-    imageUrl: "/assets/illustrations/app/receive-money.webp",
+    imageUrl: "/assets/illustrations/app/fund-wallets-card.webp",
     description:
       "Whether you’re in Nigeria or abroad, get funds straight into your Payva wallet instantly. It’s fast, seamless, and built for everyday needs.",
     points: [
@@ -709,7 +709,7 @@ export const ourFeatures = [
   },
   {
     title: "Pay Bills on the Go",
-    imageUrl: "/assets/illustrations/app/pay-bills-card.webp",
+    imageUrl: "/assets/illustrations/app/bill-category-card.webp",
     description:
       "Stay connected to your friends and family. Pay their essential bills from the app instantly, so they’re never left without electricity, internet, airtime, or their favorite shows.",
     points: [
