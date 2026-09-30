@@ -193,7 +193,7 @@ const CurrencyConverter: React.FC = () => {
       </h2>
 
       {/* Send Section */}
-      <div className="bg-[#EBF2F6] rounded-2xl p-6 pt-10 mb-4">
+      <div className="bg-[#F7F4ED] rounded-2xl p-6 pt-10 mb-4">
         <h3 className="text-[17.87px] font-semibold text-[#161618] leading-[25.53px] tracking-normal mb-4">
           If I send
         </h3>
@@ -299,7 +299,7 @@ const CurrencyConverter: React.FC = () => {
       </div>
 
       {/* Receive Section */}
-      <div className="bg-[#EBF2F6] rounded-2xl p-6 pt-10 mt-4">
+      <div className="bg-[#F7F4ED] rounded-2xl p-6 pt-10 mt-4">
         <h3 className="text-[17.87px] font-semibold text-[#161618] leading-[25.53px] tracking-normal mb-4">
           Beneficiary receives
         </h3>
