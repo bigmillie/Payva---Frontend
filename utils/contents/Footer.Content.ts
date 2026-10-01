@@ -5,6 +5,7 @@ import {
   featurePage,
   privacyPolyPage,
   termOfUsePage,
+  referralPage,
 } from "../routes";
 import { IQuickLink } from "../types";
 
@@ -40,6 +41,10 @@ export const quickLinks: IQuickLink[] = [
       {
         title: "Blog",
         route: blogPage,
+      },
+      {
+        title: "Referral",
+        route: referralPage,
       },
     ],
   },
