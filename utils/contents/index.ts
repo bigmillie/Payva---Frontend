@@ -687,7 +687,9 @@ export const ourMainFAQs: FAQCategoryMain[] = [
 export const ourFeatures = [
   {
     title: "Enjoy Instant Transfers",
-    imageUrl: "/assets/instant-transfer.png",
+    imageUrl: "/assets/illustrations/app/instant-transfer-v2.webp",
+    // Rendered as the animated TransferCorridorCard instead of the image
+    visual: "transfer-corridors",
     description:
       "Sending money across borders shouldn’t take days or hours. With Payva, your funds move instantly between Nigeria, Canada, and the UK(coming soon) — with zero fees, no delays, no friction.",
     points: [
@@ -698,7 +700,7 @@ export const ourFeatures = [
   },
   {
     title: "Receive Money Easily",
-    imageUrl: "/assets/receive-money.png",
+    imageUrl: "/assets/illustrations/app/fund-wallets-open-banking.webp",
     description:
       "Whether you’re in Nigeria or abroad, get funds straight into your Payva wallet instantly. It’s fast, seamless, and built for everyday needs.",
     points: [
@@ -709,7 +711,7 @@ export const ourFeatures = [
   },
   {
     title: "Pay Bills on the Go",
-    imageUrl: "/assets/pay-bills.png",
+    imageUrl: "/assets/illustrations/app/bill-category-card.webp",
     description:
       "Stay connected to your friends and family. Pay their essential bills from the app instantly, so they’re never left without electricity, internet, airtime, or their favorite shows.",
     points: [
@@ -720,7 +722,7 @@ export const ourFeatures = [
   },
   {
     title: "Pay Tuition Abroad Directly",
-    imageUrl: "/assets/pay-tuition.png",
+    imageUrl: "/assets/illustrations/feature-tuition.webp",
     tag: "Coming Soon",
     description:
       "Pay tuition directly to verified Canadian schools in just a few taps. Fast, secure, and stress-free—giving students and families peace of mind, no matter the distance.",

@@ -136,3 +136,23 @@ body {
   padding: 0;
   color: inherit;
 }
+
+/* Transfer corridor card (Features): each slide glides in from the left */
+@keyframes corridor-slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.corridor-slide-in {
+  animation: corridor-slide-in 0.45s ease-out both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .corridor-slide-in {
+    animation: none;
+  }
+}

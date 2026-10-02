@@ -15,6 +15,8 @@ import {
   cardVariants,
 } from "@/utils/lib/variants";
 import Link from "next/link";
+import RegulatorBadge from "../commons/RegulatorBadge";
+import { AppQrTile } from "../commons/GetApp";
 
 const HomeHero = () => {
   const [showWaitlist, setShowWaitlist] = useState(false);
@@ -105,49 +107,50 @@ const HomeHero = () => {
                 <FlipCountdown launchDate="2026-05-05T00:00:00" />
               </div> */}
 
-              <motion.div
-                variants={cardVariants}
-                className="
+              <div className="mt-5 inline-flex flex-col gap-3 mx-4 md:mx-0">
+                <motion.div
+                  variants={cardVariants}
+                  className="
                   flex
                   items-center
                   justify-center lg:justify-start
                   mx-4 md:mx-0
                   bg-transparent
-                  p-0.5
                   rounded-lg
-                  mt-5
                   gap-2
                 "
-              >
-                {/* <Button
+                >
+                  {/* <Button
                   className="text-sm md:text-base shrink-0 md:px-10 md:py-5"
                   onClick={() => setShowWaitlist(true)}
                 >
                   Join the waitlist
                 </Button> */}
-                <Link
-                  href="https://play.google.com/store/apps/details?id=com.paymentpayva.payva"
-                  target="_blank"
-                >
-                  <Image
-                    src="/google-play.png"
-                    width={200}
-                    height={120}
-                    alt="Google Play Store"
-                  />
-                </Link>
-                <Link
-                  href="https://apps.apple.com/ng/app/payva-payment/id6755332619"
-                  target="_blank"
-                >
-                  <Image
-                    src="/apple-store.png"
-                    width={200}
-                    height={120}
-                    alt="Apple App Store"
-                  />
-                </Link>
-              </motion.div>
+                  <Link
+                    href="https://play.google.com/store/apps/details?id=com.paymentpayva.payva"
+                    target="_blank"
+                  >
+                    <Image
+                      src="/google-play.png"
+                      width={200}
+                      height={120}
+                      alt="Google Play Store"
+                    />
+                  </Link>
+                  <Link
+                    href="https://apps.apple.com/ng/app/payva-payment/id6755332619"
+                    target="_blank"
+                  >
+                    <Image
+                      src="/apple-store.png"
+                      width={200}
+                      height={120}
+                      alt="Apple App Store"
+                    />
+                  </Link>
+                </motion.div>
+                <AppQrTile />
+              </div>
             </motion.div>
           </motion.div>
 
@@ -182,6 +185,9 @@ const HomeHero = () => {
               className="relative z-20 w-full lg:max-w-lg"
             >
               <CurrencyConverter />
+              <div className="mt-4 flex justify-center">
+                <RegulatorBadge />
+              </div>
             </motion.div>
           </motion.div>
         </motion.div>
