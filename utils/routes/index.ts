@@ -24,6 +24,7 @@ export const bankOfCanadaRegistryLink =
 // the app at that screen, or a "Get the Payva app" page if it isn't installed.
 export const appOpenLink = "https://go.payvapayment.com/dl/open";
 export const appSendMoneyLink = "https://go.payvapayment.com/dl/transfer";
+export const referralPage = "/referral";
 export const playStoreLink =
   "https://play.google.com/store/apps/details?id=com.paymentpayva.payva";
 export const appStoreLink =
