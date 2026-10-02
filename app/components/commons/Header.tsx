@@ -8,11 +8,11 @@ import Button from "./Button";
 import { X } from "lucide-react";
 import { useCurrency } from "@/context/CurrencyContext";
 import Image from "next/image";
-import WaitlistPopup from "./WaitlistPopup";
 
 const navLinks = [
   { label: "Features", href: "/features" },
   { label: "Company", href: "/company" },
+  { label: "Referral", href: "/referral" },
   { label: "Contact Us", href: "/contact" },
   { label: "Blog", href: "/blog" },
 ];
@@ -24,7 +24,6 @@ const Header = () => {
 
   const { currency, setCurrency, currencies } = useCurrency();
   const [showCurrencyDropdown, setShowCurrencyDropdown] = useState(false);
-  const [showWaitlist, setShowWaitlist] = useState(false);
 
   const isActive = (href: string) => pathname === href;
 
@@ -109,7 +108,7 @@ const Header = () => {
             <Logo type="primary" />
 
             {/* Desktop Nav */}
-            <ul className="hidden lg:flex items-center gap-12">
+            <ul className="hidden lg:flex items-center gap-6">
               {navLinks.map(({ label, href }) => (
                 <Link
                   key={href}
