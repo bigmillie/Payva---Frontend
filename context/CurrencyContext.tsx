@@ -1,6 +1,7 @@
 "use client";
 
 import React, { createContext, useContext, useEffect, useState } from "react";
+import { detectCountryCode } from "@/utils/location";
 
 export interface Currency {
   code: string;
@@ -49,8 +50,7 @@ export const CurrencyProvider = ({
 
       // No saved preference, auto-detect from location
       try {
-        const response = await fetch("https://ipapi.co/json/");
-        const data = await response.json();
+        const countryCode = await detectCountryCode();
 
         // Map country code to your available currencies
         const countryToCurrency: Record<string, string> = {
@@ -60,7 +60,7 @@ export const CurrencyProvider = ({
           // Add more country mappings as needed
         };
 
-        const detectedCurrencyCode = countryToCurrency[data.country_code];
+        const detectedCurrencyCode = countryToCurrency[countryCode ?? ""];
 
         if (detectedCurrencyCode) {
           const matchedCurrency = currencies.find(
