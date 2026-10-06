@@ -191,7 +191,7 @@ const CompanyHero = () => {
             transition={{ duration: 1, delay: 0.4, ease: "easeOut" }}
           >
             <Image
-              src="/assets/woman-1.webp"
+              src="/assets/illustrations/company-hero-woman-v2.webp"
               alt="Payva Mobile Payment"
               height={1200}
               width={900}

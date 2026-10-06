@@ -32,7 +32,7 @@ const OurLens = () => {
           {/* Image */}
           <motion.div className="w-full md:w-1/2" variants={fadeInLeft}>
             <Image
-              src="/assets/about/about-1.png"
+              src="/assets/illustrations/about-vision.webp"
               alt="Our Lens"
               width={700}
               height={420}

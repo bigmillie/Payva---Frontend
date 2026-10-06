@@ -153,11 +153,11 @@ const FeatureHero = () => {
             transition={{ duration: 1, delay: 0.4, ease: "easeOut" }}
           >
             <Image
-              src="/assets/phones1.png"
-              alt="Payva Mobile Payment"
-              height={1800}
-              width={900}
-              className="w-full scale-100 md:scale-80 lg:scale-100"
+              src="/assets/illustrations/app/home-rates-v2.webp"
+              alt="The Payva app home screen and live exchange rates"
+              height={1400}
+              width={1400}
+              className="w-full max-w-[520px] lg:max-w-[600px] mx-auto"
               priority
             />
           </motion.div>

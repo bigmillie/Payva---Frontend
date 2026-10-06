@@ -1,9 +1,10 @@
 "use client";
-import { HelpCircle, Percent, Repeat } from "lucide-react";
+import { ArrowRight, HelpCircle, Percent, Repeat } from "lucide-react";
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { useCurrency } from "@/context/CurrencyContext";
+import { useGetApp } from "./commons/GetApp";
 
 interface RateRecord {
   source: string;
@@ -35,6 +36,7 @@ const CurrencyConverter: React.FC = () => {
     useState<boolean>(false);
   const [rotationCount, setRotationCount] = useState<number>(0);
   const sendCurrency = currency.code;
+  const getApp = useGetApp();
 
   const getCalculatedRate = (
     fromCurrency: string,
@@ -159,15 +161,39 @@ const CurrencyConverter: React.FC = () => {
       ? `${rateRecord.sellingRate.toFixed(2)} NGN = 1 CAD`
       : `1 ${sendCurrency} = ${currentRate.toFixed(2)} ${receiveCurrency}`;
 
+  // Turn the calculation into an action: "Send ₦1,002.00 now"
+  const receiveValue = parseFloat(receiveAmount) || 0;
+  const receiveFormatted = `${receiveInfo.symbol}${receiveValue.toLocaleString(
+    "en-US",
+    { minimumFractionDigits: 2, maximumFractionDigits: 2 },
+  )}`;
+  const ctaLabel =
+    !loading && receiveValue > 0 ? `Send ${receiveFormatted} now` : "Start sending";
+
+  const handleSendNow = () =>
+    getApp({
+      location: "calculator",
+      destination: "transfer",
+      detail:
+        receiveValue > 0
+          ? `They receive ${receiveFormatted}`
+          : undefined,
+      payload: {
+        send_currency: sendCurrency,
+        send_amount: parseFloat(sendAmount) || 0,
+        receive_currency: receiveCurrency,
+      },
+    });
+
   return (
     <div className="w-full max-w-2xl mx-auto bg-white rounded-3xl shadow-lg border-4 border-teal-500 p-4 z-40">
       {/* Header */}
       <h2 className="text-[12.58px] tracking-normal leading-[17.97px] font-semibold text-[#4D4D4D] mb-2">
-        Zero transfer fees | Funds arrive in minutes
+        Zero transfer fees | Funds arrive instantly
       </h2>
 
       {/* Send Section */}
-      <div className="bg-[#EBF2F6] rounded-2xl p-6 pt-10 mb-4">
+      <div className="bg-[#F7F4ED] rounded-2xl p-6 pt-10 mb-4">
         <h3 className="text-[17.87px] font-semibold text-[#161618] leading-[25.53px] tracking-normal mb-4">
           If I send
         </h3>
@@ -273,7 +299,7 @@ const CurrencyConverter: React.FC = () => {
       </div>
 
       {/* Receive Section */}
-      <div className="bg-[#EBF2F6] rounded-2xl p-6 pt-10 mt-4">
+      <div className="bg-[#F7F4ED] rounded-2xl p-6 pt-10 mt-4">
         <h3 className="text-[17.87px] font-semibold text-[#161618] leading-[25.53px] tracking-normal mb-4">
           Beneficiary receives
         </h3>
@@ -391,6 +417,16 @@ const CurrencyConverter: React.FC = () => {
           </span>
         </div>
       </div>
+
+      {/* Primary action, right where the visitor decided how much to send */}
+      <button
+        type="button"
+        onClick={handleSendNow}
+        className="mt-5 w-full flex items-center justify-center gap-2 rounded-2xl bg-[#006D68] px-6 py-4 text-base md:text-lg font-semibold text-white transition-colors hover:bg-[#00524E]"
+      >
+        {ctaLabel}
+        <ArrowRight size={20} />
+      </button>
     </div>
   );
 };

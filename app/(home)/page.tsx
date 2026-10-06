@@ -1,6 +1,7 @@
 import ReadyToExperience from "../components/commons/ReadyToExperience";
 import FeatureCarousel from "../components/home/FeatureCarousel";
 import HomeHero from "../components/home/HomeHero";
+import HowItWorks from "../components/home/HowItWorks";
 import ValueProposition from "../components/home/ValueProposition";
 import LayersOfSecurity from "../components/home/LayersOfSecurity";
 import { ourHomeFAQs } from "@/utils/contents";
@@ -67,6 +68,7 @@ export default function Home() {
   return (
     <main className="">
       <HomeHero />
+      <HowItWorks />
       <ValueProposition />
       <FeatureCarousel />
       <LayersOfSecurity />

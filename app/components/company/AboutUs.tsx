@@ -37,7 +37,7 @@ const AboutUs = () => {
           >
             {/* Image */}
             <Image
-              src="/assets/about/about-banner.png"
+              src="/assets/illustrations/about-family.webp"
               alt="Our Lens"
               width={700}
               height={420}
